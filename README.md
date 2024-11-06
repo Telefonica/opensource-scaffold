@@ -38,7 +38,7 @@ This template includes the following:
   * It is based on the [CLA of HashiCorp](https://cla.hashicorp.com/).
 * [__Pull Request template__](./.github/PULL_REQUEST_TEMPLATE.md): The pull request template of the project. It includes:
   * A template for the title and description of the pull request.
-  * A checklist to ensure that the contributor has read and understood the CONTRIBUTING and CODE_OF_CONDUCT documents, that the contribution is made under the terms of the License, and that the contributor accepts the storage of their Github user name and email address for the purposes of managing the contribution to the project.
+  * A checklist to ensure that the contributor has read and understood the CONTRIBUTING and CODE_OF_CONDUCT documents, that the contribution is made under the terms of the License, and that the contributor accepts the storage of their Github user name for the purpose of future reference.
   * A reminder to sign the CLA through a comment in the PR.
 * __Issue templates__: Templates for bug reports and feature requests. The user is enforced to use one of the provided templates. Creating new issues without using a template is not allowed. The templates are:
   * [__Bug report__](./.github/ISSUE_TEMPLATE/bug_report.md): A template for bug reports.
@@ -56,6 +56,7 @@ This template includes the following:
     * `{{ project_description }}`: The description of the project.
     * `{{ company }}`: The name of the company or organization that owns the project (usually Telefónica).
     * `{{ repo_url }}`: The URL of the repository.
+    * `{{ email }}`: The email of the person at charge of the Code of Conduct enforcement.
 5. __Update the license__: If the project uses a different license than the Mozilla Public License 2.0:
     * Replace the content of the `LICENSE` file with the content of the new license.
     * Review the content of the `CONTRIBUTING.md` file to ensure that the license headers match the new license.

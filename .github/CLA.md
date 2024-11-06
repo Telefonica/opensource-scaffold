@@ -15,7 +15,7 @@ Requiring a CLA is a common and well-accepted practice in open source. Major ope
 Signing the CLA
 Open a pull request ("PR") to any of our projects to sign the CLA. A bot will comment on the PR asking you to sign the CLA if you haven't already.
 
-Follow the steps given by the bot to sign the CLA. This will require you to log in with GitHub (we only request public information from your account) and to fill in a few additional details such as your name and email address. We will only use this information for CLA tracking; none of your submitted information will be used for marketing purposes.
+Follow the steps given by the bot to sign the CLA. This will require you to log in with GitHub (we only request public information from your account) and to add a comment to the PR. We will store your Github user name in a branch in this repository. We will only use this information for CLA tracking; none of your information will be used for marketing purposes.
 
 You only have to sign the CLA once. Once you've signed the CLA, future contributions to any {{ company }} project will not require you to sign again.
 
