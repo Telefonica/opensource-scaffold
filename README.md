@@ -124,5 +124,11 @@ The Contributor License Agreement (CLA) is a legal document that defines the ter
 
 This repository includes a workflow that automates the process of signing the CLA. The workflow uses the [lite version](https://github.com/contributor-assistant/github-action) of the [CLA Assistant](https://github.com/cla-assistant/cla-assistant) tool, which is a free service that integrates with Github to manage the CLA process.
 
-In this case, the signing of the CLA is done through a comment in the pull request. When a contributor opens a pull request, a bot will comment on the PR asking the contributor to sign the CLA. The contributor must reply to the bot's comment with the following text: "_I have read the CLA Document and I hereby sign the CLA_". If the contributor doesn't sign the CLA, the PR status will fail. The data of the contributors signing the CLA will be stored in a private repository owned by Telefónica.
+In this case, the signing of the CLA is done through a comment in the pull request. When a contributor opens a pull request, a bot will comment on the PR asking the contributor to sign the CLA. The contributor must reply to the bot's comment with the following text: "_I have read the CLA Document and I hereby sign the CLA_". If the contributor doesn't sign the CLA, the PR status will fail. The data of the contributors signing the CLA will be stored in a branch of the same repository.
 
+To setup the automatic CLA, follow these steps:
+
+Edit the [`.github/workflows/cla.yml`](./.github/workflows/cla.yml) file and change the following values:
+
+1. Change the url of the repository.
+2. If desired, change the branch where the data of the contributors signing the CLA will be stored.
