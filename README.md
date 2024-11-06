@@ -55,8 +55,9 @@ The template includes the following:
 6. __Fill the README file__: Fill the `README.md` file with the sections that describe the project, how to install it, how to use it, etc. But __always keep the "Contributing" and "License" sections__.
 7. __Customize the Issue templates__: Add or remove sections from the issue templates to match the needs of the project, but __always keep the checks to ensure that the contributor has read the Code of Conduct__.
 8. __Setup the check License Compliance workflow__: Every open source project must include an automatic job to check the licensing of the dependencies. Read the [chapter below](#license-compliance-check) to know how to setup this workflow for different languages.
-9. __Configure the automatic CLA__: The repository includes a workflow that automates the process of signing the CLA. Read the [chapter below](#automatic-contributing-license-agreement) to know how to setup this workflow.
-10. __Publish the project__: Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication.
+9. __Configure the automatic CLA__: The repository includes a workflow that automates the process of signing the CLA. Read the [chapter below](#automatic-contributing-license-agreement) to know how to setup this workflow properly.
+10. __Configure the repository__: Protect the main branch, and configure the branch protection rules to ensure that the checks of the pull requests pass before merging them.
+11. __Publish the project__: Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication.
 
 ## License Compliance check
 
@@ -124,5 +125,12 @@ The Contributor License Agreement (CLA) is a legal document that defines the ter
 
 This repository includes a workflow that automates the process of signing the CLA. The workflow uses the [lite version](https://github.com/contributor-assistant/github-action) of the [CLA Assistant](https://github.com/cla-assistant/cla-assistant) tool, which is a free service that integrates with Github to manage the CLA process.
 
-In this case, the signing of the CLA is done through a comment in the pull request. When a contributor opens a pull request, a bot will comment on the PR asking the contributor to sign the CLA. The contributor must reply to the bot's comment with the following text: "_I have read the CLA Document and I hereby sign the CLA_". If the contributor doesn't sign the CLA, the PR status will fail. The data of the contributors signing the CLA will be stored in a private repository owned by Telefónica.
+In this case, the signing of the CLA is done through a comment in the pull request. When a contributor opens a pull request, a bot will comment on the PR asking the contributor to sign the CLA. The contributor must reply to the bot's comment with the following text: "_I have read the CLA Document and I hereby sign the CLA_". If the contributor doesn't sign the CLA, the PR status will fail. The data of the contributors signing the CLA will be stored in a branch of the same repository.
 
+To setup the automatic CLA, follow these steps:
+
+* Edit the [`.github/workflows/cla.yml`](./.github/workflows/cla.yml) file and change the following values:
+  * Change the url of the repository.
+  * If desired, change the branch where the data of the contributors signing the CLA will be stored.
+* Configure the branch protection rules to require the CLA to be signed before merging the pull requests.
+* Remember to protect against deletion the branch where the data of the contributors signing the CLA will be stored.
