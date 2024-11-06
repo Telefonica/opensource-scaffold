@@ -50,22 +50,23 @@ This template includes the following:
 
 1. __Create a new repository__: Click on the "Use this template" button in Github when creating a new repository, and select this template.
 2. __Update the README file__: Clone the repository and replace the content of the `README.md` file with the content of the `README.project.md` file.
-3. __Replace placeholders__: Search and replace the nex placeholders in every file by the corresponding values:
+3. __Delete unused files__: Delete the `README.project.md` file and the `docs/assets` folder, which is only used to store the images of this README file.
+4. __Replace placeholders__: Search and replace the nex placeholders in every file by the corresponding values:
     * `{{ project_name }}`: The name of the project.
     * `{{ project_description }}`: The description of the project.
     * `{{ company }}`: The name of the company or organization that owns the project (usually Telefónica).
     * `{{ repo_url }}`: The URL of the repository.
-4. __Update the license__: If the project uses a different license than the Mozilla Public License 2.0:
+5. __Update the license__: If the project uses a different license than the Mozilla Public License 2.0:
     * Replace the content of the `LICENSE` file with the content of the new license.
     * Review the content of the `CONTRIBUTING.md` file to ensure that the license headers match the new license.
     * Change the link to the License FAQ in the `README.md` file to the corresponding FAQ of the new license.
-5. __Add the Contributing Guidelines__: Customize the `CONTRIBUTING.md` file to match the contribution guidelines of the project. You should __fill the "Getting Started" section__ with the steps that a contributor should follow to start contributing to the project, and __add as many sections as needed to explain the contribution process__. But you should __always keep the rest of sections__ about the licensing of new files, code of conduct and the CLA.
-6. __Fill the README file__: Fill the `README.md` file with the sections that describe the project, how to install it, how to use it, etc. But __always keep the "Contributing" and "License" sections__.
-7. __Customize the Issue templates__: Add or remove sections from the issue templates to match the needs of the project, but __always keep the checks to ensure that the contributor has read the Code of Conduct__.
-8. __Setup the check License Compliance workflow__: Every open source project must include an automatic job to check the licensing of the dependencies. Read the [chapter below](#license-compliance-check) to know how to setup this workflow for different languages.
-9. __Configure the automatic CLA__: The repository includes a workflow that automates the process of signing the CLA. Read the [chapter below](#automatic-contributing-license-agreement) to know how to setup this workflow properly.
-10. __Configure the repository__: Protect the main branch, and configure the branch protection rules to ensure that the checks of the pull requests pass before merging them.
-11. __Publish the project__: Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication.
+6. __Add the Contributing Guidelines__: Customize the `CONTRIBUTING.md` file to match the contribution guidelines of the project. You should __fill the "Getting Started" section__ with the steps that a contributor should follow to start contributing to the project, and __add as many sections as needed to explain the contribution process__. But you should __always keep the rest of sections__ about the licensing of new files, code of conduct and the CLA.
+7. __Fill the README file__: Fill the `README.md` file with the sections that describe the project, how to install it, how to use it, etc. But __always keep the "Contributing" and "License" sections__.
+8. __Customize the Issue templates__: Add or remove sections from the issue templates to match the needs of the project, but __always keep the checks to ensure that the contributor has read the Code of Conduct__.
+9. __Setup the check License Compliance workflow__: Every open source project must include an automatic job to check the licensing of the dependencies. Read the [chapter below](#license-compliance-check) to know how to setup this workflow for different languages.
+10. __Configure the automatic CLA__: The repository includes a workflow that automates the process of signing the CLA. Read the [chapter below](#automatic-contributing-license-agreement) to know how to setup this workflow properly.
+11. __Configure the repository__: Protect the main branch, and configure the branch protection rules to ensure that the checks of the pull requests pass before merging them.
+12. __Publish the project__: Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication.
 
 ## Automatic Contributing License Agreement
 
@@ -75,6 +76,8 @@ This repository includes a workflow that automates the process of signing the CL
 
 
 In this case, the signing of the CLA is done through a comment in the pull request. CLA workflow creates a comment on Pull Request asking contributors who have not signed CLA to sign and also fails the pull request status check with a failure. The contributors are requested to sign the CLA within the pull request by copy and pasting "I have read the CLA Document and I hereby sign the CLA" as a Pull Request comment like below. If the contributor has already signed the CLA, then the PR status will pass with success. The data of the contributors signing the CLA will be stored in a branch of the same repository.
+
+![CLA Bot](./docs/assets/cla-bot.png)
 
 To setup the automatic CLA, follow these steps:
 
