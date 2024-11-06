@@ -55,8 +55,9 @@ The template includes the following:
 6. __Fill the README file__: Fill the `README.md` file with the sections that describe the project, how to install it, how to use it, etc. But __always keep the "Contributing" and "License" sections__.
 7. __Customize the Issue templates__: Add or remove sections from the issue templates to match the needs of the project, but __always keep the checks to ensure that the contributor has read the Code of Conduct__.
 8. __Setup the check License Compliance workflow__: Every open source project must include an automatic job to check the licensing of the dependencies. Read the [chapter below](#license-compliance-check) to know how to setup this workflow for different languages.
-9. __Configure the automatic CLA__: The repository includes a workflow that automates the process of signing the CLA. Read the [chapter below](#automatic-contributing-license-agreement) to know how to setup this workflow.
-10. __Publish the project__: Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication.
+9. __Configure the automatic CLA__: The repository includes a workflow that automates the process of signing the CLA. Read the [chapter below](#automatic-contributing-license-agreement) to know how to setup this workflow properly.
+10. __Configure the repository__: Protect the main branch, and configure the branch protection rules to ensure that the checks of the pull requests pass before merging them.
+11. __Publish the project__: Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication.
 
 ## License Compliance check
 
@@ -128,7 +129,8 @@ In this case, the signing of the CLA is done through a comment in the pull reque
 
 To setup the automatic CLA, follow these steps:
 
-Edit the [`.github/workflows/cla.yml`](./.github/workflows/cla.yml) file and change the following values:
-
-1. Change the url of the repository.
-2. If desired, change the branch where the data of the contributors signing the CLA will be stored.
+* Edit the [`.github/workflows/cla.yml`](./.github/workflows/cla.yml) file and change the following values:
+  * Change the url of the repository.
+  * If desired, change the branch where the data of the contributors signing the CLA will be stored.
+* Configure the branch protection rules to require the CLA to be signed before merging the pull requests.
+* Remember to protect against deletion the branch where the data of the contributors signing the CLA will be stored.
