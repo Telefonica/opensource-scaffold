@@ -53,3 +53,64 @@ The template includes the following:
     * Change the link to the License FAQ in the `README.md` file to the corresponding FAQ of the new license.
 5. __Add the Contributing Guidelines__: Customize the `CONTRIBUTING.md` file to match the contribution guidelines of the project. You should __fill the "Getting Started" section__ with the steps that a contributor should follow to start contributing to the project, and __add as many sections as needed to explain the contribution process__. But you should __always keep the rest of sections__ about the licensing of new files, code of conduct and the CLA.
 6. __Fill the README file__: Fill the `README.md` file with the sections that describe the project, how to install it, how to use it, etc. But __always keep the "Contributing" and "License" sections__.
+7. __Setup the check License Compliance workflow__: Every open source project must include an automatic job to check the licensing of the dependencies. Read the [chapter below](#check-license-compliance) to know how to setup this workflow for different languages.
+
+## Check License Compliance
+
+We want to ensure that the software we build is in compliance with our [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578).
+
+As a summary, here you have a table of the licenses that are allowed and the ones that are not allowed or require special approval:
+
+| Red licenses | Yellow licenses                    | Green licenses |
+|--------------|------------------------------------|----------------|
+| AGPL-3.0     | LGPL v3                            | Apache-2.0     |
+| GPL-2.0      | LGPL v2.1                          | BSD            |
+| GPL-3.0      | MPL 2.0                            | MIT            |
+|              | Eclipse Public License 1.0         | MIT            |
+
+Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578) to ensure that these data is up to date before setting up the license compliance check.
+
+The check is language dependent. The result of this should be a list of problematic licenses. If all are of the licenses that are output are on our approved list, this step passes.
+
+### Java
+
+Run this to get the dependency license list.
+
+```bash
+mvn org.codehaus.mojo:license-maven-plugin:aggregate-third-party-report
+```
+
+When this is done, the result will be in ./target/site/aggregate-third-party-report.html.
+
+### Node.js
+
+After installing dependencies, run this:
+
+```bash
+npx license-checker --exclude "MIT,ISC,BSD-3-Clause,Apache-2.0,BSD-2-Clause,0BSD,CC-BY-4.0" --unknown
+```
+
+That exclusion list should match our known green license list.
+
+### Python
+
+```bash
+pip3 install --user pylic
+cd path/to/repo
+touch pyproject.toml
+pylic check
+```
+
+### Go
+
+```bash
+go install github.com/google/go-licenses@latest
+go-licenses check . --allowed_licenses=MIT,ISC,BSD-3-Clause,Apache-2.0,BSD-2-Clause,0BSD,CC-BY-4.0
+```
+
+### PHP
+
+```bash
+composer require dominikb/composer-license-checker
+composer exec composer-license-checker -- check
+```
