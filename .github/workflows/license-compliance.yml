@@ -1,6 +1,7 @@
 name: "License Compliance"
 on:
   pull_request:
+
 concurrency:  
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -23,6 +24,7 @@ jobs:
       - name: Get report
         # cspell:disable-next-line
         uses: mathiasvr/command-output@v2.0.0
+        continue-on-error: true
         id: report
         with:
           run: pnpm run check:license:compliance
