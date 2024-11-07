@@ -1,0 +1,100 @@
+import { cwd } from "node:process";
+import { resolve as pathResolve } from "node:path";
+import { readFile } from "node:fs/promises";
+import yaml from "yaml";
+import licenseChecker from "license-checker";
+
+const ROOT_DIR = cwd();
+
+/**
+ * Reads the license-check.config.yaml file
+ * @returns {Promise<Object>} - Object containing the configuration
+ */
+async function readConfig() {
+  return yaml.parse(
+    await readFile(
+      pathResolve(ROOT_DIR, "license-compliance.config.yml"),
+      "utf-8",
+    ),
+  );
+}
+
+/**
+ * Returns an array of packages using a license that is not in the exclusions, or is unknown
+ * @param {string[]} exclusions - List of licenses to exclude
+ * @param {Object} options - Options for the license-checker
+ * @param {string} options.unknown - Whether to include packages with guessed licenses
+ * @returns {Promise<{module: string, path: string, licenses: string[], licenseFile string}[]>} - List of packages using a license that is not in the exclusions
+ */
+async function checkLicensesExcluding(exclusions, options = {}) {
+  return new Promise((resolve, reject) => {
+    licenseChecker.init(
+      {
+        start: ROOT_DIR,
+        exclude: exclusions.join(","),
+        relativeLicensePath: true,
+        ...options,
+      },
+      (err, packages) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(
+            Object.entries(packages).map(([moduleName, result]) => ({
+              module: moduleName,
+              ...result,
+            })),
+          );
+        }
+      },
+    );
+  });
+}
+
+/**
+ * Returns an array of modules using a forbidden license
+ * @param {Object} config - Configuration object for the license-checker
+ * @returns {Promise<string[]>} - Array of modules
+ */
+function checkForbiddenLicenses(config) {
+  return checkLicensesExcluding(
+    [...(config.licenses?.allowed || []), ...(config.licenses?.warning || [])],
+    {
+      ...config.options?.global,
+      ...config.options?.forbidden,
+    },
+  );
+}
+
+/**
+ * Returns an array of modules using licenses that require special attention
+ * @param {Object} config - Configuration object for the license-checker
+ * @returns {Promise<string[]>} - Array of modules
+ */
+function checkWarningLicenses(config) {
+  return checkLicensesExcluding(
+    [
+      ...(config.licenses?.allowed || []),
+      ...(config.licenses?.forbidden || []),
+    ],
+    {
+      unknown: true,
+      ...config.options?.global,
+      ...config.options?.warning,
+    },
+  );
+}
+
+/**
+ * Returns an object detailing which modules use forbidden licenses and which use licenses that require special attention
+ * @returns Object containing errors and warnings properties, each with an array of modules
+ */
+export async function checkLicenses() {
+  const config = await readConfig();
+  const errors = await checkForbiddenLicenses(config);
+  const warnings = await checkWarningLicenses(config);
+  const warningsWithoutErrors = warnings.filter(
+    (warning) => !errors.some((error) => error.module === warning.module),
+  );
+  return { errors, warnings: warningsWithoutErrors };
+}

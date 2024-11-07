@@ -93,14 +93,14 @@ To setup the automatic CLA, follow these steps:
 
 We want to ensure that the software we build is in compliance with our [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578).
 
-As a summary, here you have a table of the licenses that are allowed and the ones that are not allowed or require special approval:
+As a summary, here you have a table of the licenses that are allowed and the ones that are not allowed or require special approval, using codes from the [SPDX License List](https://spdx.org/licenses/):
 
 | Red licenses | Yellow licenses                    | Green licenses |
 |--------------|------------------------------------|----------------|
-| AGPL-3.0     | LGPL v3                            | Apache-2.0     |
-| GPL-2.0      | LGPL v2.1                          | BSD            |
-| GPL-3.0      | MPL 2.0                            | MIT            |
-|              | Eclipse Public License 1.0         |                |
+| AGPL-3.0     | LGPL-3.0                           | Apache-2.0     |
+| GPL-2.0      | LGPL-2.0                           | BSD            |
+| GPL-3.0      | MPL-2.0                            | MIT            |
+|              | EPL-1.0                            |                |
 
 Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578) to ensure that these data is up to date before setting up the license compliance check.
 

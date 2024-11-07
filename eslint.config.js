@@ -4,6 +4,7 @@ import prettier from "eslint-plugin-prettier";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import eslintConfigPrettier from "eslint-config-prettier";
 import js from "@eslint/js";
+import globals from "globals";
 
 export default [
   {
@@ -37,6 +38,9 @@ export default [
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
+      globals: {
+        ...globals.node,
+      },
     },
     rules: {
       ...js.configs.recommended.rules,

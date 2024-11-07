@@ -1,0 +1,19 @@
+licenses:
+  allowed:
+    - Apache-2.0
+    - BSD
+    - MIT
+  warning:
+    - LGPL-3.0
+    - LGPL-2.0
+    - MPL-2.0
+    - EPL-1.0
+  forbidden:
+    - AGPL-3.0
+    - GPL-2.0
+    - GPL-3.0
+options:
+  global:
+    excludePrivatePackages: true
+  warning:
+    excludePrivatePackages: true
