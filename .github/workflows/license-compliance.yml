@@ -44,6 +44,8 @@ jobs:
             const lines = process.env.OUTPUT.split('\n');
             return lines.slice(2, -1).join('\n');
           result-encoding: string
+      - name: Log
+        run: echo ${{ steps.clean-output.outputs.result }} && echo ${{ steps.previous-comment.outputs.comment-id }}
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v4
         with:
