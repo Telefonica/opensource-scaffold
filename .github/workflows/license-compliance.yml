@@ -27,7 +27,7 @@ jobs:
         continue-on-error: true
         id: report
         with:
-          run: tail -n +3 ${pnpm run check:license:compliance}
+          run: pnpm run check:license:compliance
       - name: Find Comment
         uses: peter-evans/find-comment@v3
         id: previous-comment
