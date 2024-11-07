@@ -42,7 +42,7 @@ jobs:
         with:
           script: |
             const lines = process.env.OUTPUT.split('\n');
-            return lines.slice(4, -1).join('\n');
+            return lines.slice(4).filter((line) => !line.includes('ELIFECYCLE')).join('\n');
           result-encoding: string
       - name: Log
         run: echo "${{ steps.clean-output.outputs.result }}" && echo "${{ steps.previous-comment.outputs.comment-id }}"
