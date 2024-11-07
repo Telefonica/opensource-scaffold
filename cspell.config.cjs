@@ -17,12 +17,21 @@ module.exports = {
   language: "en",
   // Dictionaries to be used
   dictionaryDefinitions: [
+    { name: "company", path: `${DICTIONARIES_BASE_PATH}/company.txt` },
     { name: "node-custom", path: `${DICTIONARIES_BASE_PATH}/node.txt` },
     { name: "missing-en", path: `${DICTIONARIES_BASE_PATH}/missing-en.txt` },
     { name: "people", path: `${DICTIONARIES_BASE_PATH}/people.txt` },
     { name: "tech", path: `${DICTIONARIES_BASE_PATH}/tech.txt` },
   ],
-  dictionaries: ["node-custom", "missing-en", "people", "tech"],
+  dictionaries: ["company", "node-custom", "missing-en", "people", "tech"],
+  languageSettings: [
+    {
+      // In markdown files
+      languageId: "markdown",
+      // Exlude code blocks from spell checking
+      ignoreRegExpList: ["/^\\s*```[\\s\\S]*?^\\s*```/gm"],
+    },
+  ],
   // The minimum length of a word before it is checked.
   minWordLength: 4,
   // flagWords - list of words to be always considered incorrect. This is useful for offensive words and common spelling errors. For example "hte" should be "the"
