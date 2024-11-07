@@ -28,6 +28,22 @@ jobs:
         id: report
         with:
           run: pnpm run check:license:compliance
+      - name: Find Comment
+        if: ${{ steps.report.outputs.stdout }}
+        uses: peter-evans/find-comment@v3
+        id: previous-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: License Compliance check
+      - name: Create or update comment
+        if: ${{ steps.report.outputs.stdout }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.previous-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ${{ steps.report.outputs.stdout }}
+          edit-mode: replace
       - if: ${{ steps.report.outputs.stderr }}
-        run: exit 1
+        run: echo "License Compliance check failed" && exit 1
         
