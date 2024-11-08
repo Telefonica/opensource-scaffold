@@ -1,4 +1,4 @@
-const DICTIONARIES_BASE_PATH = "tools/cspell";
+const DICTIONARIES_BASE_PATH = "tools/nodejs/cspell";
 
 module.exports = {
   // Version of the setting file.  Always 0.2

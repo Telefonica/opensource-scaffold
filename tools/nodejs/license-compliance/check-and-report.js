@@ -2,7 +2,7 @@ import { checkLicenses } from "./check.js";
 
 function log(message) {
   // eslint-disable-next-line no-console
-  console.log("__License Compliance check__\n");
+  console.log("__License Compliance check - Node__\n");
   // eslint-disable-next-line no-console
   console.log(message);
 }
