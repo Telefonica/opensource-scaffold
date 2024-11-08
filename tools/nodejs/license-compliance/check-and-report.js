@@ -1,5 +1,9 @@
 import { checkLicenses } from "./check.js";
 
+/**
+ * Logs a message to the console
+ * @param {string} message The message to log
+ */
 function log(message) {
   // eslint-disable-next-line no-console
   console.log("__License Compliance check - Node__\n");
@@ -8,7 +12,7 @@ function log(message) {
 }
 
 /**
- *
+ * Returns a message with the dependencies that failed the check
  * @param {Array} licenses Licenses failing the check
  * @param {string} type Type of license (dangerous or forbidden)
  * @param {string} emoji The emoji to use in the message
