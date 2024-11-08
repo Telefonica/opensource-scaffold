@@ -102,7 +102,7 @@ As a summary, here you have a table of the licenses that are allowed and the one
 | AGPL-3.0     | LGPL-3.0                           | Apache-2.0     |
 | GPL-2.0      | LGPL-2.0                           | BSD            |
 | GPL-3.0      | MPL-2.0                            | MIT            |
-|              | EPL-1.0                            |                |
+|              | EPL-1.0                            | ISC            |
 
 Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578) to ensure that these data is up to date before setting up the license compliance check.
 
