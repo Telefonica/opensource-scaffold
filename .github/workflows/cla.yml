@@ -16,7 +16,7 @@ permissions:
   statuses: write
 
 jobs:
-  require-agreement:
+  require-cla-agreement:
     runs-on: ubuntu-latest
     steps:
       - name: "Require CLA Agreement"
