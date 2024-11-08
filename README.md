@@ -36,7 +36,7 @@ This template includes the following:
   * A human-readable summary of the Contributor License Agreement, and links to the full CLA.
 * [__Contributor license agreement__](./.github/CLA.md): The Contributor License Agreement of the project.
   * It is based on the [CLA of HashiCorp](https://cla.hashicorp.com/).
-* [__Instructions to check License Compliance of dependencies__](#license-compliance-check): It includes instructions to check the licensing of the dependencies of the project in different languages. It also includes an example of a workflow for Node.js dependencies, that, indeed, is checking the licensing of the dependencies in this repository.
+* [__Instructions to check License Compliance of dependencies__](#license-compliance-check): It includes instructions to check the licensing of the dependencies of the project in different languages. It also includes an example of a [tool for checking Node.js dependencies](./tools/nodejs/license-compliance/README.md), that, indeed, is checking the licensing of the dependencies in this repository.
 * [__Pull Request template__](./.github/PULL_REQUEST_TEMPLATE.md): The pull request template of the project. It includes:
   * A template for the title and description of the pull request.
   * A checklist to ensure that the contributor has read and understood the CONTRIBUTING and CODE_OF_CONDUCT documents, that the contribution is made under the terms of the License, and that the contributor accepts the storage of their Github user name for the purpose of future reference.
@@ -120,7 +120,7 @@ When this is done, the result will be in ./target/site/aggregate-third-party-rep
 
 ### Node.js
 
-You have a fully working example in this repository. The workflow is in the [.github/workflows/license-compliance-node.yml](./.github/workflows/license-compliance-node.yml) file.
+You have a fully working example in this repository. Read the [Node.js License Compliance check](./tools/nodejs/license-compliance/README.md) in the `tools/nodejs/license-compliance` folder to know how to setup the license compliance check for Node.js dependencies.
 
 It comments on the pull request with the licenses that are not allowed or require special approval.
 
