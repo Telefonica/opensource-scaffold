@@ -124,6 +124,8 @@ You have a fully working example in this repository. The workflow is in the [.gi
 
 It comments on the pull request with the licenses that are not allowed or require special approval.
 
+![Node compliance check](./docs/assets/node-compliance-check.png)
+
 
 ### Python
 

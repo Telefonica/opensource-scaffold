@@ -7,7 +7,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check-licenses:
+  check-node-licenses:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
