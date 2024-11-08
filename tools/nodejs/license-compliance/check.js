@@ -13,7 +13,7 @@ const ROOT_DIR = cwd();
 async function readConfig() {
   return yaml.parse(
     await readFile(
-      pathResolve(ROOT_DIR, "license-compliance.config.yml"),
+      pathResolve(ROOT_DIR, "license-compliance-node.config.yml"),
       "utf-8",
     ),
   );
