@@ -11,7 +11,7 @@ function log(message) {
  *
  * @param {Array} licenses Licenses failing the check
  * @param {string} type Type of license (dangerous or forbidden)
- * @param {*} emoji The emoji to use in the message
+ * @param {string} emoji The emoji to use in the message
  */
 function getDependenciesMessage(licenses, type, emoji) {
   if (licenses.length > 0) {
@@ -30,30 +30,27 @@ function getDependenciesMessage(licenses, type, emoji) {
   return "";
 }
 
+/**
+ * Checks the licenses of the dependencies and reports the results in markdown format. It may throw an error or not depending on the configuration.
+ */
 async function checkAndReportInMarkdown() {
-  const licensesFailing = await checkLicenses();
-  if (
-    licensesFailing.errors.length === 0 &&
-    licensesFailing.warnings.length === 0
-  ) {
+  const { forbidden, warning, config } = await checkLicenses();
+  if (forbidden.length === 0 && warning.length === 0) {
     log(":white_check_mark: All dependencies have acceptable licenses");
     return;
   }
 
   let message = "";
-  message += getDependenciesMessage(
-    licensesFailing.errors,
-    "forbidden",
-    ":exclamation:",
-  );
-  message += getDependenciesMessage(
-    licensesFailing.warnings,
-    "dangerous",
-    ":warning:",
-  );
+  message += getDependenciesMessage(forbidden, "forbidden", ":exclamation:");
+  message += getDependenciesMessage(warning, "dangerous", ":warning:");
   log(message);
 
-  throw new Error("Dependency license check failed");
+  if (
+    (config.errorOnForbidden && forbidden.length > 0) ||
+    (config.errorOnWarning && warning.length > 0)
+  ) {
+    throw new Error("Dependency license check failed");
+  }
 }
 
 checkAndReportInMarkdown();

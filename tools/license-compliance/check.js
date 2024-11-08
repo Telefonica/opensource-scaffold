@@ -23,8 +23,7 @@ async function readConfig() {
  * Returns an array of packages using a license that is not in the exclusions, or is unknown
  * @param {string[]} exclusions - List of licenses to exclude
  * @param {Object} options - Options for the license-checker
- * @param {string} options.unknown - Whether to include packages with guessed licenses
- * @returns {Promise<{module: string, path: string, licenses: string[], licenseFile string}[]>} - List of packages using a license that is not in the exclusions
+ * @returns {Promise<{module: string, ...licenseCheckerResult}[]>} - List of packages using a license that is not in the exclusions
  */
 async function checkLicensesExcluding(exclusions, options = {}) {
   return new Promise((resolve, reject) => {
@@ -54,14 +53,14 @@ async function checkLicensesExcluding(exclusions, options = {}) {
 /**
  * Returns an array of modules using a forbidden license
  * @param {Object} config - Configuration object for the license-checker
- * @returns {Promise<string[]>} - Array of modules
+ * @returns {Promise<Object>} - Array of modules
  */
 function checkForbiddenLicenses(config) {
   return checkLicensesExcluding(
     [...(config.licenses?.allowed || []), ...(config.licenses?.warning || [])],
     {
-      ...config.options?.global,
-      ...config.options?.forbidden,
+      ...config.licenseCheckerOptions?.global,
+      ...config.licenseCheckerOptions?.forbidden,
     },
   );
 }
@@ -69,7 +68,7 @@ function checkForbiddenLicenses(config) {
 /**
  * Returns an array of modules using licenses that require special attention
  * @param {Object} config - Configuration object for the license-checker
- * @returns {Promise<string[]>} - Array of modules
+ * @returns {Promise<Object>} - Array of modules
  */
 function checkWarningLicenses(config) {
   return checkLicensesExcluding(
@@ -79,22 +78,25 @@ function checkWarningLicenses(config) {
     ],
     {
       unknown: true,
-      ...config.options?.global,
-      ...config.options?.warning,
+      ...config.licenseCheckerOptions?.global,
+      ...config.licenseCheckerOptions?.warning,
     },
   );
 }
 
 /**
  * Returns an object detailing which modules use forbidden licenses and which use licenses that require special attention
- * @returns Object containing errors and warnings properties, each with an array of modules
+ * @returns Object containing errors and warnings properties, each with an array of modules, and the config object
  */
 export async function checkLicenses() {
   const config = await readConfig();
-  const errors = await checkForbiddenLicenses(config);
+  const forbidden = await checkForbiddenLicenses(config);
   const warnings = await checkWarningLicenses(config);
   const warningsWithoutErrors = warnings.filter(
-    (warning) => !errors.some((error) => error.module === warning.module),
+    (warning) =>
+      !forbidden.some(
+        (forbiddenModule) => forbiddenModule.module === warning.module,
+      ),
   );
-  return { errors, warnings: warningsWithoutErrors };
+  return { forbidden, warning: warningsWithoutErrors, config };
 }

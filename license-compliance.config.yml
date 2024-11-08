@@ -13,8 +13,15 @@ licenses:
     - AGPL-3.0
     - GPL-2.0
     - GPL-3.0
-options:
+errorOnForbidden: true
+errorOnWarning: false
+# Options passed directly to the license-checker package
+licenseCheckerOptions:
+  # Global options are applied to all types of checks
   global:
     excludePrivatePackages: true
-  warning:
-    excludePrivatePackages: true
+  # You can also specify options for each type of check. They extend the global options
+  # warning:
+    # excludePrivatePackages: false
+  # forbidden:
+    # excludePrivatePackages: false
