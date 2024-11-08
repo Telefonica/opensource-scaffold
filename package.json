@@ -1,9 +1,9 @@
 {
-  "name": "cross-opensource-template",
+  "name": "cross-opensource-node-template",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Open Source Project Template from the Cross-Cutting team",
+  "description": "Open Source Project Template for Node.js projects from the Cross-Cutting team",
   "packageManager": "pnpm@9.4.0",
   "scripts": {
     "eslint": "eslint",

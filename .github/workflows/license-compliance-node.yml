@@ -55,4 +55,3 @@ jobs:
           edit-mode: replace
       - if: ${{ steps.report.outputs.stderr }}
         run: echo "License Compliance check failed" && exit 1
-        

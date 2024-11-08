@@ -36,5 +36,5 @@ The configuration is defined in the `license-compliance-node.config.yaml` file. 
 * `errorOnWarning`: Boolean indicating if the check should fail when a warning license is found.
 * `licenseCheckerOptions`: Object with the options that are passed to the `license-checker` library on each different type of check. You can find the available options [here](https://github.com/davglass/license-checker#options).
   * `global`: Object with the global options. These options are applied both when checking "warning" and "forbidden" licenses.
-  * `warning`: Object with the options that are applied when checking "warning" licenses. They are merged with the global options.
+  * `warning`: Object with the options that are applied when checking "warning" licenses. They are merged with the global options. By default, the `unknown` option is set to `true`. You should redefine it if you want to not produce a warning for unknown licenses.
   * `forbidden`: Object with the options that are applied when checking "forbidden" licenses. They are merged with the global options.
