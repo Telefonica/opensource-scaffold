@@ -43,14 +43,20 @@ async function checkAndReportInMarkdown() {
   let message = "";
   message += getDependenciesMessage(forbidden, "forbidden", ":exclamation:");
   message += getDependenciesMessage(warning, "dangerous", ":warning:");
-  log(message);
 
   if (
     (config.errorOnForbidden && forbidden.length > 0) ||
     (config.errorOnWarning && warning.length > 0)
   ) {
+    message += ":x: This is non-compliant. Please fix the dependencies.";
+    log(message);
     throw new Error("Dependency license check failed");
   }
+
+  message +=
+    ":warning: This is compliant according to the configuration, but you should review the dependencies.";
+  log(message);
+  return;
 }
 
 checkAndReportInMarkdown();
