@@ -116,7 +116,7 @@ async function checkLicensesExcluding(exclusions, configuration = {}) {
 
 /**
  * Returns an array of modules using a forbidden license
- * @param {...Configuration} config - Configuration object for the library
+ * @param {Configuration} config - Configuration object for the library
  * @returns {Promise<licenseCheckerResult[]>} - Array of modules with forbidden licenses
  */
 function checkForbiddenLicenses(config) {
@@ -131,7 +131,7 @@ function checkForbiddenLicenses(config) {
 
 /**
  * Returns an array of modules using licenses that require special attention
- * @param {...Configuration} config - Configuration object for the library
+ * @param {Configuration} config - Configuration object for the library
  * @returns {Promise<licenseCheckerResult[]>} - Array of modules with forbidden licenses
  */
 function checkWarningLicenses(config) {
