@@ -1,5 +1,8 @@
-/* Copyright (c) Microsoft Corporation and contributors. All rights reserved.
- * Licensed under the MIT license. See LICENSE file in the project root for details. */
+// Copyright (c) 2024 Telefónica and contributors. All rights reserved.
+
+/*
+ * This Source Code Form is subject to the terms of the MIT License.
+ */
 
 import json from "@eslint/json";
 import markdown from "@eslint/markdown";
