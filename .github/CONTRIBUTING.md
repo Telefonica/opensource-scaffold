@@ -59,7 +59,7 @@ This license can be used for test scripts and other short code snippets, at the 
 -->
 
 SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors
-   SPDX-License-Identifier: MIT
+SPDX-License-Identifier: MIT
 ```
 
 # Pull Request
