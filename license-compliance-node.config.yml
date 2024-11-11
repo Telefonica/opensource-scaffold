@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2024 Telefónica and contributors
+# SPDX-License-Identifier: MIT
+
 licenses:
   allowed:
     - Apache-2.0

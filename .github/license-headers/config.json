@@ -8,15 +8,36 @@
     ],
     "exclude": [
       "node_modules/**/*",
-      "eslint.config.js"
+      "eslint.config.js",
+      "cspell.config.cjs"
     ],
-    "license": "./.github/license-headers/header-js-MPLv2.txt"
+    "license": "./.github/license-headers/header-js-MPL-2.txt"
+  },
+  {
+    "include": [
+      "**/*.yml",
+      "**/*.yaml"
+    ],
+    "exclude": [
+      "pnpm-lock.yaml"
+    ],
+    "license": "./.github/license-headers/header-yml-MIT.txt"
   },
   {
     "include": [
       "*.config.js",
-      "*.config.js"
+      "*.config.cjs"
     ],
     "license": "./.github/license-headers/header-js-MIT.txt"
+  },
+  {
+    "include": [
+      "**/*.json",
+      "**/*.png",
+      "LICENSE",
+      "**/*.md",
+      "**/*.txt",
+      "pnpm-lock.yaml"
+    ]
   }
 ]

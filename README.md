@@ -31,7 +31,7 @@ This template includes the following:
 * [__Code of conduct__](./.github/CODE_OF_CONDUCT.md): The code of conduct of the project. By default, it is the Contributor Covenant published at [contributor-covenant.org](https://www.contributor-covenant.org/).
 * [__Contributing guidelines template__](./.github/CONTRIBUTING.md): The contributing guidelines of the project. It includes:
   * A link to the License file.
-  * License headers that must be included in new files. Based on the [instructions of the Mozilla Foundation](https://www.mozilla.org/en-US/MPL/headers/) (this should be updated to match the license of the project).
+  * License headers that must be included in new files. Based on the [instructions of the Software Package Data Exchange (SPDX) website](https://spdx.dev/) (this should be updated to match the license of the project).
   * A link to the Code of Conduct.
   * A human-readable summary of the Contributor License Agreement, and links to the full CLA.
 * [__Contributor license agreement__](./.github/CLA.md): The Contributor License Agreement of the project.
@@ -60,6 +60,7 @@ This template includes the following:
     * `{{ company }}`: The name of the company or organization that owns the project (usually Telefónica).
     * `{{ repo_url }}`: The URL of the repository.
     * `{{ email }}`: The email of the person at charge of the Code of Conduct enforcement.
+    * `{{ year }}`: The year when the project was created. Used as an example in the license headers.
 5. __Update the license__: If the project uses a different license than the Mozilla Public License 2.0:
     * Replace the content of the `LICENSE` file with the content of the new license.
     * Review the content of the `CONTRIBUTING.md` file to ensure that the license headers match the new license.
@@ -99,6 +100,9 @@ This repository includes a Github Action that checks that all files in the proje
 You can find the workflow in the [`.github/workflows/license-integrity.yml`](./.github/workflows/license-integrity.yml) file.
 
 To setup the license integrity check, edit the [`.github/license-headers/config.json`](./.github/license-headers/config.json) file according to the files in your project, following the [instructions of the License Checker Github action](https://github.com/viperproject/check-license-header).
+
+> [!WARNING]
+> The header configuration files should be defined according to the instructions in [SPDX](https://spdx.dev/learn/handling-license-info/), and according to the documentation in the CONTRIBUTING.md file of the project.
 
 ## License Compliance check
 

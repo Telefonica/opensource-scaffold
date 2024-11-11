@@ -1,5 +1,2 @@
-// Copyright (c) %regexp:^\d{4}(?:-\d{4})?$% Telefónica and contributors. All rights reserved.
-
-/*
- * This Source Code Form is subject to the terms of the MIT License.
- */
+// SPDX-FileCopyrightText: %year% Telefónica and contributors
+// SPDX-License-Identifier: MIT

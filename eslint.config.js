@@ -1,8 +1,5 @@
-// Copyright (c) 2024 Telefónica and contributors. All rights reserved.
-
-/*
- * This Source Code Form is subject to the terms of the MIT License.
- */
+// SPDX-FileCopyrightText: 2024 Telefónica and contributors
+// SPDX-License-Identifier: MIT
 
 import json from "@eslint/json";
 import markdown from "@eslint/markdown";
