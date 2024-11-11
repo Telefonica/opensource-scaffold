@@ -5,6 +5,10 @@ on:
   pull_request_target:
     types: [opened,closed,synchronize]
 
+concurrency:  
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   actions: write
   contents: write
@@ -12,10 +16,10 @@ permissions:
   statuses: write
 
 jobs:
-  CLAAssistant:
+  require-cla-agreement:
     runs-on: ubuntu-latest
     steps:
-      - name: "CLA Assistant"
+      - name: "Require CLA Agreement"
         if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request_target'
         uses: contributor-assistant/github-action@v2.6.1
         env:

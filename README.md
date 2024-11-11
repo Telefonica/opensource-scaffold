@@ -36,6 +36,7 @@ This template includes the following:
   * A human-readable summary of the Contributor License Agreement, and links to the full CLA.
 * [__Contributor license agreement__](./.github/CLA.md): The Contributor License Agreement of the project.
   * It is based on the [CLA of HashiCorp](https://cla.hashicorp.com/).
+* [__Instructions to check License Compliance of dependencies__](#license-compliance-check): It includes instructions to check the licensing of the dependencies of the project in different languages. It also includes an example of a [tool for checking Node.js dependencies](./tools/nodejs/license-compliance/README.md), that, indeed, is checking the licensing of the dependencies in this repository.
 * [__Pull Request template__](./.github/PULL_REQUEST_TEMPLATE.md): The pull request template of the project. It includes:
   * A template for the title and description of the pull request.
   * A checklist to ensure that the contributor has read and understood the CONTRIBUTING and CODE_OF_CONDUCT documents, that the contribution is made under the terms of the License, and that the contributor accepts the storage of their Github user name for the purpose of future reference.
@@ -51,6 +52,7 @@ This template includes the following:
 1. __Create a new repository__: Click on the "Use this template" button in Github when creating a new repository, and select this template.
 2. __Update the README file__: Clone the repository and replace the content of the `README.md` file with the content of the `README.project.md` file.
 3. __Delete unused files__: Delete the `README.project.md` file and the `docs/assets` folder, which is only used to store the images of this README file.
+  * If you are not going to use Node.js in your project, you can also delete the next files and folders: `package.json`, `package-lock.json`, `cspell.config.json` `eslint.config.js`, `jsconfig.json`, `.husky` and the `tools/nodejs` folder.
 4. __Replace placeholders__: Search and replace the nex placeholders in every file by the corresponding values:
     * `{{ project_name }}`: The name of the project.
     * `{{ project_description }}`: The description of the project.
@@ -64,7 +66,7 @@ This template includes the following:
 6. __Add the Contributing Guidelines__: Customize the `CONTRIBUTING.md` file to match the contribution guidelines of the project. You should __fill the "Getting Started" section__ with the steps that a contributor should follow to start contributing to the project, and __add as many sections as needed to explain the contribution process__. But you should __always keep the rest of sections__ about the licensing of new files, code of conduct and the CLA.
 7. __Fill the README file__: Fill the `README.md` file with the sections that describe the project, how to install it, how to use it, etc. But __always keep the "Contributing" and "License" sections__.
 8. __Customize the Issue templates__: Add or remove sections from the issue templates to match the needs of the project, but __always keep the checks to ensure that the contributor has read the Code of Conduct__.
-9. __Setup the check License Compliance workflow__: Every open source project must include an automatic job to check the licensing of the dependencies. Read the [chapter below](#license-compliance-check) to know how to setup this workflow for different languages.
+9. __Setup the check License Compliance workflow__: Every open source project must include an automatic job to check the licensing of the dependencies. Read the [chapter below](#license-compliance-check) to know how to setup this workflow for different languages. You can use the `.github/workflows/license-compliance-node.yml` file as an example, and adapt it to the language of your project. In case you use more than one language, you can create a different workflow for each one.
 10. __Configure the automatic CLA__: The repository includes a workflow that automates the process of signing the CLA. Read the [chapter below](#automatic-contributing-license-agreement) to know how to setup this workflow properly.
 11. __Configure the repository__: Protect the main branch, and configure the branch protection rules to ensure that the checks of the pull requests pass before merging them.
 12. __Publish the project__: Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication.
@@ -93,16 +95,19 @@ To setup the automatic CLA, follow these steps:
 
 We want to ensure that the software we build is in compliance with our [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578).
 
-As a summary, here you have a table of the licenses that are allowed and the ones that are not allowed or require special approval:
+As a summary, here you have a table of the licenses that are allowed and the ones that are not allowed or require special approval, using codes from the [SPDX License List](https://spdx.org/licenses/):
 
 | Red licenses | Yellow licenses                    | Green licenses |
 |--------------|------------------------------------|----------------|
-| AGPL-3.0     | LGPL v3                            | Apache-2.0     |
-| GPL-2.0      | LGPL v2.1                          | BSD            |
-| GPL-3.0      | MPL 2.0                            | MIT            |
-|              | Eclipse Public License 1.0         |                |
+| AGPL-3.0     | LGPL-3.0                           | Apache-2.0     |
+| GPL-2.0      | LGPL-2.0                           | BSD            |
+| GPL-3.0      | MPL-2.0                            | MIT            |
+|              | EPL-1.0                            | ISC            |
 
 Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578) to ensure that these data is up to date before setting up the license compliance check.
+
+> [!NOTE]
+> In repositories with [GitHub Advanced Security enabled](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security), you may use the [Github's dependency-review-action](https://github.com/actions/dependency-review-action) to check the licensing of the dependencies. But in repositories without this feature, you can use the following instructions to check the licensing of the dependencies in different languages.
 
 The check is language dependent. The result of this should be a list of problematic licenses. If all are of the licenses that are output are on our approved list, this step passes.
 
@@ -118,13 +123,12 @@ When this is done, the result will be in ./target/site/aggregate-third-party-rep
 
 ### Node.js
 
-After installing dependencies, run this:
+You have a fully working example in this repository. Read the [Node.js License Compliance check](./tools/nodejs/license-compliance/README.md) in the `tools/nodejs/license-compliance` folder to know how to setup the license compliance check for Node.js dependencies.
 
-```bash
-npx license-checker --exclude "MIT,ISC,BSD-3-Clause,Apache-2.0,BSD-2-Clause,0BSD,CC-BY-4.0" --unknown
-```
+It comments on the pull request with the licenses that are not allowed or require special approval.
 
-That exclusion list should match our green license list above.
+![Node compliance check](./docs/assets/node-compliance-check.png)
+
 
 ### Python
 
