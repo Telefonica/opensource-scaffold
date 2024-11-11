@@ -1,4 +1,4 @@
-// Copyright (c) %regexp:\d{4}%-%year% Telefónica and contributors. All rights reserved.
+// Copyright (c) %regexp:^\d{4}(?:-\d{4})?$% Telefónica and contributors. All rights reserved.
 
 /*
  * This Source Code Form is subject to the terms of the Mozilla Public
