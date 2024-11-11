@@ -36,6 +36,7 @@ This template includes the following:
   * A human-readable summary of the Contributor License Agreement, and links to the full CLA.
 * [__Contributor license agreement__](./.github/CLA.md): The Contributor License Agreement of the project.
   * It is based on the [CLA of HashiCorp](https://cla.hashicorp.com/).
+* [__Workflow checking license integrity__](#license-integrity-check): A Github Action that checks that all files in the project are rightly licensed. That is, it checks that all files have the expected license header.
 * [__Instructions to check License Compliance of dependencies__](#license-compliance-check): It includes instructions to check the licensing of the dependencies of the project in different languages. It also includes an example of a [tool for checking Node.js dependencies](./tools/nodejs/license-compliance/README.md), that, indeed, is checking the licensing of the dependencies in this repository.
 * [__Pull Request template__](./.github/PULL_REQUEST_TEMPLATE.md): The pull request template of the project. It includes:
   * A template for the title and description of the pull request.
@@ -67,9 +68,10 @@ This template includes the following:
 7. __Fill the README file__: Fill the `README.md` file with the sections that describe the project, how to install it, how to use it, etc. But __always keep the "Contributing" and "License" sections__.
 8. __Customize the Issue templates__: Add or remove sections from the issue templates to match the needs of the project, but __always keep the checks to ensure that the contributor has read the Code of Conduct__.
 9. __Setup the check License Compliance workflow__: Every open source project must include an automatic job to check the licensing of the dependencies. Read the [chapter below](#license-compliance-check) to know how to setup this workflow for different languages. You can use the `.github/workflows/license-compliance-node.yml` file as an example, and adapt it to the language of your project. In case you use more than one language, you can create a different workflow for each one.
-10. __Configure the automatic CLA__: The repository includes a workflow that automates the process of signing the CLA. Read the [chapter below](#automatic-contributing-license-agreement) to know how to setup this workflow properly.
-11. __Configure the repository__: Protect the main branch, and configure the branch protection rules to ensure that the checks of the pull requests pass before merging them.
-12. __Publish the project__: Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication.
+10. __Configure the License Integrity check__: The repository includes a workflow that checks that all files in the project are rightly licensed. Read the [chapter below](#license-integrity-check) to know how to setup this workflow properly.
+11. __Configure the automatic CLA__: The repository includes a workflow that automates the process of signing the CLA. Read the [chapter below](#automatic-contributing-license-agreement) to know how to setup this workflow properly.
+12. __Configure the repository__: Protect the main branch, and configure the branch protection rules to ensure that the checks of the pull requests pass before merging them.
+13. __Publish the project__: Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication.
 
 ## Automatic Contributing License Agreement
 
@@ -90,6 +92,13 @@ To setup the automatic CLA, follow these steps:
 * Configure the branch protection rules to require the CLA to be signed before merging the pull requests.
 * Remember to protect against deletion the branch where the data of the contributors signing the CLA will be stored.
 
+## License Integrity check
+
+This repository includes a Github Action that checks that all files in the project are rightly licensed. That is, it checks that all files have the expected license header.
+
+You can find the workflow in the [`.github/workflows/license-integrity.yml`](./.github/workflows/license-integrity.yml) file.
+
+To setup the license integrity check, edit the [`.github/license-headers/config.json`](./.github/license-headers/config.json) file according to the files in your project, following the [instructions of the License Checker Github action](https://github.com/viperproject/check-license-header).
 
 ## License Compliance check
 
