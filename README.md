@@ -86,7 +86,7 @@ In this case, the signing of the CLA is done through a comment in the pull reque
 
 To setup the automatic CLA, follow these steps:
 
-* Edit the [`.github/workflows/cla.yml`](./.github/workflows/cla.yml) file and change the following values:
+* Edit the [`.github/workflows/contributor-license-agreement.yml`](./.github/workflows/contributor-license-agreement.yml) file and change the following values:
   * Change the url of the repository.
   * If desired, change the branch where the data of the contributors signing the CLA will be stored.
 * Configure the branch protection rules to require the CLA to be signed before merging the pull requests.
