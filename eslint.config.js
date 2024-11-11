@@ -3,6 +3,7 @@ import markdown from "@eslint/markdown";
 import prettier from "eslint-plugin-prettier";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import eslintConfigPrettier from "eslint-config-prettier";
+import jsdoc from "eslint-plugin-jsdoc";
 import js from "@eslint/js";
 import globals from "globals";
 
@@ -54,6 +55,15 @@ export default [
         2,
         { vars: "all", args: "after-used", ignoreRestSiblings: false },
       ],
+    },
+  },
+  {
+    files: ["tools/nodejs/license-compliance/**/*.js"],
+    plugins: {
+      jsdoc,
+    },
+    rules: {
+      ...jsdoc.configs["flat/recommended-error"].rules,
     },
   },
   {

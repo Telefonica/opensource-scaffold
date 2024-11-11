@@ -52,7 +52,7 @@ This template includes the following:
 1. __Create a new repository__: Click on the "Use this template" button in Github when creating a new repository, and select this template.
 2. __Update the README file__: Clone the repository and replace the content of the `README.md` file with the content of the `README.project.md` file.
 3. __Delete unused files__: Delete the `README.project.md` file and the `docs/assets` folder, which is only used to store the images of this README file.
-  * If you are not going to use Node.js in your project, you can also delete the next files and folders: `package.json`, `package-lock.json`, `cspell.config.json` `eslint.config.js`, `.husky` and the `tools/nodejs` folder.
+  * If you are not going to use Node.js in your project, you can also delete the next files and folders: `package.json`, `package-lock.json`, `cspell.config.json` `eslint.config.js`, `jsconfig.json`, `.husky` and the `tools/nodejs` folder.
 4. __Replace placeholders__: Search and replace the nex placeholders in every file by the corresponding values:
     * `{{ project_name }}`: The name of the project.
     * `{{ project_description }}`: The description of the project.

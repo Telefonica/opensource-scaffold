@@ -1,6 +1,10 @@
 import { checkLicenses } from "./check.js";
 
 /**
+ * @typedef {import('./check.js').licenseCheckerResult} licenseCheckerResult
+ */
+
+/**
  * Logs a message to the console
  * @param {string} message The message to log
  */
@@ -13,9 +17,10 @@ function log(message) {
 
 /**
  * Returns a message with the dependencies that failed the check
- * @param {Array} licenses Licenses failing the check
+ * @param {licenseCheckerResult[]} licenses Licenses failing the check
  * @param {string} type Type of license (dangerous or forbidden)
  * @param {string} emoji The emoji to use in the message
+ * @returns {string} The message
  */
 function getDependenciesMessage(licenses, type, emoji) {
   if (licenses.length > 0) {
@@ -27,7 +32,10 @@ function getDependenciesMessage(licenses, type, emoji) {
     }
     message += ` with ${type} licenses:\n\n`;
     for (const license of licenses) {
-      message += `* __${license.module}__: ${license.licenses}\n`;
+      const licensesToPrint = Array.isArray(license.licenses)
+        ? license.licenses.join(", ")
+        : license.licenses;
+      message += `* __${license.module}__: ${licensesToPrint}\n`;
     }
     return message + "\n";
   }

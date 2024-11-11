@@ -1,0 +1,29 @@
+name: "Check spelling and tools"
+on:
+  pull_request:
+
+concurrency:  
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+      - name: Install Node.js dependencies
+        run: pnpm install
+      - name: Check spelling
+        run: pnpm run check:spell
+      - name: Lint
+        run: pnpm run lint
+      - name: Check types
+        run: pnpm check:types

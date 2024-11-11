@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "strict": false,
+    "checkJs": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "target": "ES2016",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "maxNodeModuleJsDepth": 0,
+    "types": ["node"]
+  },
+  "include": [
+    "./tools/nodejs/license-compliance/**/*.js"
+  ],
+  "exclude": [
+    "**/node_modules"
+  ]
+}
