@@ -1,4 +1,4 @@
-name: "License Compliance - Node"
+name: "License Compliance"
 on:
   pull_request:
 
