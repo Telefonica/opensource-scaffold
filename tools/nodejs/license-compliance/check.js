@@ -85,7 +85,7 @@ async function checkLicensesExcluding(exclusions, configuration = {}) {
     licenseChecker.init(
       {
         start: ROOT_DIR,
-        // @ts-ignore The library says that requires an array, but it only works with a comma-separated string
+        // @ts-ignore The library typing says that requires an array, but it only works with a comma-separated string
         exclude: exclusions.join(","),
         relativeLicensePath: true,
         ...configuration,
