@@ -1,4 +1,7 @@
-name: "CLA Assistant"
+# SPDX-FileCopyrightText: 2024 Telefónica and contributors
+# SPDX-License-Identifier: MIT
+
+name: "Contributor License Agreement"
 on:
   issue_comment:
     types: [created]
@@ -16,10 +19,10 @@ permissions:
   statuses: write
 
 jobs:
-  require-cla-agreement:
+  require-contributor-license-agreement:
     runs-on: ubuntu-latest
     steps:
-      - name: "Require CLA Agreement"
+      - name: "Require Contributor License Agreement"
         if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request_target'
         uses: contributor-assistant/github-action@v2.6.1
         env:

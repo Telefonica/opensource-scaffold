@@ -1,4 +1,7 @@
-name: "License Compliance - Node"
+# SPDX-FileCopyrightText: 2024 Telefónica and contributors
+# SPDX-License-Identifier: MIT
+
+name: "License Compliance"
 on:
   pull_request:
 

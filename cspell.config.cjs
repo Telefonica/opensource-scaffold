@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024 Telefónica and contributors
+// SPDX-License-Identifier: MIT
+
 const DICTIONARIES_BASE_PATH = "tools/nodejs/cspell";
 
 module.exports = {

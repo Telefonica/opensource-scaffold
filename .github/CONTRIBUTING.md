@@ -22,43 +22,44 @@ By contributing to this project, you agree that your contributions will be licen
 
 ## Licensing of new files
 
+This project adheres to the [Software Package Data Exchange (SPDX)](https://spdx.dev/). SPDX is a standard format for communicating the components, licenses, and copyrights associated with software packages. It is a simple and concise way to communicate licensing information. Read more about how to define headers using the SPDX ids [here](https://spdx.dev/learn/handling-license-info/).
+
 This license must be used for all new code, unless the containing project, module or externally-imported codebase uses a different license. If you can't put a header in the file due to its structure, please put it in a LICENSE file in the same directory.
 
 ```
-/*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/.
- */
+// SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors. All rights reserved
+// SPDX-License-Identifier: MPL-2.0
 
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+# SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors. All rights reserved
+# SPDX-License-Identifier: MPL-2.0
 
-<!-- This Source Code Form is subject to the terms of the Mozilla Public
-   - License, v. 2.0. If a copy of the MPL was not distributed with this
-   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+<!--
+   SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors. All rights reserved
+   SPDX-License-Identifier: MPL-2.0
+-->
 
-This Source Code Form is subject to the terms of the Mozilla Public
-License, v. 2.0. If a copy of the MPL was not distributed with this
-file, You can obtain one at https://mozilla.org/MPL/2.0/.
+SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors. All rights reserved
+SPDX-License-Identifier: MPL-2.0
 ```
 
-## Public Domain
+## MIT License
+
 This license can be used for test scripts and other short code snippets, at the discretion of the author.
 
 ```
-/* Any copyright is dedicated to the Public Domain.
- * https://creativecommons.org/publicdomain/zero/1.0/ */
+// SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors
+// SPDX-License-Identifier: MIT
 
-# Any copyright is dedicated to the Public Domain.
-# https://creativecommons.org/publicdomain/zero/1.0/
+# SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors
+# SPDX-License-Identifier: MIT
 
-<!-- Any copyright is dedicated to the Public Domain.
-   - https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!--
+   SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors
+   SPDX-License-Identifier: MIT
+-->
 
-Any copyright is dedicated to the Public Domain.
-https://creativecommons.org/publicdomain/zero/1.0/
+SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors
+SPDX-License-Identifier: MIT
 ```
 
 # Pull Request

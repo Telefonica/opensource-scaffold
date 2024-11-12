@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024 Telefónica and contributors
+// SPDX-License-Identifier: MIT
+
 import json from "@eslint/json";
 import markdown from "@eslint/markdown";
 import prettier from "eslint-plugin-prettier";
