@@ -1,5 +1,5 @@
 // SPDX-FileCopyrightText: 2024 Telefónica and contributors. All rights reserved
-// SPDX-License-Identifier: MPL-2.0
+// SPDX-License-Identifier: MIT
 
 import { checkLicenses } from "./check.js";
 
