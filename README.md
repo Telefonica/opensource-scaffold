@@ -108,16 +108,24 @@ To setup the license integrity check, edit the [`.github/license-headers/config.
 
 We want to ensure that the software we build is in compliance with our [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578).
 
-As a summary, here you have a table of the licenses that are allowed and the ones that are not allowed or require special approval, using codes from the [SPDX License List](https://spdx.org/licenses/):
+This means that we are not incorporating third party software in the project under a license that is not compatible with the license selected for the overall project, or that is not compatible with the company's open source licensing guidelines.
 
-| Red licenses | Yellow licenses                    | Green licenses |
-|--------------|------------------------------------|----------------|
-| AGPL-3.0     | LGPL-3.0                           | Apache-2.0     |
-| GPL-2.0      | LGPL-2.0                           | BSD            |
-| GPL-3.0      | MPL-2.0                            | MIT            |
-|              | EPL-1.0                            | ISC            |
+As an example, and specifically for the case in which MPL 2.0 is the license selected for the overall project, here you have a table of the licenses that are allowed and the ones that are not allowed or require special approval, using codes from the [SPDX License List](https://spdx.org/licenses/):
 
-Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578) to ensure that these data is up to date before setting up the license compliance check.
+| Red licenses          | Yellow licenses                    | Green licenses |
+|-----------------------|------------------------------------|----------------|
+| AGPL-3.0-or-later     | LGPL-3.0-or-later                  | Apache-2.0     |
+| AGPL-3.0-only         | LGPL-3.0-only                      | BSD-3-Clause   |
+| AGPL-1.0-or-later     | LGPL-2.1-or-later                  | BSD-2-Clause   |
+| AGPL-1.0-only         | LGPL-2.1-only                      | MIT            |
+| GPL-3.0-or-later      | LGPL-2.0-or-later                  | ISC            |
+| GPL-3.0-only          | LGPL-2.0-only                      |                |
+| GPL-2.0-or-later      | MPL-2.0                            |                |
+| GPL-2.0-only          | EPL-2.0                            |                |
+| GPL-1.0-or-later      | EPL-1.0                            |                |
+| GPL-1.0-only          |                                    |                |
+
+Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578) to ensure that these data is up to date before setting up the license compliance check. In case of doubt, please contact the Intelectual Property team, to the email address indicated in such document.
 
 > [!NOTE]
 > In repositories with [GitHub Advanced Security enabled](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security), you may use the [Github's dependency-review-action](https://github.com/actions/dependency-review-action) to check the licensing of the dependencies. But in repositories without this feature, you can use the following instructions to check the licensing of the dependencies in different languages.
