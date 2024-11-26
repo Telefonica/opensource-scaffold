@@ -57,7 +57,7 @@ This template includes the following:
 4. __Replace placeholders__: Search and replace the nex placeholders in every file by the corresponding values:
     * `{{ project_name }}`: The name of the project.
     * `{{ project_description }}`: The description of the project.
-    * `{{ company }}`: The name of the company or organization that owns the project (usually Telefónica).
+    * `{{ company }}`: The name of the company or organization that owns the project (usually "Telefónica Innovación Digital S.L." or "Telefónica S.A.").
     * `{{ repo_url }}`: The URL of the repository.
     * `{{ email }}`: The email of the person at charge of the Code of Conduct enforcement.
     * `{{ year }}`: The year when the project was created. Used as an example in the license headers.
