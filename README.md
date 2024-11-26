@@ -119,7 +119,7 @@ As an example, and specifically for the case in which MPL 2.0 is the license sel
 | GPL-3.0      | MPL-2.0                            | MIT            |
 |              | EPL-1.0                            | ISC            |
 
-Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578) to ensure that these data is up to date before setting up the license compliance check. In case of doubt, please contact the Intelectual Property team, to the email address indicated in such document.
+Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578) to ensure that these data is up to date before setting up the license compliance check. In case of doubt, please contact the Intellectual Property team, to the email address indicated in such document.
 
 > [!NOTE]
 > In repositories with [GitHub Advanced Security enabled](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security), you may use the [Github's dependency-review-action](https://github.com/actions/dependency-review-action) to check the licensing of the dependencies. But in repositories without this feature, you can use the following instructions to check the licensing of the dependencies in different languages.
