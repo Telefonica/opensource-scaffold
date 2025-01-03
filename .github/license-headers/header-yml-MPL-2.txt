@@ -1,2 +1,0 @@
-# SPDX-FileCopyrightText: %year% Telefónica and contributors. All rights reserved
-# SPDX-License-Identifier: MPL-2.0

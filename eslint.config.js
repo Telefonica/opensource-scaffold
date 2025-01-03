@@ -6,13 +6,16 @@ import markdown from "@eslint/markdown";
 import prettier from "eslint-plugin-prettier";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import eslintConfigPrettier from "eslint-config-prettier";
-import jsdoc from "eslint-plugin-jsdoc";
+import typescriptParser from "@typescript-eslint/parser";
+import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
+import pluginJest from "eslint-plugin-jest";
 import js from "@eslint/js";
 import globals from "globals";
+import importPlugin from "eslint-plugin-import";
 
 export default [
   {
-    ignores: ["node_modules/**", ".husky/**"],
+    ignores: ["node_modules/**", ".husky/**", "coverage/**", "dist/**"],
   },
   {
     files: ["**/*.json"],
@@ -35,9 +38,10 @@ export default [
     },
   },
   {
-    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+    files: ["**/*.js", "**/*.cjs", "**/*.mjs", "**/*.ts"],
     plugins: {
       prettier,
+      import: importPlugin,
     },
     languageOptions: {
       ecmaVersion: "latest",
@@ -61,12 +65,51 @@ export default [
     },
   },
   {
-    files: ["tools/nodejs/license-compliance/**/*.js"],
+    files: ["**/*.ts"],
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        projectService: true,
+      },
+    },
     plugins: {
-      jsdoc,
+      "@typescript-eslint": typescriptEslintPlugin,
     },
     rules: {
-      ...jsdoc.configs["flat/recommended-error"].rules,
+      ...typescriptEslintPlugin.configs.recommended.rules,
+    },
+    settings: {
+      "import/resolver": {
+        typescript: {
+          extensions: [".ts", ".tsx"],
+          alwaysTryTypes: true,
+        },
+        node: true,
+      },
+    },
+  },
+  {
+    files: ["**/*.spec.js", "**/*.test.js", "**/*.spec.ts", "**/*.test.ts"],
+    plugins: {
+      jest: pluginJest,
+    },
+    ...pluginJest.configs["flat/recommended"],
+    languageOptions: {
+      globals: pluginJest.environments.globals.globals,
+    },
+    rules: {
+      ...pluginJest.configs["flat/all"].rules,
+      "jest/no-disabled-tests": "error",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/prefer-to-have-length": "error",
+      "jest/valid-expect": "error",
+      "jest/prefer-strict-equal": [0],
+      "jest/prefer-importing-jest-globals": [0],
+      "jest/prefer-expect-assertions": [0],
+      "jest/no-hooks": [0],
+      "jest/prefer-called-with": [0],
+      "jest/require-to-throw-message": [0],
     },
   },
   {
