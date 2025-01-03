@@ -1,0 +1,19 @@
+name: Publish to NPM
+on:
+  # release:
+    #types: [published]
+  push:
+    branches:
+      - feat/cli-generator
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node
+        id: setup-node
+        with:
+          npm-token: ${{ secrets.NPM_TOKEN_WRITE_XCUT }}
+      - run: pnpm build
+      - run: pnpm -r publish --no-git-checks
