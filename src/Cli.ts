@@ -3,5 +3,7 @@
 
 export async function run() {
   // eslint-disable-next-line no-console
-  console.log("Hello world!");
+  console.log(
+    "Hello world! Creating an open source project will be easier with this CLI.",
+  );
 }

@@ -12,6 +12,8 @@ describe("cli", () => {
     const log = jest.spyOn(console, "log").mockImplementation();
     run();
 
-    expect(log).toHaveBeenCalledWith("Hello world!");
+    expect(log).toHaveBeenCalledWith(
+      "Hello world! Creating an open source project will be easier with this CLI.",
+    );
   });
 });
