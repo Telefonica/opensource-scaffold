@@ -15,7 +15,13 @@ import importPlugin from "eslint-plugin-import";
 
 export default [
   {
-    ignores: ["node_modules/**", ".husky/**", "coverage/**", "dist/**"],
+    ignores: [
+      "node_modules/**",
+      ".husky/**",
+      "coverage/**",
+      "dist/**",
+      "dist-action/**",
+    ],
   },
   {
     files: ["**/*.json"],
@@ -89,6 +95,19 @@ export default [
     },
   },
   {
+    files: ["action/**/*.ts"],
+    settings: {
+      "import/resolver": {
+        typescript: {
+          extensions: [".ts", ".tsx"],
+          alwaysTryTypes: true,
+          project: ["./action/tsconfig.json"],
+        },
+        node: true,
+      },
+    },
+  },
+  {
     files: ["**/*.spec.js", "**/*.test.js", "**/*.spec.ts", "**/*.test.ts"],
     plugins: {
       jest: pluginJest,
@@ -96,6 +115,16 @@ export default [
     ...pluginJest.configs["flat/recommended"],
     languageOptions: {
       globals: pluginJest.environments.globals.globals,
+    },
+    settings: {
+      "import/resolver": {
+        typescript: {
+          extensions: [".ts", ".tsx"],
+          alwaysTryTypes: true,
+          project: ["./test/unit/tsconfig.json"],
+        },
+        node: true,
+      },
     },
     rules: {
       ...pluginJest.configs["flat/all"].rules,

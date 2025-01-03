@@ -14,6 +14,8 @@ module.exports = {
     "cspell/*.txt",
     "cspell.config.cjs",
     "**/.gitignore",
+    "dist/**",
+    "dist-action/**",
   ],
   caseSensitive: false,
   // Language - current active spelling language

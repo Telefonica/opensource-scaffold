@@ -34,16 +34,16 @@ jobs:
           npm-token: ${{ secrets.NPM_TOKEN_XCUT }}
 
       - name: Lint
-        run: npm run lint
+        run: pnpm lint
 
       - name: Check spelling
-        run: npm run cspell
+        run: pnpm cspell
 
       - name: Check TypeScript types
-        run: npm run check:types
+        run: pnpm check:types
       
       - name: Test unit
-        run: npm run test:unit
+        run: pnpm test:unit
 
       - name: Upload coverage
         uses: actions/upload-artifact@v4
@@ -53,7 +53,50 @@ jobs:
 
       - name: Build
         id: build
-        run: npm run build
+        run: pnpm build
+
+      - name: Build action
+        id: build-action
+        run: pnpm action:package
+
+      # This will fail the workflow if the `dist/` directory is different than
+      # expected.
+      - name: Compare Directories
+        id: diff
+        run: |
+          if [ ! -d dist/ ]; then
+            echo "Expected dist/ directory does not exist.  See status below:"
+            ls -la ./
+            exit 1
+          fi
+          if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
+            echo "Detected uncommitted changes after build. See status below:"
+            git diff --ignore-space-at-eol --text dist/
+            exit 1
+          fi
+
+      # If `dist/` was different than expected, upload the expected version as a
+      # workflow artifact.
+      - if: ${{ failure() && steps.diff.outcome == 'failure' }}
+        name: Upload Artifact
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  check-opensource-scaffold:
+    name: Check Opensource Scaffold
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Check Opensource Scaffold
+        if: github.event_name != 'pull_request'
+        uses: ./
 
   check-license-compliance:
     name: Check License Compliance

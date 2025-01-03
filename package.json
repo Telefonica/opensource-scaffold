@@ -1,12 +1,17 @@
 {
   "name": "@tid-xcut/opensource-scaffold",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "Scaffolding for open source projects. A CLI tool to create opensource repository tools and resources",
   "packageManager": "pnpm@9.4.0",
   "scripts": {
     "build": "tsc",
-    "check:types": "tsc --noEmit",
+    "action:local": "local-action . action/main.ts .env",
+    "action:package": "ncc build action/index.ts --transpile-only -o dist-action --source-map --license licenses.txt && node ./script/post-package.js",
+    "check:types": "pnpm check:types:code && pnpm check:types:action && pnpm check:types:test",
+    "check:types:code": "tsc --noEmit",
+    "check:types:action": "tsc --noEmit --project ./action/tsconfig.json",
+    "check:types:test": "tsc --noEmit --project ./test/unit/tsconfig.json",
     "cspell": "cspell .",
     "eslint": "eslint",
     "lint": "eslint .",
@@ -14,19 +19,25 @@
     "prepare": "husky",
     "test:unit": "jest --config jest.unit.config.cjs"
   },
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "devDependencies": {
+    "@actions/core": "1.11.1",
     "@babel/core": "7.26.0",
     "@babel/preset-env": "7.26.0",
     "@babel/preset-typescript": "7.26.0",
     "@eslint/js": "9.13.0",
     "@eslint/json": "0.6.0",
     "@eslint/markdown": "6.2.1",
+    "@github/local-action": "2.2.0",
     "@types/jest": "29.5.14",
     "@types/node": "22.9.0",
     "@typescript-eslint/eslint-plugin": "8.14.0",
     "@typescript-eslint/parser": "8.14.0",
-    "babel-plugin-module-resolver": "^5.0.2",
-    "babel-plugin-transform-import-meta": "^2.2.1",
+    "@vercel/ncc": "0.38.3",
+    "babel-plugin-module-resolver": "5.0.2",
+    "babel-plugin-transform-import-meta": "2.2.1",
     "cross-env": "7.0.3",
     "cspell": "8.15.5",
     "eslint": "9.7.0",
@@ -41,6 +52,8 @@
     "jest": "29.7.0",
     "jest-sonar": "0.2.16",
     "lint-staged": "15.2.10",
+    "replace-in-file": "8.2.0",
+    "tsx": "4.19.2",
     "typescript": "5.6.3",
     "yaml": "2.6.0"
   },
@@ -50,8 +63,7 @@
     "templates"
   ],
   "bin": {
-    "opensource-scaffold": "./bin/opensource-scaffold.mjs",
-    "check": "./bin/check.mjs"
+    "opensource-scaffold": "./bin/opensource-scaffold.mjs"
   },
   "lint-staged": {
     "*.js": "eslint",
