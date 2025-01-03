@@ -50,6 +50,7 @@ rules:
 ignore:
   - "**/node_modules/**"
   - "dist/**"
+  - "dist-action/**"
   - "coverage/**"
   - ".github/ISSUE_TEMPLATE/**"
 failOnNotValid: true

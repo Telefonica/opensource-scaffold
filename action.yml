@@ -12,4 +12,4 @@ outputs:
     description: 'A report containing the results of the check'
 runs:
   using: node20
-  main: dist/index.js
+  main: dist-action/index.js
