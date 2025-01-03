@@ -19,8 +19,8 @@ module.exports = (api) => {
           {
             root: ["."],
             alias: {
+              "@action": "./action",
               "@src": "./src",
-              "@support": "./test/unit/support",
             },
           },
         ],

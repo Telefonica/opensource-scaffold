@@ -12,25 +12,25 @@ module.exports = {
   collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ["src/**/*.ts", "!src/index.ts"],
+  collectCoverageFrom: ["action/**/*.ts"],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: "coverage-action",
 
   // An object that configures minimum threshold enforcement for coverage results
   coverageThreshold: {
     global: {
-      branches: 99,
-      functions: 99,
-      lines: 99,
-      statements: 99,
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
     },
   },
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "<rootDir>/test/unit/specs/*.spec.ts",
-    "<rootDir>/test/unit/specs/**/*.test.ts",
+    "<rootDir>/test/action/specs/*.spec.ts",
+    "<rootDir>/test/action/specs/**/*.test.ts",
   ],
 
   // The test environment that will be used for testing
@@ -45,7 +45,10 @@ module.exports = {
     "default",
     [
       "jest-sonar",
-      { outputDirectory: "coverage", outputName: "unit-junit-report.xml" },
+      {
+        outputDirectory: "coverage-action",
+        outputName: "action-junit-report.xml",
+      },
     ],
   ],
 };

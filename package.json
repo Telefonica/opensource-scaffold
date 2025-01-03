@@ -17,7 +17,9 @@
     "lint": "eslint .",
     "lint:staged": "lint-staged",
     "prepare": "husky",
-    "test:unit": "jest --config jest.unit.config.cjs"
+    "test": "pnpm test:unit && pnpm test:action",
+    "test:unit": "jest --config jest.unit.config.cjs",
+    "test:action": "jest --config jest.action.config.cjs"
   },
   "exports": {
     ".": "./dist/index.js"

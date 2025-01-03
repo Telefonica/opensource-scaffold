@@ -55,6 +55,15 @@ jobs:
         id: build
         run: pnpm build
 
+      - name: Test action
+        run: pnpm test:action
+
+      - name: Upload action coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-action
+          path: coverage-action/
+
       - name: Build action
         id: build-action
         run: pnpm action:package

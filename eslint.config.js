@@ -19,6 +19,7 @@ export default [
       "node_modules/**",
       ".husky/**",
       "coverage/**",
+      "coverage-action/**",
       "dist/**",
       "dist-action/**",
     ],
@@ -108,7 +109,7 @@ export default [
     },
   },
   {
-    files: ["**/*.spec.js", "**/*.test.js", "**/*.spec.ts", "**/*.test.ts"],
+    files: ["**/*.spec.ts", "**/*.test.ts"],
     plugins: {
       jest: pluginJest,
     },
@@ -139,6 +140,32 @@ export default [
       "jest/no-hooks": [0],
       "jest/prefer-called-with": [0],
       "jest/require-to-throw-message": [0],
+    },
+  },
+  {
+    files: ["test/unit/**/*.spec.ts", "test/unit/**/*.test.ts"],
+    settings: {
+      "import/resolver": {
+        typescript: {
+          extensions: [".ts", ".tsx"],
+          alwaysTryTypes: true,
+          project: ["./test/unit/tsconfig.json"],
+        },
+        node: true,
+      },
+    },
+  },
+  {
+    files: ["test/action/**/*.spec.ts", "test/action/**/*.test.ts"],
+    settings: {
+      "import/resolver": {
+        typescript: {
+          extensions: [".ts", ".tsx"],
+          alwaysTryTypes: true,
+          project: ["./test/action/tsconfig.json"],
+        },
+        node: true,
+      },
     },
   },
   {
