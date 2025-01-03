@@ -1,6 +1,6 @@
 {
-  "name": "@tid-xcut/opensource-scaffolding",
-  "version": "0.0.2",
+  "name": "@tid-xcut/opensource-scaffold",
+  "version": "0.0.1",
   "type": "module",
   "description": "Scaffolding for open source projects. A CLI tool to create opensource repository tools and resources",
   "packageManager": "pnpm@9.4.0",
@@ -50,7 +50,8 @@
     "templates"
   ],
   "bin": {
-    "create-opensource-scaffolding": "./bin/create-opensource-scaffolding.mjs"
+    "opensource-scaffold": "./bin/opensource-scaffold.mjs",
+    "check": "./bin/check.mjs"
   },
   "lint-staged": {
     "*.js": "eslint",
