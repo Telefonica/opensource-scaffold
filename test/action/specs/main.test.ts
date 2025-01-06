@@ -4,13 +4,41 @@
 import * as core from "@actions/core";
 
 import * as main from "@action/main";
+import { Checker } from "@src/Checker";
+
+jest.mock<typeof import("@src/Checker")>("@src/Checker", () => {
+  return {
+    Checker: jest.fn().mockImplementation(() => {
+      return {
+        check: jest.fn(),
+      };
+    }),
+  };
+});
 
 describe("action", () => {
   let setFailedMock: jest.SpiedFunction<typeof core.setFailed>;
+  let checkMock: jest.Mock;
   const runMock = jest.spyOn(main, "run");
 
   beforeEach(() => {
     jest.clearAllMocks();
+
+    checkMock = jest.fn().mockResolvedValue({
+      valid: true,
+      report: {
+        message: "All good",
+        missing: [],
+        found: [],
+      },
+    });
+
+    // @ts-expect-error We don't want to mock the whole class, just the main method
+    jest.mocked(Checker).mockImplementation(() => {
+      return {
+        check: checkMock,
+      };
+    });
 
     setFailedMock = jest.spyOn(core, "setFailed").mockImplementation();
 
@@ -23,18 +51,9 @@ describe("action", () => {
     jest.clearAllMocks();
   });
 
-  it("should log", () => {
-    const log = jest.spyOn(console, "log").mockImplementation();
-    main.run();
-
-    expect(log).toHaveBeenCalledWith("Hello world! This will check the opensource scaffold");
-  });
-
   describe("when any error occurs", () => {
     it("should set action as failed", async () => {
-      jest.spyOn(console, "log").mockImplementation(() => {
-        throw new Error("Foo error");
-      });
+      checkMock.mockRejectedValue(new Error("Foo error"));
 
       await main.run();
 
@@ -44,9 +63,7 @@ describe("action", () => {
     });
 
     it("should not set action as failed if exception is not an error", async () => {
-      jest.spyOn(console, "log").mockImplementation(() => {
-        throw "this is not an error";
-      });
+      checkMock.mockRejectedValue("Foo error");
 
       await main.run();
 

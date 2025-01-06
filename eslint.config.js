@@ -155,7 +155,7 @@ export default [
     },
   },
   {
-    files: ["**/*.spec.ts", "**/*.test.ts", "test/unit/**/*.ts"],
+    files: ["**/*.spec.ts", "**/*.test.ts", "test/**/*.ts"],
     plugins: {
       jest: pluginJest,
     },

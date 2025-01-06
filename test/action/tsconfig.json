@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "moduleResolution": "node",
     "paths": {
+      "@src/*": ["../../src/*"],
       "@action/*": ["../../action/*"]
     }
   },
