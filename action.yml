@@ -5,6 +5,20 @@ name: 'Check Opensource Scaffold'
 description: 'GitHub Action to check that the repository is compliant with the opensource scaffold'
 author: 'Telefónica Innovación Digital'
 
+inputs:
+  log:
+    description: 'Log level'
+    type: choice
+    options:
+      - 'silly'
+      - 'debug'
+      - 'verbose'
+      - 'info'
+      - 'warn'
+      - 'error'
+      - 'silent'
+    default: 'info'
+    required: false
 outputs:
   valid:
     description: 'Whether the check passed or not'

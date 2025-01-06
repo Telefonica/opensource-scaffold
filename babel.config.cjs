@@ -6,10 +6,7 @@ module.exports = (api) => {
   if (isTest) {
     return {
       presets: [
-        [
-          "@babel/preset-env",
-          { targets: { node: "current", esmodules: true } },
-        ],
+        ["@babel/preset-env", { targets: { node: "current", esmodules: true } }],
         "@babel/preset-typescript",
       ],
       plugins: [

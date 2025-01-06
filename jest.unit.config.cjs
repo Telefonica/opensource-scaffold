@@ -28,10 +28,7 @@ module.exports = {
   },
 
   // The glob patterns Jest uses to detect test files
-  testMatch: [
-    "<rootDir>/test/unit/specs/*.spec.ts",
-    "<rootDir>/test/unit/specs/**/*.test.ts",
-  ],
+  testMatch: ["<rootDir>/test/unit/specs/*.spec.ts", "<rootDir>/test/unit/specs/**/*.test.ts"],
 
   // The test environment that will be used for testing
   testEnvironment: "node",
@@ -43,9 +40,6 @@ module.exports = {
 
   reporters: [
     "default",
-    [
-      "jest-sonar",
-      { outputDirectory: "coverage", outputName: "unit-junit-report.xml" },
-    ],
+    ["jest-sonar", { outputDirectory: "coverage", outputName: "unit-junit-report.xml" }],
   ],
 };

@@ -12,8 +12,6 @@ describe("check", () => {
     const log = jest.spyOn(console, "log").mockImplementation();
     run();
 
-    expect(log).toHaveBeenCalledWith(
-      "Hello world! This will check the opensource scaffold",
-    );
+    expect(log).toHaveBeenCalledWith("Hello world! This will check the opensource scaffold");
   });
 });

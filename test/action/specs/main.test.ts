@@ -27,9 +27,7 @@ describe("action", () => {
     const log = jest.spyOn(console, "log").mockImplementation();
     main.run();
 
-    expect(log).toHaveBeenCalledWith(
-      "Hello world! This will check the opensource scaffold",
-    );
+    expect(log).toHaveBeenCalledWith("Hello world! This will check the opensource scaffold");
   });
 
   describe("when any error occurs", () => {
