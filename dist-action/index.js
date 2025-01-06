@@ -42895,6 +42895,8 @@ function createLogger(level) {
 }
 
 ;// CONCATENATED MODULE: ./src/Resources.ts
+// SPDX-FileCopyrightText: 2024 Telefónica Innovación Digital and contributors
+// SPDX-License-Identifier: Apache-2.0
 /**
  * List of open source scaffold resources
  */
@@ -42969,7 +42971,6 @@ class Checker {
      * Check if scaffold resources exist
      */
     async check() {
-        this._logger.info("Hello world! This will check the opensource scaffold");
         const existingResources = this.getExistingResources();
         let nonExistingResources = [];
         for (const resource of RESOURCES) {

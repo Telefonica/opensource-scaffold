@@ -14,6 +14,7 @@ import type { CreatorOptions, TemplatesContext } from "./Creator.types.js";
 import { LICENSE_FAQS } from "./License.js";
 import type { SupportedLicense } from "./License.types.js";
 import { createLogger, DEFAULT_LEVEL } from "./Logger.js";
+import { packageResourcePath } from "./Paths.js";
 import { RESOURCES } from "./Resources.js";
 import type { Resource } from "./Resources.types.js";
 
@@ -25,7 +26,7 @@ export class Creator {
   private _logger: Logger;
   private _logLevel: string;
   private _license: SupportedLicense;
-  private _resourcesToOverwrite: Resource[];
+  private _resourcesToOverwrite: Resource[] = [];
   private _templatesContext: TemplatesContext;
 
   /**
@@ -115,6 +116,6 @@ export class Creator {
 
     this._logger.debug(`Copying ${resource.name} from ${origin} to ${resource.path}`);
 
-    await editor.copyTplAsync(origin, resource.path, this._templatesContext);
+    await editor.copyTplAsync(packageResourcePath(origin), resource.path, this._templatesContext);
   }
 }
