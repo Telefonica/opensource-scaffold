@@ -11,13 +11,21 @@ import { LOG_LEVELS } from "./Logger.js";
 import type { LogLevel } from "./Logger.types.js";
 import type { Resource } from "./Resources.types.js";
 
-export async function run() {
+/**
+ * Run the CLI
+ * @param exitOverride Enable exit override, for testing purposes
+ */
+export async function run(exitOverride?: boolean): Promise<void> {
   const program = new Command();
 
   program
     .name("OpenSource Scaffold")
     .description("CLI to create or check open source project scaffolding")
     .addOption(new Option("--log <log>", "Log level").choices(LOG_LEVELS).default("info"));
+
+  if (exitOverride) {
+    program.exitOverride();
+  }
 
   program
     .command("create")

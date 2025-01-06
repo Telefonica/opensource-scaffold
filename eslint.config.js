@@ -110,7 +110,7 @@ export default [
       "@typescript-eslint/consistent-type-imports": [
         2,
         {
-          disallowTypeAnnotations: true,
+          disallowTypeAnnotations: false,
           fixStyle: "separate-type-imports",
           prefer: "type-imports",
         },
@@ -155,7 +155,7 @@ export default [
     },
   },
   {
-    files: ["**/*.spec.ts", "**/*.test.ts"],
+    files: ["**/*.spec.ts", "**/*.test.ts", "test/unit/**/*.ts"],
     plugins: {
       jest: pluginJest,
     },
@@ -189,7 +189,7 @@ export default [
     },
   },
   {
-    files: ["test/unit/**/*.spec.ts", "test/unit/**/*.test.ts"],
+    files: ["test/unit/**/*.ts", "test/unit/**/*.test.ts"],
     settings: {
       "import/resolver": {
         typescript: {

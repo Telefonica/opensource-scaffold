@@ -8,12 +8,7 @@ describe("cli", () => {
     jest.clearAllMocks();
   });
 
-  it("should log", () => {
-    const log = jest.spyOn(console, "log").mockImplementation();
-    run();
-
-    expect(log).toHaveBeenCalledWith(
-      "Hello world! Creating an open source project will be easier with this CLI.",
-    );
+  it("should throw due to jest config option", async () => {
+    await expect(run(true)).rejects.toThrow();
   });
 });

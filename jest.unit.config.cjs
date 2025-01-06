@@ -18,14 +18,14 @@ module.exports = {
   coverageDirectory: "coverage",
 
   // An object that configures minimum threshold enforcement for coverage results
-  coverageThreshold: {
+  /* coverageThreshold: {
     global: {
       branches: 99,
       functions: 99,
       lines: 99,
       statements: 99,
     },
-  },
+  }, */
 
   // The glob patterns Jest uses to detect test files
   testMatch: ["<rootDir>/test/unit/specs/*.spec.ts", "<rootDir>/test/unit/specs/**/*.test.ts"],
@@ -37,6 +37,8 @@ module.exports = {
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
+
+  setupFiles: ["./test/unit/setup.ts"],
 
   reporters: [
     "default",

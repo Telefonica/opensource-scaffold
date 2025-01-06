@@ -57,8 +57,6 @@ export class Checker {
    * Check if scaffold resources exist
    */
   public async check() {
-    this._logger.info("Hello world! This will check the opensource scaffold");
-
     const existingResources = this.getExistingResources();
 
     let nonExistingResources = [];
