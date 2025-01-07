@@ -14,7 +14,7 @@ Thank you for being part of the <%= copyrightOwner %> Open Source Community!
 
 # Getting started
 
-<!-- To be filled by the project maintainer -->
+<!-- TODO: Add technical instructions for contributors: How to install, how to test, etc. -->
 
 # License
 

@@ -1,11 +1,21 @@
 # <%= projectName %>
 
-<% if (projectDescription) { %><%= projectDescription %><% } else { %><!-- Enter the project description here --><% } %>
+<% if (projectDescription) { %><%= projectDescription %><% } else { %><!-- TODO: Enter the project description here --><% } %>
 
 # Table of Contents
 
+- [Installation](#installation)
+- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
+
+# Installation
+
+<!-- TODO: Add installation steps here -->
+
+# Usage
+
+<!-- TODO: Add usage docs here -->
 
 # Contributing
 
