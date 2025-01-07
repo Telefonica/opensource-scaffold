@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2024 Telefónica Innovación Digital and contributors
+# SPDX-License-Identifier: MIT
+
+name: Initialize repository from template
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: write
+
+jobs:
+  create-scaffold:
+    name: Create scaffold
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Create scaffold
+        uses: ./
