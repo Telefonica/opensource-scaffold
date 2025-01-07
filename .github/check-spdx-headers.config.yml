@@ -12,6 +12,15 @@ rules:
         ignore:
           - "*.config.js"
           - "script/**"
+  - name: "Templates"
+    headers:
+      - files:
+          - "templates/.github/**/*.yml"
+        license:
+          - "MIT"
+        copyright: "\\d{4}(\\s-\\s\\d{4})? <%= copyrightOwner %>"
+        ignore:
+          - "templates/.github/ISSUE_TEMPLATE/*.yml"
   - name: "Config files"
     headers:
       - files:
@@ -45,4 +54,3 @@ ignore:
   - "dist-action/**"
   - "coverage/**"
   - ".github/ISSUE_TEMPLATE/**"
-
