@@ -38,8 +38,8 @@ permissions:
   actions: write
 
 jobs:
-  create-scaffold:
-    name: Create scaffold
+  init-scaffold:
+    name: Init scaffold and open PR
     runs-on: ubuntu-latest
 
     steps:
@@ -78,12 +78,13 @@ jobs:
           rm -rf .env.example
           rm -rf .gitattributes
           rm -rf .node-version
+          rm -rf .npmrc
           rm -rf action.yml
-          rm -rf babel.config.js
-          rm -rf cspell.config.js
+          rm -rf babel.config.cjs
+          rm -rf cspell.config.cjs
           rm -rf eslint.config.js
-          rm -rf jest.action.config.js
-          rm -rf jest.library.config.js
+          rm -rf jest.action.config.cjs
+          rm -rf jest.library.config.cjs
           rm -rf package.json
           rm -rf pnpm-lock.yaml
           rm -rf tsconfig.base.json
@@ -101,6 +102,27 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Initialize repository"
           title: "Initialize opensource project"
-          body: "This PR initializes the repository with the opensource scaffold"
+          body: |
+            This PR initializes the repository with the following configuration:
+            
+            - License: ${{ github.event.inputs.license }}
+            - Name: ${{ github.event.inputs.name }}
+            - Copyright: ${{ github.event.inputs.copyright }}
+            - Description: ${{ github.event.inputs.description || 'No description provided' }}
+            - Email: ${{ github.event.inputs.email || 'No email provided' }}
+            - Repository url: ${{ github.server_url }}/${{ github.repository }}
+
+            > [!WARNING]
+            > __Check out the branch and rename the .github-draft folder to .github__. I couldn't do it for you because I don't have the required permissions to create workflows.
+
+            ```bash
+            git clone git@github.com:/${{ github.repository }}.git
+            cd ${{ github.repository }}
+            git checkout init-repo
+            mv .github-draft .github
+            git add .
+            git commit -m "Enable workflows"
+            git push
+            ```
           branch: "init-repo"
-          base: "test/init"
+          base: "test/init-2"
