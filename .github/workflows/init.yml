@@ -113,7 +113,7 @@ jobs:
             - Repository url: ${{ github.server_url }}/${{ github.repository }}
 
             > [!WARNING]
-            > __Check out the branch and rename the .github-draft folder to .github__. I couldn't do it for you because I don't have the required permissions to create workflows.
+            > __Before merging the PR, check out the branch and rename the .github-draft folder to .github__. I couldn't do it for you because I don't have the required permissions to create workflows.
 
             ```bash
             git clone git@github.com:/${{ github.repository }}.git
