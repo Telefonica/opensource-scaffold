@@ -168,7 +168,7 @@ export default [
         typescript: {
           extensions: [".ts", ".tsx"],
           alwaysTryTypes: true,
-          project: ["./test/unit/tsconfig.json"],
+          project: ["./test/library/tsconfig.json"],
         },
         node: true,
       },
@@ -189,13 +189,13 @@ export default [
     },
   },
   {
-    files: ["test/unit/**/*.ts", "test/unit/**/*.test.ts"],
+    files: ["test/library/**/*.ts", "test/library/**/*.test.ts"],
     settings: {
       "import/resolver": {
         typescript: {
           extensions: [".ts", ".tsx"],
           alwaysTryTypes: true,
-          project: ["./test/unit/tsconfig.json"],
+          project: ["./test/library/tsconfig.json"],
         },
         node: true,
       },

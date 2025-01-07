@@ -38,7 +38,7 @@ module.exports = {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
 
-  setupFiles: ["./test/unit/setup.ts"],
+  setupFiles: ["./test/action/setup.ts"],
 
   reporters: [
     "default",

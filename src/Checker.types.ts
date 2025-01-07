@@ -10,4 +10,20 @@ export interface CheckerOptions {
   log?: LogLevel;
 }
 
+/** Report for a resource */
 export type ResourceReport = Omit<Resource, "origin">;
+
+/** Result of checking resources */
+export interface CheckResult {
+  /** Whether all resources are valid */
+  valid: boolean;
+  /** Report with missing resources */
+  report: {
+    /** Message with the result */
+    message: string;
+    /** List of missing resources */
+    missing: ResourceReport[];
+    /** List of found resources */
+    found: ResourceReport[];
+  };
+}

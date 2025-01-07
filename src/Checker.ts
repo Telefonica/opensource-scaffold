@@ -4,13 +4,12 @@ import { existsSync } from "fs";
 
 import type { Logger } from "winston";
 
-import type { CheckerOptions, ResourceReport } from "./Checker.types.js";
+import type { CheckerOptions, ResourceReport, CheckResult } from "./Checker.types.js";
 import { createLogger, DEFAULT_LEVEL } from "./Logger.js";
 import { RESOURCES } from "./Resources.js";
 import type { Resource } from "./Resources.types.js";
 
 const ALL_VALID_MESSAGE = "All resources exist";
-const SOME_INVALID_MESSAGE = "Some resources do not exist";
 
 function resourceToReport(resource: Resource): ResourceReport {
   return {
@@ -56,7 +55,7 @@ export class Checker {
   /**
    * Check if scaffold resources exist
    */
-  public async check() {
+  public async check(): Promise<CheckResult> {
     const existingResources = this.getExistingResources();
 
     let nonExistingResources = [];
@@ -65,13 +64,15 @@ export class Checker {
       if (!existingResources.find((r) => r.path === resource.path)) {
         this._logger.debug(`Resource ${resource.path} does not exist`);
         nonExistingResources.push(resource);
+      } else {
+        this._logger.debug(`Resource ${resource.path} exists`);
       }
     }
 
     const message =
       nonExistingResources.length === 0
         ? ALL_VALID_MESSAGE
-        : `${SOME_INVALID_MESSAGE}: ${nonExistingResources.map((r) => r.name).join(", ")}`;
+        : `${nonExistingResources.length} missing resource${nonExistingResources.length > 1 ? "s" : ""}: ${nonExistingResources.map((r) => `${r.name} (${r.path})`).join(", ")}`;
 
     if (nonExistingResources.length === 0) {
       this._logger.info(message);

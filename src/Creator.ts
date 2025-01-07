@@ -28,15 +28,26 @@ export class Creator {
   private _license: SupportedLicense;
   private _resourcesToOverwrite: Resource[] = [];
   private _templatesContext: TemplatesContext;
+  private _overwrite?: boolean;
 
   /**
    * Constructor
    * @param options Options for the creator
    */
-  constructor({ log, license, copyrightOwner, projectName, projectDescription }: CreatorOptions) {
+  constructor({
+    log,
+    license,
+    copyrightOwner,
+    projectName,
+    projectDescription,
+    overwrite,
+    repositoryUrl,
+    communityEmail,
+  }: CreatorOptions) {
     this._logLevel = log || DEFAULT_LEVEL;
     this._logger = createLogger(log);
     this._license = license;
+    this._overwrite = overwrite;
     this._checker = new Checker({ log });
     this._templatesContext = {
       license,
@@ -44,6 +55,9 @@ export class Creator {
       projectName,
       projectDescription: projectDescription,
       copyrightOwner: copyrightOwner,
+      repositoryUrl,
+      communityEmail,
+      year: new Date().getFullYear(),
     };
   }
 
@@ -107,9 +121,13 @@ export class Creator {
 
     const fileExists = existsSync(resource.path);
 
-    if (fileExists && !this._resourcesToOverwrite.find((r) => r.path === resource.path)) {
-      this._logger.warn(`${resource.name} already exists, skipping`);
-      return;
+    if (fileExists) {
+      if (!this._overwrite && !this._resourcesToOverwrite.find((r) => r.path === resource.path)) {
+        this._logger.warn(`${resource.name} already exists, skipping`);
+        return;
+      } else {
+        this._logger.warn(`Overwriting ${resource.name} at ${resource.path}`);
+      }
     }
 
     const origin = ejs.render(resource.origin, this._templatesContext);

@@ -4,12 +4,178 @@
 import { select, checkbox, input } from "@inquirer/prompts";
 import { Command, Option } from "commander";
 
+import { Checker } from "./Checker.js";
 import { Creator } from "./Creator.js";
 import { SUPPORTED_LICENSES } from "./License.js";
 import type { SupportedLicense } from "./License.types.js";
 import { LOG_LEVELS } from "./Logger.js";
 import type { LogLevel } from "./Logger.types.js";
 import type { Resource } from "./Resources.types.js";
+
+/**
+ * Create scaffold resources
+ * @param options Options from commander
+ */
+export async function check(options: {
+  /** Log level */
+  log?: LogLevel;
+  /** When true, an error will be thrown instead of exiting process. Useful for testing purposes */
+  exitOverride: boolean;
+}): Promise<void> {
+  const checker = new Checker({
+    log: options.log,
+  });
+
+  const result = await checker.check();
+
+  if (!result.valid) {
+    if (options.exitOverride) {
+      throw new Error(result.report.message);
+    } else {
+      const missing = result.report.missing.length;
+      console.error(`Check failed: ${missing} missing resource${missing > 1 ? "s" : ""}`);
+      process.exit(1);
+    }
+  }
+}
+
+/**
+ * Create scaffold resources
+ * @param options Options from commander
+ */
+export async function create(options: {
+  /** License type */
+  license?: SupportedLicense;
+  /** Log level */
+  log?: LogLevel;
+  /** Project name */
+  name?: string;
+  /** Project description */
+  description?: string;
+  /** Project copyright owner */
+  copyright?: string;
+  /** Repository URL */
+  repo?: string;
+  /** Community email */
+  email?: string;
+  /** Overwrite existing files */
+  overwrite?: boolean;
+  /** Enable prompts or not */
+  prompts: boolean;
+  /** When true, an error will be thrown instead of exiting process. Useful for testing purposes */
+  exitOverride: boolean;
+}): Promise<void> {
+  const overwrite = options.overwrite;
+  let license = options.license;
+  let resourcesToOverwrite: Resource[] = [];
+  let projectName = options.name;
+  let projectDescription = options.description;
+  let copyrightOwner = options.copyright;
+  let repo = options.repo;
+  let email = options.email;
+
+  function validationError(message: string) {
+    if (options.exitOverride) {
+      throw new Error(message);
+    } else {
+      console.error(message);
+      process.exit(1);
+    }
+  }
+
+  if (!projectName && !options.prompts) {
+    validationError(
+      "Project name is required. Please provide it using the --name option or enable prompts",
+    );
+  }
+
+  if (!license && !options.prompts) {
+    validationError(
+      "License is required. Please provide it using the --license option or enable prompts",
+    );
+  }
+
+  if (!repo && !options.prompts) {
+    validationError(
+      "Repo URL is required. Please provide it using the --repo option or enable prompts",
+    );
+  }
+
+  if (!license && options.prompts) {
+    license = (await select({
+      message: "Select a license",
+      choices: SUPPORTED_LICENSES.map((supportedLicense) => ({
+        name: supportedLicense,
+        value: supportedLicense,
+      })),
+    })) as SupportedLicense;
+  }
+
+  if (!projectName && options.prompts) {
+    projectName = await input({
+      message: "Enter the project name",
+      required: true,
+    });
+  }
+
+  if (!projectDescription && options.prompts) {
+    projectDescription = await input({
+      message: "Enter the project description (optional)",
+      required: false,
+    });
+  }
+
+  if (!copyrightOwner && options.prompts) {
+    copyrightOwner = await input({
+      message: "Enter the project copyright owner (optional)",
+      required: false,
+    });
+  }
+
+  if (!repo && options.prompts) {
+    repo = await input({
+      message:
+        "Enter the repository URL, including the protocol and without the trailing slash (https://github.com/owner/repo)",
+      required: false,
+    });
+  }
+
+  if (!email && options.prompts) {
+    email = await input({
+      message: "Enter the community email (optional)",
+      required: false,
+    });
+  }
+
+  const creator = new Creator({
+    log: options.log,
+    license: license!,
+    projectName: projectName!,
+    projectDescription,
+    copyrightOwner,
+    overwrite,
+    repositoryUrl: repo!,
+    communityEmail: email,
+  });
+
+  if (!overwrite && options.prompts) {
+    const conflicts = creator.getConflicts(true);
+
+    if (conflicts.length > 0) {
+      resourcesToOverwrite = (await checkbox({
+        message: "Next files already exist. Select those you want to overwrite",
+        choices: conflicts.map((resource) => ({
+          name: resource.name,
+          value: resource,
+        })),
+      })) as Resource[];
+
+      creator.setResourcesToOverwrite(resourcesToOverwrite);
+    }
+  }
+
+  await creator.create();
+}
 
 /**
  * Run the CLI
@@ -19,9 +185,8 @@ export async function run(exitOverride?: boolean): Promise<void> {
   const program = new Command();
 
   program
-    .name("OpenSource Scaffold")
-    .description("CLI to create or check open source project scaffolding")
-    .addOption(new Option("--log <log>", "Log level").choices(LOG_LEVELS).default("info"));
+    .name("Opensource Scaffold")
+    .description("CLI to create or check open source project scaffolding");
 
   if (exitOverride) {
     program.exitOverride();
@@ -30,66 +195,33 @@ export async function run(exitOverride?: boolean): Promise<void> {
   program
     .command("create")
     .description("Create scaffold resources")
+    .addOption(new Option("--log <log>", "Log level").choices(LOG_LEVELS).default("info"))
     .addOption(new Option("-l, --license <license>", "License type").choices(SUPPORTED_LICENSES))
+    .addOption(new Option("-n, --name <name>", "Project name"))
+    .addOption(new Option("-d, --description <description>", "Project description"))
+    .addOption(new Option("-c, --copyright <copyright>", "Copyright"))
+    .addOption(new Option("-r, --repo <repo>", "Repository URL"))
+    .addOption(new Option("-e, --email <email>", "Community email"))
+    .addOption(new Option("--overwrite", "Overwrite existing files"))
+    .addOption(new Option("--no-prompts", "Disable prompts"))
     .showHelpAfterError()
     .action(async (options) => {
-      let license: SupportedLicense = options.license;
-      let resourcesToOverwrite: Resource[] = [];
-
-      if (!license) {
-        license = (await select({
-          message: "Select a license",
-          choices: SUPPORTED_LICENSES.map((supportedLicense) => ({
-            name: supportedLicense,
-            value: supportedLicense,
-          })),
-        })) as SupportedLicense;
-      }
-
-      // TODO: Option --no-prompts. If no prompts is passed, check mandatory options and throw error if not present
-
-      // TODO: Get also from options
-      const projectName = await input({
-        message: "Enter the project name",
-        required: true,
+      await create({
+        ...options,
+        exitOverride,
       });
+    });
 
-      // TODO: Get also from options
-      const projectDescription = await input({
-        message: "Enter the project description (optional)",
-        required: false,
+  program
+    .command("check")
+    .description("Check scaffold resources")
+    .addOption(new Option("--log <log>", "Log level").choices(LOG_LEVELS).default("info"))
+    .showHelpAfterError()
+    .action(async (options) => {
+      await check({
+        ...options,
+        exitOverride,
       });
-
-      // TODO: Get also from options
-      const copyrightOwner = await input({
-        message: "Enter the project copyright owner (optional)",
-        required: false,
-      });
-
-      const creator = new Creator({
-        log: options.log as LogLevel,
-        license,
-        projectName,
-        projectDescription,
-        copyrightOwner,
-      });
-
-      // TODO: Option --overwrite
-      const conflicts = creator.getConflicts(true);
-
-      if (conflicts.length > 0) {
-        resourcesToOverwrite = (await checkbox({
-          message: "Next files already exist. Select those you want to overwrite",
-          choices: conflicts.map((resource) => ({
-            name: resource.name,
-            value: resource,
-          })),
-        })) as Resource[];
-
-        creator.setResourcesToOverwrite(resourcesToOverwrite);
-      }
-
-      await creator.create();
     });
 
   program.parse();

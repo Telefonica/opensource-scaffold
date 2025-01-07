@@ -42911,6 +42911,61 @@ const RESOURCES = [
         path: "README.md",
         origin: "templates/README.md",
     },
+    {
+        name: "Bugs template",
+        path: ".github/ISSUE_TEMPLATE/BUG.yml",
+        origin: "templates/.github/ISSUE_TEMPLATE/BUG.yml",
+    },
+    {
+        name: "Feature request template",
+        path: ".github/ISSUE_TEMPLATE/FEATURE_REQUEST.yml",
+        origin: "templates/.github/ISSUE_TEMPLATE/FEATURE_REQUEST.yml",
+    },
+    {
+        name: "Issue template config",
+        path: ".github/ISSUE_TEMPLATE/config.yml",
+        origin: "templates/.github/ISSUE_TEMPLATE/config.yml",
+    },
+    {
+        name: "Pull request template",
+        path: ".github/PULL_REQUEST_TEMPLATE.md",
+        origin: "templates/.github/PULL_REQUEST_TEMPLATE.md",
+    },
+    {
+        name: "Code of conduct",
+        path: ".github/CODE_OF_CONDUCT.md",
+        origin: "templates/.github/CODE_OF_CONDUCT.md",
+    },
+    {
+        name: "Contributing guidelines",
+        path: ".github/CONTRIBUTING.md",
+        origin: "templates/.github/CONTRIBUTING.md",
+    },
+    {
+        name: "Contributors License Agreement",
+        path: ".github/CLA.md",
+        origin: "templates/.github/CLA.md",
+    },
+    {
+        name: "Check license compliance config",
+        path: ".github/check-license-compliance.config.yml",
+        origin: "templates/.github/check-license-compliance.config.yml",
+    },
+    {
+        name: "Check SPDX headers config",
+        path: ".github/check-spdx-headers.config.yml",
+        origin: "templates/.github/check-spdx-headers.config.yml",
+    },
+    {
+        name: "CLA workflow",
+        path: ".github/workflows/contributor-license-agreement.yml",
+        origin: "templates/.github/workflows/contributor-license-agreement.yml",
+    },
+    {
+        name: "Open source checks workflow",
+        path: ".github/workflows/open-source-checks.yml",
+        origin: "templates/.github/workflows/open-source-checks.yml",
+    },
 ];
 
 ;// CONCATENATED MODULE: ./src/Checker.ts
@@ -42920,7 +42975,6 @@ const RESOURCES = [
 
 
 const ALL_VALID_MESSAGE = "All resources exist";
-const SOME_INVALID_MESSAGE = "Some resources do not exist";
 function resourceToReport(resource) {
     return {
         name: resource.name,
@@ -42978,10 +43032,13 @@ class Checker {
                 this._logger.debug(`Resource ${resource.path} does not exist`);
                 nonExistingResources.push(resource);
             }
+            else {
+                this._logger.debug(`Resource ${resource.path} exists`);
+            }
         }
         const message = nonExistingResources.length === 0
             ? ALL_VALID_MESSAGE
-            : `${SOME_INVALID_MESSAGE}: ${nonExistingResources.map((r) => r.name).join(", ")}`;
+            : `${nonExistingResources.length} missing resource${nonExistingResources.length > 1 ? "s" : ""}: ${nonExistingResources.map((r) => `${r.name} (${r.path})`).join(", ")}`;
         if (nonExistingResources.length === 0) {
             this._logger.info(message);
         }

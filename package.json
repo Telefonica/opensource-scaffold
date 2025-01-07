@@ -1,13 +1,14 @@
 {
   "name": "@tid-xcut/opensource-scaffold",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "description": "Scaffolding for open source projects. A CLI tool to create opensource repository tools and resources",
   "packageManager": "pnpm@9.4.0",
   "scripts": {
-    "build": "tsc",
+    "build": "pnpm build:library && pnpm build:action",
+    "build:library": "tsc",
+    "build:action": "ncc build action/index.ts --transpile-only -o dist-action --source-map --license licenses.txt && node ./script/post-package.js",
     "action:local": "local-action . action/main.ts .env",
-    "action:package": "ncc build action/index.ts --transpile-only -o dist-action --source-map --license licenses.txt && node ./script/post-package.js",
     "check:types": "pnpm check:types:code && pnpm check:types:action && pnpm check:types:test",
     "check:types:code": "tsc --noEmit",
     "check:types:action": "tsc --noEmit --project ./action/tsconfig.json",
@@ -17,8 +18,8 @@
     "lint": "eslint .",
     "lint:staged": "lint-staged",
     "prepare": "husky",
-    "test": "pnpm test:unit && pnpm test:action",
-    "test:unit": "jest --config jest.unit.config.cjs",
+    "test": "pnpm test:library && pnpm test:action",
+    "test:library": "jest --config jest.library.config.cjs",
     "test:action": "jest --config jest.action.config.cjs"
   },
   "exports": {
@@ -82,14 +83,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@inquirer/prompts": "^7.2.1",
-    "chalk": "^5.4.1",
-    "commander": "^13.0.0",
-    "ejs": "^3.1.10",
-    "handlebars": "^4.7.8",
-    "inquirer": "^12.3.0",
-    "mem-fs": "^4.1.2",
-    "mem-fs-editor": "^11.1.4",
-    "winston": "^3.17.0"
+    "@inquirer/prompts": "7.2.1",
+    "chalk": "5.4.1",
+    "commander": "13.0.0",
+    "ejs": "3.1.10",
+    "handlebars": "4.7.8",
+    "inquirer": "12.3.0",
+    "mem-fs": "4.1.2",
+    "mem-fs-editor": "11.1.4",
+    "winston": "3.17.0"
   }
 }

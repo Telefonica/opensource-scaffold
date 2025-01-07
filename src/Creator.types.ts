@@ -16,6 +16,12 @@ export interface CreatorOptions {
   projectDescription?: string;
   /** The project copyright owner */
   copyrightOwner?: string;
+  /** Whether to overwrite all existing resources */
+  overwrite?: boolean;
+  /** Repository URL. Including protocol, without trailing slash */
+  repositoryUrl?: string;
+  /** Community email */
+  communityEmail?: string;
 }
 
 /** Context for templates */
@@ -30,4 +36,10 @@ export interface TemplatesContext {
   projectDescription?: string;
   /** The project copyright owner */
   copyrightOwner?: string;
+  /** Repository URL. Including protocol, without trailing slash */
+  repositoryUrl?: string;
+  /** Community email */
+  communityEmail?: string;
+  /** Current year */
+  year: number;
 }
