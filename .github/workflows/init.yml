@@ -117,7 +117,7 @@ jobs:
 
             ```bash
             git clone git@github.com:/${{ github.repository }}.git
-            cd ${{ github.repository }}
+            cd ${{ github.event.repository.name }}
             git checkout init-repo
             mv .github-draft .github
             git add .
