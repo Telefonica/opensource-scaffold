@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2024 Telefónica Innovación Digital and contributors
 # SPDX-License-Identifier: MIT
 
-name: Initialize repository from template
+name: Initialize repository
 on:
   workflow_dispatch:
   push:
