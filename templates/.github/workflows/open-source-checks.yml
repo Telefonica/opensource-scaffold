@@ -39,10 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/setup-node
-        id: setup-node
-        with:
-          npm-token: ${{ secrets.NPM_TOKEN_XCUT }}
+      # TODO: Add step to install dependencies here
 
       - name: Check License Compliance
         if: github.event_name != 'pull_request'
