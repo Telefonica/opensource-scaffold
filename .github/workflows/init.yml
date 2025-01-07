@@ -58,8 +58,45 @@ jobs:
       - name: Create scaffold
         run: pnpm opensource-scaffold create --overwrite --no-prompts --log=debug --license=${{ github.event.inputs.license }} --name=${{ github.event.inputs.name }} --copyright=${{ github.event.inputs.copyright }} --description="${{ github.event.inputs.description }}" --repo=${{ github.server_url }}/${{ github.repository }} --email=${{ github.event.inputs.email }}
 
+      - name: Delete scaffold generator resources
+        run: |
+          rm -rf .github/actions/setup-node
+          rm -f .github/workflows/build.yml
+          rm -f .github/workflows/init.yml
+          rm -f .github/workflows/publish.yml
+          rm -rf .husky
+          rm -rf .vscode
+          rm -rf action
+          rm -rf bin
+          rm -rf cspell
+          rm -rf dist-action
+          rm -rf docs
+          rm -rf script
+          rm -rf src
+          rm -rf templates
+          rm -rf test
+          rm -rf .env.example
+          rm -rf .gitattributes
+          rm -rf .node-version
+          rm -rf action.yml
+          rm -rf babel.config.js
+          rm -rf cspell.config.js
+          rm -rf eslint.config.js
+          rm -rf jest.action.config.js
+          rm -rf jest.library.config.js
+          rm -rf package.json
+          rm -rf pnpm-lock.yaml
+          rm -rf tsconfig.base.json
+          rm -rf tsconfig.json
+
+      - name: Move github workflows to avoid requiring workflow permissions
+        run: |
+          mv .github .github-draft
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
+        env:
+          HUSKY: '0'
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Initialize repository"
