@@ -51,6 +51,9 @@ jobs:
         with:
           npm-token: foo-token
 
+      - name: Build
+        run: pnpm build
+
       - name: Create scaffold
         run: pnpm opensource-scaffold create --overwrite --no-prompts --log=debug --license=${{ github.event.inputs.license }} --name=${{ github.event.inputs.name }} --copyright=${{ github.event.inputs.copyright }} --description="${{ github.event.inputs.description }}" --repo=${{ github.server_url }}/${{ github.repository }} --email=${{ github.event.inputs.email }}
 
