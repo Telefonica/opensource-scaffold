@@ -4,6 +4,9 @@
 name: Initialize repository from template
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - feat/cli-generator
 
 permissions:
   contents: write
