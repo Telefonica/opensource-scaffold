@@ -2,11 +2,34 @@
 # SPDX-License-Identifier: MIT
 
 name: Initialize repository
+
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - feat/cli-generator
+    inputs:
+      license:
+        type: choice
+        description: License to use
+        options: 
+          - Apache-2.0
+          - MPL-2.0
+        required: true
+      name:
+        type: string
+        description: Project name
+        required: true
+      copyright:
+        type: string
+        description: Copyright owner
+        required: true
+      description:
+        type: string
+        description: Project description
+        required: false
+      email:
+        type: string
+        description: Community email
+        required: false
+
 
 permissions:
   contents: write
@@ -23,5 +46,20 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
 
+      - uses: ./.github/actions/setup-node
+        id: setup-node
+        with:
+          npm-token: foo-token
+
       - name: Create scaffold
-        uses: ./
+        run: pnpm opensource-scaffold create --overwrite --no-prompts --log=debug --license=${{ github.event.inputs.license }} --name=${{ github.event.inputs.name }} --copyright=${{ github.event.inputs.copyright }} --description="${{ github.event.inputs.description }}" --repo=${{ github.server_url }}/${{ github.repository }} --email=${{ github.event.inputs.email }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Initialize repository"
+          title: "Initialize opensource project"
+          body: "This PR initializes the repository with the opensource scaffold"
+          branch: "init-repo"
+          base: "main"

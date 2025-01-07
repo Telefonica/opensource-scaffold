@@ -18,6 +18,7 @@
     "eslint": "eslint",
     "lint": "eslint .",
     "lint:staged": "lint-staged",
+    "opensource-scaffold": "./bin/opensource-scaffold.mjs",
     "prepare": "husky",
     "test": "pnpm test:library && pnpm test:action",
     "test:library": "jest --config jest.library.config.cjs",
