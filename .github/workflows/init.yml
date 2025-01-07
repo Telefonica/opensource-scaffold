@@ -103,4 +103,4 @@ jobs:
           title: "Initialize opensource project"
           body: "This PR initializes the repository with the opensource scaffold"
           branch: "init-repo"
-          base: "feat/cli-generator"
+          base: "test/init"
