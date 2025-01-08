@@ -15,7 +15,7 @@ export interface CreatorOptions {
   /** The project description */
   projectDescription?: string;
   /** The project copyright owner */
-  copyrightOwner?: string;
+  copyrightHolder?: string;
   /** Whether to overwrite all existing resources */
   overwrite?: boolean;
   /** Repository URL. Including protocol, without trailing slash */
@@ -35,7 +35,7 @@ export interface TemplatesContext {
   /** The project description */
   projectDescription?: string;
   /** The project copyright owner */
-  copyrightOwner?: string;
+  copyrightHolder?: string;
   /** Repository URL. Including protocol, without trailing slash */
   repositoryUrl?: string;
   /** Community email */

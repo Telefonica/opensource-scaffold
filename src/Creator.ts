@@ -37,7 +37,7 @@ export class Creator {
   constructor({
     log,
     license,
-    copyrightOwner,
+    copyrightHolder,
     projectName,
     projectDescription,
     overwrite,
@@ -54,7 +54,7 @@ export class Creator {
       licenseFAQ: LICENSE_FAQS[license],
       projectName,
       projectDescription: projectDescription,
-      copyrightOwner: copyrightOwner,
+      copyrightHolder: copyrightHolder,
       repositoryUrl,
       communityEmail,
       year: new Date().getFullYear(),

@@ -6,16 +6,19 @@ name: Initialize repository
 on:
   workflow_dispatch:
     inputs:
+      name:
+        type: string
+        description: Project name
+        required: true
       license:
         type: choice
         description: License to use
         options: 
           - Apache-2.0
           - MPL-2.0
-        required: true
-      name:
-        type: string
-        description: Project name
+          - MIT
+          - AGPL-3.0-only
+          - AGPL-3.0-or-later
         required: true
       copyright:
         type: string
@@ -27,7 +30,7 @@ on:
         required: false
       email:
         type: string
-        description: Community email
+        description: Community leader email
         required: false
 
 

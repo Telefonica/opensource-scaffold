@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %>
+# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
 # SPDX-License-Identifier: MIT
 
 rules:
@@ -27,7 +27,7 @@ rules:
           - "src/**"
           - "**/*.yml"
         copyright:
-          - "\\d{4}(\\s-\\s\\d{4})? <%= copyrightOwner %>"
+          - "\\d{4}(\\s-\\s\\d{4})? <%= copyrightHolder %>"
 ignore:
   - "**/node_modules/**"
   - "dist/**"

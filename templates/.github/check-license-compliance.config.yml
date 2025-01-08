@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %>
+# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
 # SPDX-License-Identifier: MIT
 
 licenses:

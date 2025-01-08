@@ -1,6 +1,6 @@
 # How to contribute
 
-Thank you for being part of the <%= copyrightOwner %> Open Source Community!
+Thank you for being part of the <%= copyrightHolder %> Open Source Community!
 
 # Table of Contents
 
@@ -27,18 +27,18 @@ This project adheres to the [Software Package Data Exchange (SPDX)](https://spdx
 This license must be used for all new code, unless the containing project, module or externally-imported codebase uses a different license. If you can't put a header in the file due to its structure, please put it in a LICENSE file in the same directory.
 
 ```
-// SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %> and contributors. All rights reserved
+// SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors. All rights reserved
 // SPDX-License-Identifier: <%= license %>
 
-# SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %> and contributors. All rights reserved
+# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors. All rights reserved
 # SPDX-License-Identifier: <%= license %>
 
 <!--
-   SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %> and contributors. All rights reserved
+   SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors. All rights reserved
    SPDX-License-Identifier: <%= license %>
 -->
 
-SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %> and contributors. All rights reserved
+SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors. All rights reserved
 SPDX-License-Identifier: <%= license %>
 ```
 
@@ -47,18 +47,18 @@ SPDX-License-Identifier: <%= license %>
 This license can be used for test scripts and other short code snippets, at the discretion of the author.
 
 ```
-// SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %> and contributors
+// SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors
 // SPDX-License-Identifier: MIT
 
-# SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %> and contributors
+# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors
 # SPDX-License-Identifier: MIT
 
 <!--
-   SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %> and contributors
+   SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors
    SPDX-License-Identifier: MIT
 -->
 
-SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %> and contributors
+SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors
 SPDX-License-Identifier: MIT
 ```
 
@@ -80,8 +80,8 @@ Please read our [Code of Conduct](../.github/CODE_OF_CONDUCT.md) before contribu
 
 This is a human-readable summary of (and not a substitute for) the [full agreement](./CLA.md). This highlights only some of the key terms of the CLA. It has no legal value and you should carefully review all the terms of the [actual CLA before agreeing](./CLA.md).
 
-* __Grant of copyright license__. You give <%= copyrightOwner %> permission to use your copyrighted work in commercial products.
-* __Grant of patent license__. If your contributed work uses a patent, you give <%= copyrightOwner %> a license to use that patent including within commercial products. You also agree that you have permission to grant this license.
+* __Grant of copyright license__. You give <%= copyrightHolder %> permission to use your copyrighted work in commercial products.
+* __Grant of patent license__. If your contributed work uses a patent, you give <%= copyrightHolder %> a license to use that patent including within commercial products. You also agree that you have permission to grant this license.
 * __No Warranty or Support Obligations__. By making a contribution, you are not obligating yourself to provide support for the contribution, and you are not taking on any warranty obligations or providing any assurances about how it will perform.
 
 The [CLA](./CLA.md) does not change the terms of the underlying license used by our software such as the Business Source License, Mozilla Public License, or MIT License. You are still free to use our projects within your own projects or businesses, republish modified source code, and more subject to the terms of the project license. Please reference the appropriate license for the project you're contributing to to learn more.

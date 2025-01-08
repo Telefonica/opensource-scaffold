@@ -18,7 +18,7 @@ rules:
           - "templates/.github/**/*.yml"
         license:
           - "MIT"
-        copyright: "<%= year %> <%= copyrightOwner %>"
+        copyright: "<%= year %> <%= copyrightHolder %>"
         ignore:
           - "templates/.github/ISSUE_TEMPLATE/*.yml"
   - name: "Config files"

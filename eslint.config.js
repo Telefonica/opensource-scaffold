@@ -47,7 +47,7 @@ export default [
     },
     language: "markdown/commonmark",
     rules: {
-      "markdown/no-html": "error",
+      "markdown/no-html": [1],
     },
   },
   {

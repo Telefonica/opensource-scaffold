@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: <%= year %> <%= copyrightOwner %>
+# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
 # SPDX-License-Identifier: MIT
 
 name: Open Source Checks
@@ -28,7 +28,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check Opensource Scaffold
-        if: github.event_name != 'pull_request'
         # TODO: Change the template to use the real path once published
         uses: Telefonica/cross-opensource-template/@feat/cli-generator
 

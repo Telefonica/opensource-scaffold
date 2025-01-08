@@ -70,7 +70,7 @@ export async function create(options: {
   let resourcesToOverwrite: Resource[] = [];
   let projectName = options.name;
   let projectDescription = options.description;
-  let copyrightOwner = options.copyright;
+  let copyrightHolder = options.copyright;
   let repo = options.repo;
   let email = options.email;
 
@@ -125,8 +125,8 @@ export async function create(options: {
     });
   }
 
-  if (!copyrightOwner && options.prompts) {
-    copyrightOwner = await input({
+  if (!copyrightHolder && options.prompts) {
+    copyrightHolder = await input({
       message: "Enter the project copyright owner (optional)",
       required: false,
     });
@@ -152,7 +152,7 @@ export async function create(options: {
     license: license!,
     projectName: projectName!,
     projectDescription,
-    copyrightOwner,
+    copyrightHolder,
     overwrite,
     repositoryUrl: repo!,
     communityEmail: email,
