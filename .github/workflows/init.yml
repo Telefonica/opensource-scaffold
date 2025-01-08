@@ -33,7 +33,6 @@ on:
         description: Community leader email
         required: false
 
-
 permissions:
   contents: write
   pull-requests: write
@@ -128,4 +127,51 @@ jobs:
             git push
             ```
           branch: "init-repo"
-          base: "test/init-2"
+          base: "test/init-3"
+
+  create-cla-branch:
+    name: Create CLA branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Clean branch
+        run: |
+          rm -rf .github
+          rm -rf .husky
+          rm -rf .vscode
+          rm -rf action
+          rm -rf bin
+          rm -rf cspell
+          rm -rf dist-action
+          rm -rf docs
+          rm -rf script
+          rm -rf src
+          rm -rf templates
+          rm -rf test
+          rm -rf .env.example
+          rm -rf .gitattributes
+          rm -rf .node-version
+          rm -rf .npmrc
+          rm -rf action.yml
+          rm -rf babel.config.cjs
+          rm -rf cspell.config.cjs
+          rm -rf eslint.config.js
+          rm -rf jest.action.config.cjs
+          rm -rf jest.library.config.cjs
+          rm -rf package.json
+          rm -rf pnpm-lock.yaml
+          rm -rf tsconfig.base.json
+          rm -rf tsconfig.json
+          rm -rf README.md
+          rm -rf LICENSE
+
+      - name: Create CLA branch
+        uses: actions-js/push@v1.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: "Init CLA signatures branch"
+          branch: chore/cla-signatures
