@@ -263,9 +263,33 @@ composer exec composer-license-checker -- check
 
 ## Configuring the repository
 
-As the scaffold creates Github workflows, you should configure the repository rules to require the different checks in PRs, including the CLA signing check and the Opensource resources checks.
+As the scaffold creates Github workflows, you should configure the repository rules to require the different checks in PRs, etc.
 
-Follow these steps to configure the repository rules:
+You can use the rules json files mentioned in the next steps to create the rules easily by using the "Import a ruleset" button in the "Rulesets" tab of the repository settings.
+
+![Import ruleset button](./docs/assets/import-ruleset.png)
+
+You should configure at least next repository rules:
+
+### Protect the `chore/cla-signatures` branch
+
+It should be protected to avoid accidental deletion. Note also that the CLA bot will commit to this branch, so it should be allowed to do so.
+
+![Restrict deletion setting](./docs/assets/restrict-deletion.png)
+
+> [!TIP]
+> You have a template for this rule in the [`docs/repo-rule-cla-signatures.json`](docs/repo-rule-cla-signatures.json) file.
+
+### Protect the `main` branch
+
+The main branch should be protected by requiring status checks to pass before merging, including the CLA signing check and the Opensource resources checks.
+
+![Status checks](./docs/assets/status-checks.png)
+
+> [!TIP]
+> You have a template for this rule in the [`docs/repo-rule-main.json`](docs/repo-rule-main.json) file.
+
+### Final notes
 
 > [!TIP]
 > Remember also to provide a good description and topics for the repository in order to make it easier for others to find, use, and hopefully contribute to your project. 😉
