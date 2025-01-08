@@ -28,8 +28,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check Opensource Scaffold
-        # TODO: Change the template to use the real path once published
-        uses: Telefonica/cross-opensource-template/@feat/cli-generator
+        uses: Telefonica/opensource-scaffold@v0.1.0
 
   check-license-compliance:
     name: Check License Compliance
