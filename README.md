@@ -244,7 +244,7 @@ composer require dominikb/composer-license-checker
 composer exec composer-license-checker -- check
 ```
 
-> [!NOTE]
+> [!INFO]
 > These snippets are from the [eBay's open source program docs](https://opensource.ebay.com/contributing/approval/tooling/). Check the original source for more information.
 
 </details>
