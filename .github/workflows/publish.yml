@@ -5,9 +5,9 @@ name: Publish to NPM
 on:
   release:
     types: [published]
-  #push:
-  #  branches:
-  #    - feat/cli-generator
+  push:
+    branches:
+      - feat/cli-generator
 jobs:
   publish:
     runs-on: ubuntu-latest
