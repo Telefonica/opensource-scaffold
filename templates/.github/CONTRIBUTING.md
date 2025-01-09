@@ -2,25 +2,36 @@
 
 Thank you for being part of the <%= copyrightHolder %> Open Source Community!
 
-# Table of Contents
+## Table of Contents
 
 - [Getting started](#getting-started)
+- [Pull Request](#pull-request)
 - [License](#license)
   - [Licensing of new files](#licensing-of-new-files)
   - [Public Domain](#public-domain)
-- [Pull Request](#pull-request)
 - [Code of Conduct](#code-of-conduct)
 - [Contributor License Agreement](#contributor-license-agreement)
 
-# Getting started
+## Getting started
 
 <!-- TODO: Add technical instructions for contributors: How to install, how to test, etc. -->
 
-# License
+
+## Pull Request
+When you're finished with the changes, create a pull request, also known as a PR.
+
+* Fill the PR template. This template helps reviewers understand your changes as well as the purpose of your pull request.
+* Don't forget to [link PR to issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue) if you are solving one.
+* Enable the checkbox to [allow maintainer edits](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork) so the branch can be updated for a merge. Once you submit your PR, a maintainer will review your proposal. We may ask questions or request additional information.
+* We may ask for changes to be made before a PR can be merged, either using suggested changes or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.
+* As you update your PR and apply changes, mark each conversation as resolved.
+* If you run into any merge issues, checkout this git tutorial to help you resolve merge conflicts and other issues.
+
+## License
 
 By contributing to this project, you agree that your contributions will be licensed under the [LICENSE](../LICENSE) file in the root of this repository, and that you agree to the [Contributor License Agreement](#contributor-license-agreement).
 
-## Licensing of new files
+### Licensing of new files
 
 This project adheres to the [Software Package Data Exchange (SPDX)](https://spdx.dev/). SPDX is a standard format for communicating the components, licenses, and copyrights associated with software packages. It is a simple and concise way to communicate licensing information. Read more about how to define headers using the SPDX ids [here](https://spdx.dev/learn/handling-license-info/).
 
@@ -42,7 +53,7 @@ SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors. All
 SPDX-License-Identifier: <%= license %>
 ```
 
-## MIT License
+### MIT License
 
 This license can be used for test scripts and other short code snippets, at the discretion of the author.
 
@@ -62,21 +73,11 @@ SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors
 SPDX-License-Identifier: MIT
 ```
 
-# Pull Request
-When you're finished with the changes, create a pull request, also known as a PR.
-
-* Fill the PR template. This template helps reviewers understand your changes as well as the purpose of your pull request.
-* Don't forget to [link PR to issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue) if you are solving one.
-* Enable the checkbox to [allow maintainer edits](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork) so the branch can be updated for a merge. Once you submit your PR, a maintainer will review your proposal. We may ask questions or request additional information.
-* We may ask for changes to be made before a PR can be merged, either using suggested changes or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.
-* As you update your PR and apply changes, mark each conversation as resolved.
-* If you run into any merge issues, checkout this git tutorial to help you resolve merge conflicts and other issues.
-
-# Code of Conduct
+## Code of Conduct
 
 Please read our [Code of Conduct](../.github/CODE_OF_CONDUCT.md) before contributing.
 
-# Contributor License Agreement
+## Contributor License Agreement
 
 This is a human-readable summary of (and not a substitute for) the [full agreement](./CLA.md). This highlights only some of the key terms of the CLA. It has no legal value and you should carefully review all the terms of the [actual CLA before agreeing](./CLA.md).
 
