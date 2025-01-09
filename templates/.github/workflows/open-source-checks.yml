@@ -40,7 +40,6 @@ jobs:
       # TODO: Add step to install dependencies here
 
       - name: Check License Compliance
-        if: github.event_name == 'pull_request'
         uses: Telefonica/check-license-compliance/.github/actions/check-and-comment@v0
         with:
           config-file: .github/check-license-compliance.config.yml
@@ -57,7 +56,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check SPDX Headers
-        if: github.event_name == 'pull_request'
         uses: Telefonica/check-spdx-headers/.github/actions/check-and-comment@v0
         with:
           config-file: .github/check-spdx-headers.config.yml
