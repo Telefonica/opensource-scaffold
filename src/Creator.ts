@@ -4,6 +4,7 @@
 import { existsSync } from "fs";
 
 import ejs from "ejs";
+import emailValidator from "email-validator";
 import { create as createMemFs } from "mem-fs";
 import type { MemFsEditor } from "mem-fs-editor";
 import { create as createEditor } from "mem-fs-editor";
@@ -49,6 +50,15 @@ export class Creator {
     this._license = license;
     this._overwrite = overwrite;
     this._checker = new Checker({ log });
+
+    if (communityEmail && Creator.validateEmail(communityEmail) === false) {
+      throw new Error("Invalid email");
+    }
+
+    if (Creator.validateRepositoryUrl(repositoryUrl) === false) {
+      throw new Error("Invalid email");
+    }
+
     this._templatesContext = {
       license,
       licenseFAQ: LICENSE_FAQS[license],
@@ -59,6 +69,16 @@ export class Creator {
       communityEmail,
       year: new Date().getFullYear(),
     };
+  }
+
+  /** Validates an email */
+  public static validateEmail(email: string): boolean {
+    return emailValidator.validate(email);
+  }
+
+  /** Validates a repository url */
+  public static validateRepositoryUrl(value: string): boolean {
+    return /^http[s]?:\/\/.*(?<!\/)$/.test(value);
   }
 
   /**

@@ -14,12 +14,12 @@ export interface CreatorOptions {
   projectName: string;
   /** The project description */
   projectDescription?: string;
-  /** The project copyright owner */
+  /** The project copyright holder */
   copyrightHolder?: string;
   /** Whether to overwrite all existing resources */
   overwrite?: boolean;
   /** Repository URL. Including protocol, without trailing slash */
-  repositoryUrl?: string;
+  repositoryUrl: string;
   /** Community email */
   communityEmail?: string;
 }
@@ -34,10 +34,10 @@ export interface TemplatesContext {
   projectName: string;
   /** The project description */
   projectDescription?: string;
-  /** The project copyright owner */
+  /** The project copyright holder */
   copyrightHolder?: string;
   /** Repository URL. Including protocol, without trailing slash */
-  repositoryUrl?: string;
+  repositoryUrl: string;
   /** Community email */
   communityEmail?: string;
   /** Current year */

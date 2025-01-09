@@ -14,11 +14,11 @@ In detail, it includes:
 
 * [Preface](#preface)
   * [Supported licenses](#supported-licenses)
-* [The scaffold](#the-scaffold)
 * [Usage](#usage)
   * [Repository template](#repository-template)
   * [Node.js CLI](#nodejs-cli)
   * [Github Action](#github-action-for-checking-the-opensource-resources)
+* [The scaffold](#the-scaffold)
 * [Inputs](#inputs)
 * [Next steps](#next-steps)
 * [Automatic Contributing License Agreement](#automatic-contributing-license-agreement)
@@ -43,38 +43,6 @@ This scaffold is able to create projects with the following licenses:
 * [MPL-2.0](https://spdx.org/licenses/MPL-2.0.html)
 * [MIT](https://spdx.org/licenses/MIT.html)
 
-## The scaffold
-
-Once you initialize an open source project using this scaffold, it will include the following:
-
-* __Readme file__:
-  * Title, description, and table of contents of the project.
-  * Link to the Contributing Guidelines
-  * Link to the License file, and to the chosen license FAQ website.
-* __License file__: The license file of the project, depending on the license selected for the project.
-* __Code of conduct__: The code of conduct of the project. By default, it is the Contributor Covenant published at [contributor-covenant.org](https://www.contributor-covenant.org/).
-* __Contributing guidelines__: The contributing guidelines of the project. It includes:
-  * A link to the License file.
-  * Instructions to fill the license headers that must be included in new files. Based on the [instructions of the Software Package Data Exchange (SPDX) website](https://spdx.dev/)
-  * A link to the Code of Conduct.
-  * A human-readable summary of the Contributor License Agreement, and links to the full CLA.
-* __Contributor license agreement__: The Contributor License Agreement of the project.
-  * It is based on the [CLA of HashiCorp](https://cla.hashicorp.com/).
-* __Pull Request template__: The pull request template of the project. It includes:
-  * A template for the title and description of the pull request.
-  * A checklist to ensure that the contributor has read and understood the CONTRIBUTING and CODE_OF_CONDUCT documents, and that the contributor accepts the storage of their Github user name for the purpose of future reference.
-  * A reminder to sign the CLA through a comment in the PR.
-* __Issue templates__: Templates for bug reports and feature requests. The user is enforced to use one of the provided templates. Creating new issues without using a template is not allowed. The templates are:
-  * __Bug report__: A template for bug reports.
-    * Includes a check to ensure that the contributor has read the Code of Conduct.
-  * __Feature request__: A template for feature requests.
-    * Includes a check to ensure that the contributor has read the Code of Conduct.
-* __A Github Workflow with opensource checks__: It is executed on every pull request and pushes to the main branch, and checks the following:
-    * [__License Integrity check__](#license-integrity-check): Checks that all files in the project are rightly licensed. That is, it checks that all files have the expected license header according to the license chosen for the project and a given configuration.
-    * [__License compliance check__](#license-compliance-check): Checks that the dependencies of the project are licensed under a license that is compatible with a given configuration. The configuration by default is the one defined in the [Practical Guide to Open Source Software at Telefónica](#preface), but can be customized.
-    * [__Opensource resources check__](#opensource-resources-check): Checks that the project still contains the files that have been created by this scaffold, ensuring that the project always remains compliant with the opensource guidelines.
-* [__A Github Workflow for automatic CLA signing__](#automatic-contributing-license-agreement): It automates the process of signing the CLA, by creating a comment in the pull request asking contributors who have not signed CLA to sign. It fails the pull request status check with a failure if the contributor has not signed the CLA.
-
 ## Usage
 
 ### Repository template
@@ -83,8 +51,10 @@ You can initialize a new opensource project by creating a new repository from th
 
 1. __Create a new repository__: Click on the "Use this template" button in Github when creating a new repository, and select this template.
 2. __Run the "Initialize repository" workflow__: After creating the repository, go to the "Actions" tab and run the "Initialize repository" workflow. Enter the required [inputs](#inputs) and run the workflow. This will open a PR creating the initial files for your project, and removing the files from this template that are not needed in your project.
+  ![Initialize repository workflow](./docs/assets/init-workflow.png)
 3. __Rename the `.github-draft` folder__: The PR creates a `.github-draft` branch that needs to be renamed to `.github` manually before merging it. Follow the instructions in the PR description to rename the folder and push the changes. _(This is because creating workflow files from an action requires special permissions, and the process of granting them would be more complex than simply renaming the folder)._
-3. __Merge the PR__
+  ![Initialize repository PR](./docs/assets/init-pr.png)
+4. __Merge the PR__
 
 That's it! You can now start working on your project. Happy coding! 🚀
 
@@ -141,6 +111,38 @@ jobs:
       - name: Run check
         uses: Telefonica/opensource-scaffold@v1
 ```
+
+## The scaffold
+
+Once you initialize an open source project using this scaffold, it will include the following:
+
+* __Readme file__:
+  * Title, description, and table of contents of the project.
+  * Link to the Contributing Guidelines
+  * Link to the License file, and to the chosen license FAQ website.
+* __License file__: The license file of the project, depending on the license selected for the project.
+* __Code of conduct__: The code of conduct of the project. By default, it is the Contributor Covenant published at [contributor-covenant.org](https://www.contributor-covenant.org/).
+* __Contributing guidelines__: The contributing guidelines of the project. It includes:
+  * A link to the License file.
+  * Instructions to fill the license headers that must be included in new files. Based on the [instructions of the Software Package Data Exchange (SPDX) website](https://spdx.dev/)
+  * A link to the Code of Conduct.
+  * A human-readable summary of the Contributor License Agreement, and links to the full CLA.
+* __Contributor license agreement__: The Contributor License Agreement of the project.
+  * It is based on the [CLA of HashiCorp](https://cla.hashicorp.com/).
+* __Pull Request template__: The pull request template of the project. It includes:
+  * A template for the title and description of the pull request.
+  * A checklist to ensure that the contributor has read and understood the CONTRIBUTING and CODE_OF_CONDUCT documents, and that the contributor accepts the storage of their Github user name for the purpose of future reference.
+  * A reminder to sign the CLA through a comment in the PR.
+* __Issue templates__: Templates for bug reports and feature requests. The user is enforced to use one of the provided templates. Creating new issues without using a template is not allowed. The templates are:
+  * __Bug report__: A template for bug reports.
+    * Includes a check to ensure that the contributor has read the Code of Conduct.
+  * __Feature request__: A template for feature requests.
+    * Includes a check to ensure that the contributor has read the Code of Conduct.
+* __A Github Workflow with opensource checks__: It is executed on every pull request and pushes to the main branch, and checks the following:
+    * [__License Integrity check__](#license-integrity-check): Checks that all files in the project are rightly licensed. That is, it checks that all files have the expected license header according to the license chosen for the project and a given configuration.
+    * [__License compliance check__](#license-compliance-check): Checks that the dependencies of the project are licensed under a license that is compatible with a given configuration. The configuration by default is the one defined in the [Practical Guide to Open Source Software at Telefónica](#preface), but can be customized.
+    * [__Opensource resources check__](#opensource-resources-check): Checks that the project still contains the files that have been created by this scaffold, ensuring that the project always remains compliant with the opensource guidelines.
+* [__A Github Workflow for automatic CLA signing__](#automatic-contributing-license-agreement): It automates the process of signing the CLA, by creating a comment in the pull request asking contributors who have not signed CLA to sign. It fails the pull request status check with a failure if the contributor has not signed the CLA.
 
 ## Inputs
 

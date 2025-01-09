@@ -20,6 +20,9 @@ importers:
       ejs:
         specifier: 3.1.10
         version: 3.1.10
+      email-validator:
+        specifier: 2.0.4
+        version: 2.0.4
       handlebars:
         specifier: 4.7.8
         version: 4.7.8
@@ -2025,6 +2028,10 @@ packages:
 
   electron-to-chromium@1.5.76:
     resolution: {integrity: sha512-CjVQyG7n7Sr+eBXE86HIulnL5N8xZY1sgmOPGuq/F0Rr0FJq63lg0kEtOIDfZBk44FnDLf6FUJ+dsJcuiUDdDQ==}
+
+  email-validator@2.0.4:
+    resolution: {integrity: sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==}
+    engines: {node: '>4.0'}
 
   emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -6255,6 +6262,8 @@ snapshots:
       jake: 10.9.2
 
   electron-to-chromium@1.5.76: {}
+
+  email-validator@2.0.4: {}
 
   emittery@0.13.1: {}
 

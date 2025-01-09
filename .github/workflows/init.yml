@@ -13,12 +13,12 @@ on:
       license:
         type: choice
         description: License to use
-        options: 
-          - Apache-2.0
-          - MPL-2.0
-          - MIT
+        options:
           - AGPL-3.0-only
           - AGPL-3.0-or-later
+          - Apache-2.0
+          - MIT
+          - MPL-2.0
         required: true
       copyright:
         type: string

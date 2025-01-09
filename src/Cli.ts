@@ -52,7 +52,7 @@ export async function create(options: {
   name?: string;
   /** Project description */
   description?: string;
-  /** Project copyright owner */
+  /** Project copyright holder */
   copyright?: string;
   /** Repository URL */
   repo?: string;
@@ -107,7 +107,7 @@ export async function create(options: {
       choices: SUPPORTED_LICENSES.map((supportedLicense) => ({
         name: supportedLicense,
         value: supportedLicense,
-      })),
+      })).sort((a, b) => a.name.localeCompare(b.name)),
     })) as SupportedLicense;
   }
 
@@ -118,17 +118,10 @@ export async function create(options: {
     });
   }
 
-  if (!projectDescription && options.prompts) {
-    projectDescription = await input({
-      message: "Enter the project description (optional)",
-      required: false,
-    });
-  }
-
   if (!copyrightHolder && options.prompts) {
     copyrightHolder = await input({
-      message: "Enter the project copyright owner (optional)",
-      required: false,
+      message: "Enter the project copyright holder",
+      required: true,
     });
   }
 
@@ -137,6 +130,19 @@ export async function create(options: {
       message:
         "Enter the repository URL, including the protocol and without the trailing slash (https://github.com/owner/repo)",
       required: false,
+      validate: (value) => {
+        if (!Creator.validateRepositoryUrl(value)) {
+          return "Invalid repository URL. It should include the protocol and don't have a trailing slash";
+        }
+        return true;
+      },
+    });
+  }
+
+  if (!projectDescription && options.prompts) {
+    projectDescription = await input({
+      message: "Enter the project description (optional)",
+      required: false,
     });
   }
 
@@ -144,6 +150,12 @@ export async function create(options: {
     email = await input({
       message: "Enter the community email (optional)",
       required: false,
+      validate: (value) => {
+        if (value.length && !Creator.validateEmail(value)) {
+          return "Invalid email";
+        }
+        return true;
+      },
     });
   }
 
