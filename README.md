@@ -20,10 +20,10 @@ In detail, it includes:
   * [Github Action](#github-action-for-checking-the-opensource-resources)
 * [The scaffold](#the-scaffold)
 * [Inputs](#inputs)
-* [Next steps](#next-steps)
 * [Automatic Contributing License Agreement](#automatic-contributing-license-agreement)
 * [License Integrity check](#license-integrity-check)
 * [License Compliance check](#license-compliance-check)
+* [Next steps](#next-steps)
 * [Configuring the repository](#configuring-the-repository)
 
 ## Preface
@@ -163,20 +163,6 @@ The [CLI](#nodejs-cli) and the [initialize workflow](#repository-template) suppo
 | `overwrite` | Whether to overwrite existing files or not. When enabled, the CLI won't prompt for the files to overwrite | Boolean | No | - | `--overwrite` | Not supported. Automatically set to `true` |
 | `no-prompts` | Whether to skip the prompts or not. When provided, the CLI won't prompt for any input | Boolean | No | - | `--no-prompts` | Not supported. Automatically set to `true` |
 
-## Next steps
-
-Once you have used the scaffolding tools to create the resources, you should follow these steps to finalize the setup of your project:
-
-1. __Ensure that the `chore/cla-signatures` branch exists__: If you have used the [CLI](#nodejs-cli), you should create the `chore/cla-signatures` branch manually and push it to the repository. This branch is used to store the data of the contributors signing the CLA. Read the [Automatic Contributing License Agreement](#automatic-contributing-license-agreement) section for more information.
-2. __Remember to configure the repository rules__: Remember to configure the branch protection rules to require the different checks in PRs, including the CLA signing check and the Opensource resources checks. Read the [Configuring the repository section](#configuring-the-repository) for more information.
-3. __Configure the License integrity check__: The scaffold creates a basic configuration for the license integrity check, but you should review it and adapt it to your project. Read the [License Integrity check](#license-integrity-check) section for more information.
-4. __Configure the License compliance check__: The repository creates a basic configuration for the license compliance check, but you should review it and adapt it to your project. Read the [License Compliance check](#license-compliance-check) section for more information.
-5. __Finish the README file__: The scaffold creates for you a `README.md` file with some basic information about the project and license, but you should fill it with the information about the project, how to install it, how to use it, etc. But remember to __always keep the "Contributing" and "License" sections__.
-6. __Finish the CONTRIBUTING file__: You should do the same with the `CONTRIBUTING.md` file. You should __fill the "Getting Started" section__ with the steps that a contributor should follow to start contributing to the project, and __add as many sections as needed to explain the contribution process__. But you should __always keep the rest of sections__ about the licensing of new files, code of conduct and the CLA.
-
-> [!IMPORTANT]
-> Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication before making it public.
-
 ## Automatic Contributing License Agreement
 
 The Contributor License Agreement (CLA) is a legal document that defines the terms under which a contributor is allowed to contribute to the project. It is a common practice in open source projects to ensure that the project owner has the necessary rights to distribute the contributions.
@@ -262,6 +248,20 @@ composer exec composer-license-checker -- check
 > These snippets are from the [eBay's open source program docs](https://opensource.ebay.com/contributing/approval/tooling/). Check the original source for more information.
 
 </details>
+
+## Next steps
+
+Once you have used the scaffolding tools to create the resources, you should follow these steps to finalize the setup of your project:
+
+1. __Ensure that the `chore/cla-signatures` branch exists__: If you have used the [CLI](#nodejs-cli), you should create the `chore/cla-signatures` branch manually and push it to the repository. This branch is used to store the data of the contributors signing the CLA. Read the [Automatic Contributing License Agreement](#automatic-contributing-license-agreement) section for more information.
+2. __Remember to configure the repository rules__: Remember to configure the branch protection rules to require the different checks in PRs, including the CLA signing check and the Opensource resources checks. Read the [Configuring the repository section](#configuring-the-repository) for more information.
+3. __Configure the License integrity check__: The scaffold creates a basic configuration for the license integrity check, but you should review it and adapt it to your project. Read the [License Integrity check](#license-integrity-check) section for more information.
+4. __Configure the License compliance check__: The repository creates a basic configuration for the license compliance check, but you should review it and adapt it to your project. Read the [License Compliance check](#license-compliance-check) section for more information.
+5. __Finish the README file__: The scaffold creates for you a `README.md` file with some basic information about the project and license, but you should fill it with the information about the project, how to install it, how to use it, etc. But remember to __always keep the "Contributing" and "License" sections__.
+6. __Finish the CONTRIBUTING file__: You should do the same with the `CONTRIBUTING.md` file. You should __fill the "Getting Started" section__ with the steps that a contributor should follow to start contributing to the project, and __add as many sections as needed to explain the contribution process__. But you should __always keep the rest of sections__ about the licensing of new files, code of conduct and the CLA.
+
+> [!IMPORTANT]
+> Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication before making it public.
 
 ## Configuring the repository
 
