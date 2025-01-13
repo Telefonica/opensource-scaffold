@@ -24,6 +24,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * feat: Change "opensource" word to "open source" everywhere
 
+### Fixed
+
+* chore: Replace {{repo_url}} with the actual repository URL in the repository GitHub templates
+
 ## [0.1.1] - 2025-01
 
 ### Added
