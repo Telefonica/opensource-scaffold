@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * feat: Generate CHANGELOG.md file
+* feat: Allow renovate and dependabot to skip CLA by default
 
 ### Changed
 
