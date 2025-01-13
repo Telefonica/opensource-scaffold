@@ -42,4 +42,6 @@ export interface TemplatesContext {
   communityEmail?: string;
   /** Current year */
   year: number;
+  /** Current date */
+  date: string;
 }

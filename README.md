@@ -54,7 +54,8 @@ You can initialize a new open source project by creating a new repository from t
   ![Initialize repository workflow](./docs/assets/init-workflow.png)
 3. __Rename the `.github-draft` folder__: The PR creates a `.github-draft` branch that needs to be renamed to `.github` manually before merging it. Follow the instructions in the PR description to rename the folder and push the changes. _(This is because creating workflow files from an action requires special permissions, and the process of granting them would be more complex than simply renaming the folder)._
   ![Initialize repository PR](./docs/assets/init-pr.png)
-4. __Merge the PR__
+4. __Sign the CLA__: If you have not signed the CLA yet, you will need to do so. The PR will include a comment asking you to sign the CLA. Follow the instructions in the comment to sign the CLA.
+5. __Merge the PR__
 
 That's it! You can now start working on your project. Happy coding! 🚀
 
@@ -257,6 +258,8 @@ Once you have used the scaffolding tools to create the resources, you should fol
 2. __Remember to configure the repository rules__: Remember to configure the branch protection rules to require the different checks in PRs, including the CLA signing check and the open source resources checks. Read the [Configuring the repository section](#configuring-the-repository) for more information.
 3. __Configure the License integrity check__: The scaffold creates a basic configuration for the license integrity check, but you should review it and adapt it to your project. Read the [License Integrity check](#license-integrity-check) section for more information.
 4. __Configure the License compliance check__: The repository creates a basic configuration for the license compliance check, but you should review it and adapt it to your project. Read the [License Compliance check](#license-compliance-check) section for more information.
+    * Remember to modify the `.github/workflows/open-source-checks.yml` file to install the dependencies needed to run the check for your project's language in the `check-license-compliance` job. _(You'll find a TODO comment in the file indicating where to do it.)_
+    * If your project is not a Node.js project, you should comment out the `check-license-compliance` job in the `.github/workflows/open-source-checks.yml` file and implement your own check depending on the language of your project.
 5. __Finish the README file__: The scaffold creates for you a `README.md` file with some basic information about the project and license, but you should fill it with the information about the project, how to install it, how to use it, etc. But remember to __always keep the "Contributing" and "License" sections__.
 6. __Finish the CONTRIBUTING file__: You should do the same with the `CONTRIBUTING.md` file. You should __fill the "Getting Started" section__ with the steps that a contributor should follow to start contributing to the project, and __add as many sections as needed to explain the contribution process__. But you should __always keep the rest of sections__ about the licensing of new files, code of conduct and the CLA.
 

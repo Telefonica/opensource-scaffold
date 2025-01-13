@@ -11,12 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
-## [0.2.0] - 2025-01
+## [0.2.0] - 2025-01-13
 
 ### Added
 
 * feat: Generate CHANGELOG.md file
 * feat: Allow renovate and dependabot to skip CLA by default
+* docs: Add step in the template process about signing the CLA
+* docs: Add note about installing the dependencies in the "open-source-checks" workflow
 
 ### Changed
 

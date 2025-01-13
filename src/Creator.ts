@@ -20,6 +20,18 @@ import { RESOURCES } from "./Resources.js";
 import type { Resource } from "./Resources.types.js";
 
 /**
+ * Returns the current date in the format YYYY-MM-DD
+ */
+function getCurrentDate() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+/**
  * Class creating the scaffold resources
  */
 export class Creator {
@@ -68,6 +80,7 @@ export class Creator {
       repositoryUrl,
       communityEmail,
       year: new Date().getFullYear(),
+      date: getCurrentDate(),
     };
   }
 
