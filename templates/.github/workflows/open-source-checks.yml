@@ -1,0 +1,63 @@
+# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
+# SPDX-License-Identifier: MIT
+
+name: Open Source Checks
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:  
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  check-opensource-scaffold:
+    name: Check Opensource Scaffold
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Check Opensource Scaffold
+        uses: Telefonica/opensource-scaffold@v0
+
+  check-license-compliance:
+    name: Check License Compliance
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # TODO: Add step to install dependencies here
+
+      - name: Check License Compliance
+        uses: Telefonica/check-license-compliance/.github/actions/check-and-comment@v0
+        with:
+          config-file: .github/check-license-compliance.config.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  check-spdx-headers:
+    name: Check SPDX Headers
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Check SPDX Headers
+        uses: Telefonica/check-spdx-headers/.github/actions/check-and-comment@v0
+        with:
+          config-file: .github/check-spdx-headers.config.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

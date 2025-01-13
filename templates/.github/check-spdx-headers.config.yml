@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
+# SPDX-License-Identifier: MIT
+
+rules:
+  - name: "Source code"
+    headers:
+      - files:
+          - "**/*.js"
+          - "**/*.ts"
+          - "src/**"
+        license: "<%= license %>"
+        ignore:
+          - "*.config.js"
+  - name: "Config files"
+    headers:
+      - files:
+          - ".github/**/*.yml"
+          - "**/*.yml"
+          - "*.config.js"
+        license:
+          - "MIT"
+          - "<%= license %>"
+  - name: "Copyright"
+    headers:
+      - files:
+          - ".github/**/*.yml"
+          - "src/**"
+          - "**/*.yml"
+        copyright:
+          - "\\d{4}(\\s-\\s\\d{4})? <%= copyrightHolder %>"
+ignore:
+  - "**/node_modules/**"
+  - "dist/**"
+  - "build/**"
+  - "coverage/**"
+  - ".github/ISSUE_TEMPLATE/**"
