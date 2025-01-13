@@ -18,6 +18,11 @@ export const RESOURCES: Resource[] = [
     origin: "templates/README.md",
   },
   {
+    name: "Changelog file",
+    path: "CHANGELOG.md",
+    origin: "templates/CHANGELOG.md",
+  },
+  {
     name: "Bugs template",
     path: ".github/ISSUE_TEMPLATE/BUG.yml",
     origin: "templates/.github/ISSUE_TEMPLATE/BUG.yml",

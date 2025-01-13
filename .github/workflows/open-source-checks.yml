@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   check-opensource-scaffold:
-    name: Check Opensource Scaffold
+    name: Check Open Source Scaffold
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
 
-      - name: Check Opensource Scaffold
+      - name: Check Open Source Scaffold
         uses: ./
 
   check-license-compliance:

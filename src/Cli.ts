@@ -197,7 +197,7 @@ export async function run(exitOverride?: boolean): Promise<void> {
   const program = new Command();
 
   program
-    .name("Opensource Scaffold")
+    .name("Open Source Scaffold")
     .description("CLI to create or check open source project scaffolding");
 
   if (exitOverride) {
