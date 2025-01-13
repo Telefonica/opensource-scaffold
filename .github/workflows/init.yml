@@ -103,7 +103,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Initialize repository"
-          title: "Initialize opensource project"
+          title: "Initialize open source project"
           body: |
             This PR initializes the repository with the following configuration:
             

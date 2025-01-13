@@ -110,7 +110,7 @@ export class Creator {
    * Create the scaffold resources
    */
   public async create() {
-    this._logger.info(`Creating opensource project resources with ${this._license} license`);
+    this._logger.info(`Creating open source project resources with ${this._license} license`);
     if (this._resourcesToOverwrite.length > 0) {
       this._logger.debug("Resources to overwrite", {
         resources: this._resourcesToOverwrite,
