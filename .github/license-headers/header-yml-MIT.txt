@@ -1,2 +1,0 @@
-# SPDX-FileCopyrightText: %year% Telefónica and contributors
-# SPDX-License-Identifier: MIT

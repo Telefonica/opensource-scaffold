@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2024 Telefónica and contributors
 // SPDX-License-Identifier: MIT
 
-const DICTIONARIES_BASE_PATH = "tools/nodejs/cspell";
+const DICTIONARIES_BASE_PATH = "cspell";
 
 module.exports = {
   // Version of the setting file.  Always 0.2
@@ -11,9 +11,13 @@ module.exports = {
     "node_modules/**",
     ".husky/**",
     "pnpm-lock.yaml",
-    "tools/cspell/*.txt",
+    "cspell/*.txt",
     "cspell.config.cjs",
     "**/.gitignore",
+    "dist/**",
+    "dist-action/**",
+    "coverage/**",
+    "coverage-action/**",
   ],
   caseSensitive: false,
   // Language - current active spelling language
