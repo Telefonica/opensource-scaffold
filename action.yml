@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2024 Telefónica Innovación Digital and contributors
 # SPDX-License-Identifier: Apache-2.0
 
-name: 'Check Opensource Scaffold'
-description: 'GitHub Action to check that the repository is compliant with the opensource scaffold'
+name: 'Check Open Source Scaffold'
+description: 'GitHub Action to check that the repository is compliant with the open source scaffold'
 author: 'Telefónica Innovación Digital'
 
 inputs:
