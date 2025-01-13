@@ -144,6 +144,7 @@ Once you initialize an open source project using this scaffold, it will include 
     * [__License compliance check__](#license-compliance-check): Checks that the dependencies of the project are licensed under a license that is compatible with a given configuration. The configuration by default is the one defined in the [Practical Guide to Open Source Software at Telefónica](#preface), but can be customized.
     * [__Open source resources check__](#opensource-resources-check): Checks that the project still contains the files that have been created by this scaffold, ensuring that the project always remains compliant with the open source guidelines.
 * [__A Github Workflow for automatic CLA signing__](#automatic-contributing-license-agreement): It automates the process of signing the CLA, by creating a comment in the pull request asking contributors who have not signed CLA to sign. It fails the pull request status check with a failure if the contributor has not signed the CLA.
+* __Changelog file__: A changelog file to keep track of the changes in the project. It is based on the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ## Inputs
 
