@@ -38,18 +38,18 @@ This project adheres to the [Software Package Data Exchange (SPDX)](https://spdx
 This license must be used for all new code, unless the containing project, module or externally-imported codebase uses a different license. If you can't put a header in the file due to its structure, please put it in a LICENSE file in the same directory.
 
 ```
-// SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors. All rights reserved
+// SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
 // SPDX-License-Identifier: <%= license %>
 
-# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors. All rights reserved
+# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
 # SPDX-License-Identifier: <%= license %>
 
 <!--
-   SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors. All rights reserved
+   SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
    SPDX-License-Identifier: <%= license %>
 -->
 
-SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors. All rights reserved
+SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
 SPDX-License-Identifier: <%= license %>
 ```
 
@@ -58,18 +58,18 @@ SPDX-License-Identifier: <%= license %>
 This license can be used for test scripts and other short code snippets, at the discretion of the author.
 
 ```
-// SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors
+// SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
 // SPDX-License-Identifier: MIT
 
-# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors
+# SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
 # SPDX-License-Identifier: MIT
 
 <!--
-   SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors
+   SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
    SPDX-License-Identifier: MIT
 -->
 
-SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %> and contributors
+SPDX-FileCopyrightText: <%= year %> <%= copyrightHolder %>
 SPDX-License-Identifier: MIT
 ```
 
