@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
+## [0.2.2] - 2025-01-14
+
+### Fixed
+
+* fix: Fix MIT license template data. Year and copyright holder name were not being replaced correctly.
+* fix: Fix renovate user id in the CLA allowlist
+
 ## [0.2.1] - 2025-01-13
 
 ### Fixed
