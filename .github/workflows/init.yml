@@ -22,7 +22,7 @@ on:
         required: true
       copyright:
         type: string
-        description: Copyright owner
+        description: Copyright holder
         required: true
       description:
         type: string
