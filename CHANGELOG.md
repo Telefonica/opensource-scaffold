@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
+## [0.3.0]
+
+### Added
+
+* feat: Generate different `check-license-compliance` configurations based on the license type
+
+### Changed
+
+* chore: Update the `check-spdx-headers` action to version 1.x
+
 ## [0.2.2] - 2025-01-14
 
 ### Fixed

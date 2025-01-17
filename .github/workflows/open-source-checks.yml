@@ -60,7 +60,7 @@ jobs:
 
       - name: Check SPDX Headers
         if: github.event_name == 'pull_request'
-        uses: Telefonica/check-spdx-headers/.github/actions/check-and-comment@v0
+        uses: Telefonica/check-spdx-headers/.github/actions/check-and-comment@v1
         with:
           config-file: .github/check-spdx-headers.config.yml
         env:
