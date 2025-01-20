@@ -12,8 +12,37 @@ import { LOG_LEVELS } from "./Logger.js";
 import type { LogLevel } from "./Logger.types.js";
 import type { Resource } from "./Resources.types.js";
 
+const SUPPORTED_LICENSES_OPTIONS = SUPPORTED_LICENSES.map((supportedLicense) => ({
+  name: supportedLicense,
+  value: supportedLicense,
+})).sort((a, b) => a.name.localeCompare(b.name));
+
 /**
- * Create scaffold resources
+ * Validates a repository URL
+ * @param repoUrl The repository URL
+ * @returns True if the URL is valid, an error message otherwise
+ */
+export function validateRepositoryUrl(repoUrl: string): boolean | string {
+  if (!Creator.validateRepositoryUrl(repoUrl)) {
+    return "Invalid repository URL. It should include the protocol and don't have a trailing slash";
+  }
+  return true;
+}
+
+/**
+ * Validates an email
+ * @param str The email
+ * @returns True if the email is valid or empty, an error message otherwise
+ */
+export function validateEmail(str: string): boolean | string {
+  if (str.length && !Creator.validateEmail(str)) {
+    return "Invalid email";
+  }
+  return true;
+}
+
+/**
+ * Check scaffold resources
  * @param options Options from commander
  */
 export async function check(options: {
@@ -29,11 +58,10 @@ export async function check(options: {
   const result = await checker.check();
 
   if (!result.valid) {
+    console.error(result.report.message);
     if (options.exitOverride) {
       throw new Error(result.report.message);
     } else {
-      const missing = result.report.missing.length;
-      console.error(`Check failed: ${missing} missing resource${missing > 1 ? "s" : ""}`);
       process.exit(1);
     }
   }
@@ -101,13 +129,16 @@ export async function create(options: {
     );
   }
 
+  if (!copyrightHolder && !options.prompts) {
+    validationError(
+      "Copyright holder is required. Please provide it using the --copyright option or enable prompts",
+    );
+  }
+
   if (!license && options.prompts) {
     license = (await select({
       message: "Select a license",
-      choices: SUPPORTED_LICENSES.map((supportedLicense) => ({
-        name: supportedLicense,
-        value: supportedLicense,
-      })).sort((a, b) => a.name.localeCompare(b.name)),
+      choices: SUPPORTED_LICENSES_OPTIONS,
     })) as SupportedLicense;
   }
 
@@ -130,12 +161,7 @@ export async function create(options: {
       message:
         "Enter the repository URL, including the protocol and without the trailing slash (https://github.com/owner/repo)",
       required: false,
-      validate: (value) => {
-        if (!Creator.validateRepositoryUrl(value)) {
-          return "Invalid repository URL. It should include the protocol and don't have a trailing slash";
-        }
-        return true;
-      },
+      validate: validateRepositoryUrl,
     });
   }
 
@@ -150,12 +176,7 @@ export async function create(options: {
     email = await input({
       message: "Enter the community email (optional)",
       required: false,
-      validate: (value) => {
-        if (value.length && !Creator.validateEmail(value)) {
-          return "Invalid email";
-        }
-        return true;
-      },
+      validate: validateEmail,
     });
   }
 
@@ -199,10 +220,6 @@ export async function run(exitOverride?: boolean): Promise<void> {
   program
     .name("Open Source Scaffold")
     .description("CLI to create or check open source project scaffolding");
-
-  if (exitOverride) {
-    program.exitOverride();
-  }
 
   program
     .command("create")
