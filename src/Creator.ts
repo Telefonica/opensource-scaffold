@@ -68,7 +68,7 @@ export class Creator {
     }
 
     if (Creator.validateRepositoryUrl(repositoryUrl) === false) {
-      throw new Error("Invalid email");
+      throw new Error("Invalid repository URL");
     }
 
     this._templatesContext = {
