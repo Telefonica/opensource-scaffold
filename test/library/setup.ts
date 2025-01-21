@@ -17,7 +17,6 @@ jest.mock<typeof import("mem-fs")>("mem-fs", () => ({
 // @ts-ignore
 jest.mock<typeof import("mem-fs-editor")>("mem-fs-editor", () => ({
   create: jest.fn().mockImplementation(),
-  commit: jest.fn().mockImplementation(),
 }));
 
 jest.mock<typeof import("@src/Paths")>("@src/Paths", () => ({
