@@ -58,10 +58,10 @@ export async function check(options: {
   const result = await checker.check();
 
   if (!result.valid) {
-    console.error(result.report.message);
     if (options.exitOverride) {
       throw new Error(result.report.message);
     } else {
+      console.error(result.report.message);
       process.exit(1);
     }
   }

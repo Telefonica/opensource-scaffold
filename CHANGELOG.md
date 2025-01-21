@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
+
 ## [unreleased]
 
 ### Added
@@ -22,6 +23,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * chore: Upgrade `check-spdx-headers` action to version 1.x
 * chore: Upgrade `check-license-compliance` action to version 1.x
 
+## [1.0.1] - 2025-01-21
+
+### Changed
+
+* test: Ensure 100% action tests coverage
+
+### Fixed
+
+* fix: Do not console error in case of invalid check when "exitOverride" is set to true
+* docs: Add missing change to v1.0.0 CHANGELOG entry
+
+
 ## [1.0.0] - 2025-01-21
 
 ### Added
@@ -31,6 +44,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 * chore: Upgrade `check-spdx-headers` and `check-license-compliance` actions to v1
+
+### Fixed
+
+* fix: Throw error if Copyright holder is not provided and prompts are disabled
 
 ## [0.2.2] - 2025-01-14
 
