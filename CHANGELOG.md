@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
+## [1.0.1] - 2025-01-21
+
+### Changed
+
+* test: Ensure 100% action tests coverage
+
+### Fixed
+
+* fix: Do not console error in case of invalid check when "exitOverride" is set to true
+* docs: Add missing change to v1.0.0 CHANGELOG entry
+
 ## [1.0.0] - 2025-01-21
 
 ### Added
