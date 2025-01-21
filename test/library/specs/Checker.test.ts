@@ -10,6 +10,8 @@ jest.mock<typeof import("fs")>("fs", () => ({
   existsSync: jest.fn().mockReturnValue(true),
 }));
 
+const RESOURCES_NUMBER = 14;
+
 describe("check", () => {
   afterEach(() => {
     jest.clearAllMocks();
@@ -54,7 +56,9 @@ describe("check", () => {
       const checker = new Checker({ log: "error" });
       const result = await checker.check();
 
-      expect(result.report.message).toEqual(expect.stringContaining("14 missing resources:"));
+      expect(result.report.message).toEqual(
+        expect.stringContaining(`${RESOURCES_NUMBER} missing resources:`),
+      );
     });
   });
 });
