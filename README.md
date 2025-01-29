@@ -211,7 +211,7 @@ As mentioned above, the [Telefonica/check-license-compliance github action](http
 Here you have some suggestions about how to implement the check for some common languages until they are supported by our Github action:
 
 <details>
-  <summary><b>See code snippets</b></summary>
+  <summary>See code snippets</summary>
 
 ### Java
 
