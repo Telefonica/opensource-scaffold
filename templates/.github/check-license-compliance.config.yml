@@ -5,6 +5,7 @@ licenses:
   allowed:
     - Apache-2.0
     - MIT
+    - BSD
     - ISC
   warning:
     - LGPL-3.0
