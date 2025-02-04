@@ -46,6 +46,7 @@ jobs:
         uses: Telefonica/check-license-compliance/.github/actions/check-and-comment@v2
         with:
           config-file: .github/check-license-compliance.config.yml
+          log: debug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
