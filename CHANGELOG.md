@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
+## [1.1.0] - 2025-02-04
+
+### Changed
+
+* feat: Bump `check-license-compliance` to v2. Update the action configuration accordingly
+
 ## [1.0.1] - 2025-01-21
 
 ### Changed

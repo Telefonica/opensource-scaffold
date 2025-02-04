@@ -1,6 +1,6 @@
 {
   "name": "@tid-xcut/opensource-scaffold",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "description": "Scaffolding for open source projects. A CLI tool to create open source repositories tools and resources",
   "packageManager": "pnpm@9.4.0",
