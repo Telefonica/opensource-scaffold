@@ -1,3 +1,4 @@
 ELIFECYCLE
+OBSD
 opensource
 renovatebot
