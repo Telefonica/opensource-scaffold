@@ -46,6 +46,8 @@ licenses:
 #     - "**/package.json"
 #   excludeFiles: # Files to exclude from the check
 #     - "**/node_modules/**"
+#   developmentFiles: # Dependencies in these files are considered development dependencies
+#     - "**/my-dev-package/package.json"
 #   modules: # Only check these modules
 #     - "foo-module@1.0.0"
 #   excludeModules: # Exclude these modules from the check
