@@ -32,6 +32,7 @@ licenses:
     - MPL-1.1
     - MPL-2.0
     - EPL-1.0
+    - Artistic-2.0 # No problem to use it if we are not modifying the code
   forbidden:
     - GPL-2.0-only
     - GPL-2.0-or-later
@@ -43,8 +44,3 @@ npm:
   excludeModules:
     # The following packages have a license that is not a valid SPDX identifier
     - "babel-plugin-transform-import-meta@2.2.1" # BSD
-    # Next packages are distributed under the Artistic-2.0 license. According to the license terms, we are allowed to use it because we are not modifying it.
-    - "binaryextensions@6.11.0"
-    - "editions@6.21.0"
-    - "textextensions@6.21.0"
-    - "version-range@6.21.0"
