@@ -16,6 +16,7 @@ rules:
     headers:
       - files:
           - "templates/.github/**/*.yml"
+          - "templates/check-license-compliance-configs/*.yml"
         license:
           - "MIT"
         copyright: "<%= year %> <%= copyrightHolder %>"
@@ -48,6 +49,9 @@ rules:
           - "\\d{4}(\\s-\\s\\d{4})? Telefónica Innovación Digital and contributors"
           - "\\d{4}(\\s-\\s\\d{4})? Telefónica Innovación Digital"
           - "\\d{4}(\\s-\\s\\d{4})? Telefónica"
+    ignore:
+      - "templates/.github/**/*.yml"
+      - "templates/check-license-compliance-configs/*.yml"
 ignore:
   - "**/node_modules/**"
   - "dist/**"
