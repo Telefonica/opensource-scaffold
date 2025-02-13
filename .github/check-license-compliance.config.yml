@@ -43,5 +43,8 @@ npm:
   excludeModules:
     # The following packages have a license that is not a valid SPDX identifier
     - "babel-plugin-transform-import-meta@2.2.1" # BSD
-    # It is distributed under the Artistic-2.0 license. According to the license terms, we are allowed to use it because we are not modifying it.
-    - "mem-fs-editor@11.1.4" # Artistic-2.0
+    # Next packages are distributed under the Artistic-2.0 license. According to the license terms, we are allowed to use it because we are not modifying it.
+    - "binaryextensions@6.11.0"
+    - "editions@6.21.0"
+    - "textextensions@6.21.0"
+    - "version-range@6.21.0"
