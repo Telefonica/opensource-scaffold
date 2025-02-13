@@ -43,10 +43,9 @@ jobs:
           npm-token: ${{ secrets.NPM_TOKEN_XCUT }}
 
       - name: Check License Compliance
-        uses: Telefonica/check-license-compliance/.github/actions/check-and-comment@v2
+        uses: Telefonica/check-license-compliance/.github/actions/check-and-comment@v3.0.0-beta.1
         with:
           config-file: .github/check-license-compliance.config.yml
-          log: debug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

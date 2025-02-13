@@ -11,16 +11,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
-## [1.1.0] - 2025-02-04
+## [1.1.0] - 2025-02-13
 
 ### Added
 
+* feat: Upgrade `check-license-compliance` to v3. Now it supports checking licenses from NPM, Maven, Python and Go dependencies. Update the action configuration accordingly
 * feat: Generate different `check-license-compliance` configurations based on the license type
+* feat: Add `check-license-compliance` options commented out to configuration file, so it is easier to understand what can be configured
 
 ### Changed
 
-* feat: Bump `check-license-compliance` to v2. Update the action configuration accordingly
 * chore: Bump `check-spdx-headers` action to version v1
+
+### Fixed
+
+* fix: Fix typo in "0BSD" license
 
 ## [1.0.1] - 2025-01-21
 
