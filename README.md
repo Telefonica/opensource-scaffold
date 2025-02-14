@@ -8,7 +8,7 @@ In detail, it includes:
 
 * A __CLI for scaffolding open source projects__ with the standard files, including workflows for license compliance and integrity checks, community guidelines, and more. Read the [CLI section](#nodejs-cli) below for more information.
 * A __Github workflow__ automating the process of initializing a project with the standard files, by simply creating a new repository from this template and running the workflow. Read the [Repository template section](#repository-template) below for more information.
-* A __Github action__ enabling to check the scaffolding of open source projects, ensuring that some relevant files are not removed after project creation. Read the [Github action section](#github-action-for-checking-the-opensource-resources) below for more information.
+* A __Github action__ enabling to check the scaffolding of open source projects, ensuring that some relevant files are not removed after creating the project. Read the [Github action section](#github-action-for-checking-the-opensource-resources) below for more information.
 
 ## Table of Contents
 
@@ -141,7 +141,7 @@ Once you initialize an open source project using this scaffold, it will include 
     * Includes a check to ensure that the contributor has read the Code of Conduct.
 * __A Github Workflow with open source checks__: It is executed on every pull request and pushes to the main branch, and checks the following:
     * [__License Integrity check__](#license-integrity-check): Checks that all files in the project are rightly licensed. That is, it checks that all files have the expected license header according to the license chosen for the project and a given configuration.
-    * [__License compliance check__](#license-compliance-check): Checks that the dependencies of the project are licensed under a license that is compatible with a given configuration. The configuration by default is the one defined in the [Practical Guide to Open Source Software at Telefónica](#preface), but can be customized.
+    * [__License compliance check__](#license-compliance-check): Checks that the dependencies of the project are licensed under a license that is compatible with a given configuration. The configuration by default is the one defined in the [Practical Guide to Open Source Software at Telefónica](#preface) for the chosen project's license, but can be customized.
     * [__Open source resources check__](#opensource-resources-check): Checks that the project still contains the files that have been created by this scaffold, ensuring that the project always remains compliant with the open source guidelines.
 * [__A Github Workflow for automatic CLA signing__](#automatic-contributing-license-agreement): It automates the process of signing the CLA, by creating a comment in the pull request asking contributors who have not signed CLA to sign. It fails the pull request status check with a failure if the contributor has not signed the CLA.
 * __Changelog file__: A changelog file to keep track of the changes in the project. It is based on the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
@@ -192,10 +192,7 @@ We want to ensure that the software we build is in compliance with our [licensin
 
 This means that we are not incorporating third party software in the project under a license that is not compatible with the license selected for the overall project, or that is not compatible with the company's open source licensing guidelines.
 
-For such purpose, this scaffold includes a job in the "Open Source Checks" workflow. This job uses the [Telefonica/check-license-compliance github action](https://github.com/Telefonica/check-license-compliance). The configuration of the action is defined in the `.github/check-license-compliance.config.yml` file. It is filled automatically with the [inputs](#inputs) provided when creating the scaffold, but it can be also customized manually to fit better your project's needs.
-
-> [!WARNING]
-> The check is language dependent, and, for the moment, it only supports Node.js dependencies. You should comment it out if your project is not a Node.js project, and read the suggestions below to implement you or own check depending on the language of your project.
+For such purpose, this scaffold includes a job in the "Open Source Checks" workflow. This job uses the [Telefonica/check-license-compliance github action](https://github.com/Telefonica/check-license-compliance). The configuration of the action is defined in the `.github/check-license-compliance.config.yml` file. It is filled automatically based on the license provided when creating the scaffold, but it can be also customized manually to fit better your project's needs.
 
 Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578) when configuring the license compliance check. In case of doubt, please contact the Intellectual Property team, to the email address indicated in such document.
 
@@ -203,53 +200,6 @@ Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:
 
 > [!TIP]
 > In repositories with [GitHub Advanced Security enabled](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security), you may use the [Github's dependency-review-action](https://github.com/actions/dependency-review-action) instead of the [Telefonica/check-license-compliance github action](https://github.com/Telefonica/check-license-compliance). In such case, modify the `.github/workflows/open-source-checks.yml` to change the action used in the `check-license-compliance` job.
-
-### Checking other languages than Node.js
-
-As mentioned above, the [Telefonica/check-license-compliance github action](https://github.com/Telefonica/check-license-compliance) for the moment only supports Node.js dependencies. If your project is not a Node.js project, you should comment it out and implement your own check depending on the language of your project.
-
-Here you have some suggestions about how to implement the check for some common languages until they are supported by our Github action:
-
-<details>
-  <summary>See code snippets</summary>
-
-### Java
-
-Run this to get the dependency license list.
-
-```bash
-mvn org.codehaus.mojo:license-maven-plugin:aggregate-third-party-report
-```
-
-When this is done, the result will be in ./target/site/aggregate-third-party-report.html.
-
-### Python
-
-```bash
-pip3 install --user pylic
-cd path/to/repo
-touch pyproject.toml
-pylic check
-```
-
-### Go
-
-```bash
-go install github.com/google/go-licenses@latest
-go-licenses check . --allowed_licenses=MIT,ISC,BSD-3-Clause,Apache-2.0,BSD-2-Clause,0BSD,CC-BY-4.0
-```
-
-### PHP
-
-```bash
-composer require dominikb/composer-license-checker
-composer exec composer-license-checker -- check
-```
-
-> [!INFO]
-> These snippets are from the [eBay's open source program docs](https://opensource.ebay.com/contributing/approval/tooling/). Check the original source for more information.
-
-</details>
 
 ## Next steps
 
@@ -259,8 +209,6 @@ Once you have used the scaffolding tools to create the resources, you should fol
 2. __Remember to configure the repository rules__: Remember to configure the branch protection rules to require the different checks in PRs, including the CLA signing check and the open source resources checks. Read the [Configuring the repository section](#configuring-the-repository) for more information.
 3. __Configure the License integrity check__: The scaffold creates a basic configuration for the license integrity check, but you should review it and adapt it to your project. Read the [License Integrity check](#license-integrity-check) section for more information.
 4. __Configure the License compliance check__: The repository creates a basic configuration for the license compliance check, but you should review it and adapt it to your project. Read the [License Compliance check](#license-compliance-check) section for more information.
-    * Remember to modify the `.github/workflows/open-source-checks.yml` file to install the dependencies needed to run the check for your project's language in the `check-license-compliance` job. _(You'll find a TODO comment in the file indicating where to do it.)_
-    * If your project is not a Node.js project, you should comment out the `check-license-compliance` job in the `.github/workflows/open-source-checks.yml` file and implement your own check depending on the language of your project.
 5. __Finish the README file__: The scaffold creates for you a `README.md` file with some basic information about the project and license, but you should fill it with the information about the project, how to install it, how to use it, etc. But remember to __always keep the "Contributing" and "License" sections__.
 6. __Finish the CONTRIBUTING file__: You should do the same with the `CONTRIBUTING.md` file. You should __fill the "Getting Started" section__ with the steps that a contributor should follow to start contributing to the project, and __add as many sections as needed to explain the contribution process__. But you should __always keep the rest of sections__ about the licensing of new files, code of conduct and the CLA.
 

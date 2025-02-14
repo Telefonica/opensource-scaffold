@@ -42954,7 +42954,7 @@ const RESOURCES = [
     {
         name: "Check license compliance config",
         path: ".github/check-license-compliance.config.yml",
-        origin: "templates/.github/check-license-compliance.config.yml",
+        origin: "templates/check-license-compliance-configs/<%= license %>.yml",
     },
     {
         name: "Check SPDX headers config",

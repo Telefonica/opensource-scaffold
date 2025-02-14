@@ -5,33 +5,42 @@ licenses:
   allowed:
     - Apache-2.0
     - MIT
-    - BSD
+    - X11
+    - BSD-2-Clause
+    - BSD-3-Clause
     - ISC
-    - (MIT AND CC-BY-3.0)
+    - Zlib
+    - Unlicense
+    - 0BSD
+    - BlueOak-1.0.0
+    - WTFPL
+    - CC-BY-3.0
+    - CC-BY-4.0
+    - CC0-1.0
+    - Python-2.0
   warning:
+    - CC-BY-SA-3.0
+    - CC-BY-SA-4.0
+    - LGPL-2.1
+    - LGPL-2.1-only
+    - LGPL-2.1+
+    - LGPL-2.1-or-later
     - LGPL-3.0
-    - LGPL-2.0
+    - LGPL-3.0-only
+    - LGPL-3.0+
+    - LGPL-3.0-or-later
+    - MPL-1.1
     - MPL-2.0
     - EPL-1.0
-    - CC-BY-4.0
-    - Python-2.0
-    - BlueOak-1.0.0
-    - CC BY-SA 4.0
-    - CC-BY-3.0
-    - CC0-1.0
+    - Artistic-2.0 # No problem to use it if we are not modifying the code
   forbidden:
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+    - GPL-3.0-or-later
     - AGPL-3.0
-    - GPL-2.0
-    - GPL-3.0
-allowWarnings: true
-# Options passed directly to the license-checker package
-licenseCheckerOptions:
-  # Global options are applied to all types of checks
-  global:
-    excludePrivatePackages: true
-    excludePackages: "@cspell/dict-en-common-misspellings@2.0.7"
-  # You can also specify options for each type of check. They extend the global options
-  # warning:
-    # excludePrivatePackages: false
-  # forbidden:
-    # excludePrivatePackages: false
+log: debug
+npm:
+  excludeModules:
+    # The following packages have a license that is not a valid SPDX identifier
+    - "babel-plugin-transform-import-meta@2.2.1" # BSD

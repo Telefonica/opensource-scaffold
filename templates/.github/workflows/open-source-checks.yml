@@ -37,10 +37,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # TODO: Add step to install dependencies here
-
       - name: Check License Compliance
-        uses: Telefonica/check-license-compliance/.github/actions/check-and-comment@v1
+        uses: Telefonica/check-license-compliance/.github/actions/check-and-comment@v3.0.0-beta.1
         with:
           config-file: .github/check-license-compliance.config.yml
         env:
