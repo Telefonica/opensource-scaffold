@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 Telefónica Innovación Digital and contributors
+# SPDX-FileCopyrightText: 2024 Telefónica Innovación Digital
 # SPDX-License-Identifier: MIT
 
 rules:
@@ -46,9 +46,7 @@ rules:
           - "**/*.js"
           - "**/*.yml"
         copyright:
-          - "\\d{4}(\\s-\\s\\d{4})? Telefónica Innovación Digital and contributors"
-          - "\\d{4}(\\s-\\s\\d{4})? Telefónica Innovación Digital"
-          - "\\d{4}(\\s-\\s\\d{4})? Telefónica"
+          - "\\d{4}(\\s-\\s\\d{4})? Telefónica Innovación Digital( and contributors)?"
     ignore:
       - "templates/.github/**/*.yml"
       - "templates/check-license-compliance-configs/*.yml"
