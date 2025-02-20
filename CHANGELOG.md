@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-* chore: Upgrade `check-license-compliance` to v3.0.0-beta.2 (change license headers)
+* chore: Upgrade `check-license-compliance` to v3.0.0-beta.2 (change copyright headers)
 
 ## [1.1.0] - 2025-02-13
 
