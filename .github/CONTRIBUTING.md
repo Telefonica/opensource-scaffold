@@ -125,7 +125,7 @@ When you're finished with the changes, create a __pull request to the `release` 
 Once the PR is approved and __merged into the release branch__, a project maintainer can start the release process by:
 
 1. Updating the version number in the `package.json` file.
-2. Updating the action version in the `templates/.github/workflows/opensource-checks.yml` file.
+2. Updating the action version in the `templates/.github/workflows/opensource-checks.yml` file when it is a major release.
 3. Updating the CHANGELOG.md file with the changes in the new version.
 4. Tagging the main branch with the corresponding version numbers.
 
@@ -169,18 +169,18 @@ This project adheres to the [Software Package Data Exchange (SPDX)](https://spdx
 This license must be used for all new code, unless the containing project, module or externally-imported codebase uses a different license. If you can't put a header in the file due to its structure, please put it in a LICENSE file in the same directory.
 
 ```
-// SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors. All rights reserved
+// SPDX-FileCopyrightText: Telefónica Innovación Digital
 // SPDX-License-Identifier: MPL-2.0
 
-# SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors. All rights reserved
+# SPDX-FileCopyrightText: Telefónica Innovación Digital
 # SPDX-License-Identifier: MPL-2.0
 
 <!--
-   SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors. All rights reserved
+   SPDX-FileCopyrightText: Telefónica Innovación Digital
    SPDX-License-Identifier: MPL-2.0
 -->
 
-SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors. All rights reserved
+SPDX-FileCopyrightText: Telefónica Innovación Digital
 SPDX-License-Identifier: MPL-2.0
 ```
 
@@ -189,18 +189,18 @@ SPDX-License-Identifier: MPL-2.0
 This license can be used for test scripts and other short code snippets, at the discretion of the author.
 
 ```
-// SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors
+// SPDX-FileCopyrightText: Telefónica Innovación Digital
 // SPDX-License-Identifier: MIT
 
-# SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors
+# SPDX-FileCopyrightText: Telefónica Innovación Digital
 # SPDX-License-Identifier: MIT
 
 <!--
-   SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors
+   SPDX-FileCopyrightText: Telefónica Innovación Digital
    SPDX-License-Identifier: MIT
 -->
 
-SPDX-FileCopyrightText: {{ year }} {{ company }} and contributors
+SPDX-FileCopyrightText: Telefónica Innovación Digital
 SPDX-License-Identifier: MIT
 ```
 

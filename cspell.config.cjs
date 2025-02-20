@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 Telefónica and contributors
+// SPDX-FileCopyrightText: 2024 Telefónica Innovación Digital
 // SPDX-License-Identifier: MIT
 
 const DICTIONARIES_BASE_PATH = "cspell";

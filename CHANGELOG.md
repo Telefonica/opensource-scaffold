@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
+## [1.1.1] - 2025-02-20
+
+### Fixed
+
+* chore: Change copyright headers. Remove "and contributors" from files where it is not applicable for the moment
+
+### Changed
+
+* chore: Upgrade `check-license-compliance` to v3.0.0-beta.2 (change license headers)
+
 ## [1.1.0] - 2025-02-13
 
 ### Added
