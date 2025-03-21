@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import { existsSync } from "fs";
 
+import globule from "globule";
 import type { Logger } from "winston";
 
 import type { CheckerOptions, ResourceReport, CheckResult } from "./Checker.types.js";
@@ -23,10 +24,12 @@ function resourceToReport(resource: Resource): ResourceReport {
  */
 export class Checker {
   private _logger: Logger;
+  private _ignore?: string[];
   private _logLevel: string;
 
-  constructor({ log }: CheckerOptions = {}) {
+  constructor({ log, ignore }: CheckerOptions = {}) {
     this._logLevel = log || DEFAULT_LEVEL;
+    this._ignore = ignore;
     this._logger = createLogger(log);
   }
 
@@ -62,8 +65,18 @@ export class Checker {
 
     for (const resource of RESOURCES) {
       if (!existingResources.find((r) => r.path === resource.path)) {
-        this._logger.debug(`Resource ${resource.path} does not exist`);
-        nonExistingResources.push(resource);
+        if (
+          this._ignore &&
+          globule.isMatch(this._ignore, resource.path, {
+            dot: true,
+          })
+        ) {
+          this._logger.warn(`Resource ${resource.path} is ignored`);
+          continue;
+        } else {
+          this._logger.debug(`Resource ${resource.path} does not exist`);
+          nonExistingResources.push(resource);
+        }
       } else {
         this._logger.debug(`Resource ${resource.path} exists`);
       }
