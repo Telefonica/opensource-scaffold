@@ -19,6 +19,9 @@ inputs:
       - 'silent'
     default: 'info'
     required: false
+  ignore:
+    description: 'List of glob patterns to ignore, semi-colon separated'
+    required: false
 outputs:
   valid:
     description: 'Whether the check passed or not'

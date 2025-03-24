@@ -113,6 +113,28 @@ jobs:
         uses: Telefonica/opensource-scaffold@v1
 ```
 
+> [!TIP]
+> You can ignore some files when checking the open source resources by providing a list of glob patterns in the `ignore` input. For example, if your repository is a monorepo and you want to ignore the root CHANGELOG.md file, you can omit it by adding `CHANGELOG.md` to the `ignore` input. Read the [inputs](#inputs) section for more information.
+
+#### Inputs
+
+The `opensource-scaffold` action supports the following inputs:
+
+| Name | Description | Type | Required | Default |
+| --- | --- | --- | --- | --- |
+| `log` | The log level to use when running the action | String | No | `info` |
+| `ignore` | A semicolon separated list of glob patterns to ignore files when checking the open source resources | String | No | - |
+
+Example:
+
+```yaml
+- name: Check Open Source scaffold
+  uses: Telefonica/opensource-scaffold@v1
+  with:
+    log: debug
+    ignore: "CHANGELOG.md;**/ISSUE_TEMPLATE/**"
+```
+
 ## The scaffold
 
 Once you initialize an open source project using this scaffold, it will include the following:

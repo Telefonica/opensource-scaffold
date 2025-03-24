@@ -47,7 +47,10 @@ describe("action", () => {
     jest.spyOn(core, "debug").mockImplementation();
     jest.spyOn(core, "info").mockImplementation();
     jest.spyOn(core, "error").mockImplementation();
-    jest.spyOn(core, "getInput").mockReturnValue("info");
+    jest.spyOn(core, "getInput").mockImplementation((name: string) => {
+      if (name === "log") return "info";
+      return "";
+    });
   });
 
   afterEach(() => {
@@ -59,7 +62,7 @@ describe("action", () => {
       main.run();
 
       expect(core.getInput).toHaveBeenCalledWith("log");
-      expect(jest.mocked(Checker)).toHaveBeenCalledWith({ log: "info" });
+      expect(jest.mocked(Checker)).toHaveBeenCalledWith(expect.objectContaining({ log: "info" }));
     });
 
     it("should pass undefined when input is not set", () => {
@@ -67,7 +70,9 @@ describe("action", () => {
 
       main.run();
 
-      expect(jest.mocked(Checker)).toHaveBeenCalledWith({ log: undefined });
+      expect(jest.mocked(Checker)).toHaveBeenCalledWith(
+        expect.objectContaining({ log: undefined }),
+      );
     });
   });
 
@@ -127,6 +132,91 @@ describe("action", () => {
       expect(runMock).toHaveReturned();
 
       expect(setFailedMock).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("ignore option", () => {
+    let mockCheckerInstance: jest.Mocked<Checker>;
+    let mockCheckMethod: jest.SpyInstance;
+    const returnIgnore = (ignore: string) => {
+      jest.spyOn(core, "getInput").mockImplementation((name: string) => {
+        if (name === "log") return "info";
+        if (name === "ignore") return ignore;
+        return "";
+      });
+    };
+
+    beforeEach(() => {
+      mockCheckMethod = jest.fn().mockResolvedValue({ valid: true });
+      mockCheckerInstance = {
+        check: mockCheckMethod,
+      } as unknown as jest.Mocked<Checker>;
+
+      jest.mocked(Checker).mockImplementation(() => mockCheckerInstance);
+    });
+
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it("should pass single ignore pattern to Checker", async () => {
+      returnIgnore("CHANGELOG.md");
+
+      await main.run();
+
+      expect(Checker).toHaveBeenCalledWith(
+        expect.objectContaining({
+          ignore: ["CHANGELOG.md"],
+        }),
+      );
+
+      expect(mockCheckMethod).toHaveBeenCalled();
+    });
+
+    it("should handle multiple patterns separated by semicolon", async () => {
+      returnIgnore("CHANGELOG.md;.github/ISSUE_TEMPLATE/**");
+
+      await main.run();
+
+      expect(Checker).toHaveBeenCalledWith(
+        expect.objectContaining({
+          ignore: ["CHANGELOG.md", ".github/ISSUE_TEMPLATE/**"],
+        }),
+      );
+    });
+
+    it("should not pass ignore option when not provided", async () => {
+      await main.run();
+
+      expect(Checker).toHaveBeenCalledWith(
+        expect.not.objectContaining({
+          ignore: expect.anything(),
+        }),
+      );
+    });
+
+    it("should handle empty ignore option", async () => {
+      returnIgnore("");
+
+      await main.run();
+
+      expect(Checker).toHaveBeenCalledWith(
+        expect.not.objectContaining({
+          ignore: expect.anything(),
+        }),
+      );
+    });
+
+    it("should handle whitespace in ignore patterns", async () => {
+      returnIgnore(" CHANGELOG.md ; .github/ISSUE_TEMPLATE/** ");
+
+      await main.run();
+
+      expect(Checker).toHaveBeenCalledWith(
+        expect.objectContaining({
+          ignore: ["CHANGELOG.md", ".github/ISSUE_TEMPLATE/**"],
+        }),
+      );
     });
   });
 });
