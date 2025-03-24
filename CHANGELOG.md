@@ -11,11 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
-## [1.2.0] - 2025-03-21
+## [1.2.0] - 2025-03-24
 
 ### Added
 
 * feat: Add `ignore` input to the github action, enabling to ignore some files when checking the scaffold resources.
+
+### Changed
+
+* chore: Upgrade `check-license-compliance` to v3.0.0-beta.3 (Support more granularity for including or excluding modules)
 
 ## [1.1.1] - 2025-02-20
 
