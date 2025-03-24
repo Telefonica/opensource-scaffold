@@ -61,4 +61,49 @@ describe("check", () => {
       );
     });
   });
+
+  describe("when ignoring certain resources", () => {
+    beforeEach(() => {
+      jest.mocked(existsSync).mockImplementation((path) => {
+        return (
+          !path.toString().includes("LICENSE") && !path.toString().includes("CODE_OF_CONDUCT.md")
+        );
+      });
+    });
+
+    it("should not report ignored resources as missing", async () => {
+      const checker = new Checker({ log: "error", ignore: ["LICENSE"] });
+      const result = await checker.check();
+
+      expect(result.report.missing.map((r) => r.path)).not.toContain("LICENSE");
+      expect(result.report.missing.map((r) => r.path)).toContain(".github/CODE_OF_CONDUCT.md");
+    });
+
+    it("should support glob patterns for ignoring resources", async () => {
+      const checker = new Checker({ log: "error", ignore: ["**/*.md"] });
+      const result = await checker.check();
+
+      expect(result.report.missing.map((r) => r.path)).toContain("LICENSE");
+      expect(result.report.missing.map((r) => r.path)).not.toContain(".github/CODE_OF_CONDUCT.md");
+    });
+
+    it("should support multiple ignore patterns", async () => {
+      const checker = new Checker({ log: "error", ignore: ["LICENSE", "**/*.md"] });
+      const result = await checker.check();
+
+      expect(result.report.missing.map((r) => r.path)).not.toContain("LICENSE");
+      expect(result.report.missing.map((r) => r.path)).not.toContain(".github/CODE_OF_CONDUCT.md");
+    });
+
+    it("should return valid true when all missing resources are ignored", async () => {
+      jest.mocked(existsSync).mockReturnValue(false);
+
+      const checker = new Checker({ log: "error", ignore: ["**/*"] });
+      const result = await checker.check();
+
+      expect(result.valid).toBe(true);
+      expect(result.report.message).toBe("All resources exist");
+      expect(result.report.missing).toHaveLength(0);
+    });
+  });
 });

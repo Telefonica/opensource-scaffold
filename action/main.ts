@@ -22,7 +22,12 @@ function valueIfDefined<T = string>(value: T): T | undefined {
 export async function run(): Promise<void> {
   try {
     const log = valueIfDefined((core.getInput("log") as LogLevel) || "");
-    const checker = new Checker({ log });
+    const ignore = valueIfDefined(core.getInput("ignore") || "");
+    const ignorePatterns = ignore
+      ? ignore.split(";").map((ignorePattern) => ignorePattern.trim())
+      : undefined;
+
+    const checker = new Checker({ log, ignore: ignorePatterns });
     const result = await checker.check();
 
     core.setOutput("valid", result.valid.toString());

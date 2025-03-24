@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
+## [1.2.0] - 2025-03-21
+
+### Added
+
+* feat: Add `ignore` input to the github action, enabling to ignore some files when checking the scaffold resources.
+
 ## [1.1.1] - 2025-02-20
 
 ### Fixed

@@ -8,6 +8,8 @@ import type { Resource } from "./Resources.types.js";
 export interface CheckerOptions {
   /** Log level */
   log?: LogLevel;
+  /** List of globule patterns to ignore */
+  ignore?: string[];
 }
 
 /** Report for a resource */
