@@ -50,9 +50,6 @@ jobs:
         uses: actions/checkout@v4
 
       - uses: ./.github/actions/setup-node
-        id: setup-node
-        with:
-          npm-token: foo-token
 
       - name: Build
         run: pnpm build
