@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
+## [2.0.0] - 2025-04-09
+
+### Changed
+
+* chore: Publish the npm package to the NPM public registry. Rename it to `@telefonica/opensource-scaffold`.
+* docs: Add badges to the README file
+* docs: Remove references to internal procedures from the README file. Now it is intended to be used by external users also.
+
 ## [1.3.0] - 2025-03-28
 
 ### Changed
