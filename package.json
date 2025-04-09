@@ -1,8 +1,8 @@
 {
-  "name": "@tid-xcut/opensource-scaffold",
-  "version": "1.3.0",
+  "name": "@telefonica/opensource-scaffold",
+  "version": "2.0.0",
   "type": "module",
-  "description": "Scaffolding for open source projects. A CLI tool to create open source repositories tools and resources",
+  "description": "Scaffolding for open source projects. A CLI tool to create open source repositories with standard tools and resources",
   "packageManager": "pnpm@9.4.0",
   "scripts": {
     "build": "pnpm build:library && pnpm build:action",

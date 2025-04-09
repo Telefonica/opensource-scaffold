@@ -1,8 +1,12 @@
+[![Build status](https://github.com/Telefonica/opensource-scaffold/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Telefonica/opensource-scaffold/actions?query=workflow%3Abuild+branch%3Amain) [![Last commit](https://img.shields.io/github/last-commit/Telefonica/opensource-scaffold.svg)](https://github.com/Telefonica/opensource-scaffold/commits) [![Last release](https://img.shields.io/github/release-date/Telefonica/opensource-scaffold.svg)](https://github.com/Telefonica/opensource-scaffold/releases)
+
+[![NPM downloads](https://img.shields.io/npm/dm/@telefonica/opensource-scaffold.svg)](https://www.npmjs.com/package/@telefonica/opensource-scaffold) [![License](https://img.shields.io/npm/l/@telefonica/opensource-scaffold.svg)](https://github.com/Telefonica/opensource-scaffold/blob/main/LICENSE)
+
 # Open Source Scaffold
 
 ## Description
 
-This repository contains a set of tools for creating and checking the licensing and standard practices for open source projects.
+This repository contains a set of tools for creating and checking the licensing and standard practices in open source projects.
 
 In detail, it includes:
 
@@ -12,8 +16,7 @@ In detail, it includes:
 
 ## Table of Contents
 
-* [Preface](#preface)
-  * [Supported licenses](#supported-licenses)
+* [Supported licenses](#supported-licenses)
 * [Usage](#usage)
   * [Repository template](#repository-template)
   * [Node.js CLI](#nodejs-cli)
@@ -26,14 +29,7 @@ In detail, it includes:
 * [Next steps](#next-steps)
 * [Configuring the repository](#configuring-the-repository)
 
-## Preface
-
-Before creating a new open source project, you should read the [Practical Guide to Open Source Software at Telefónica](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578).
-
-> [!WARNING]
-> The tools in this repository are not a replacement for that document, they are just a set of tools to help you follow the guidelines in that document.
-
-### Supported licenses
+## Supported licenses
 
 This scaffold is able to create projects with the following licenses:
 
@@ -66,19 +62,16 @@ That's it! You can now start working on your project. Happy coding! 🚀
 
 This repository also includes a Node.js CLI that can be used to __create or update__ an open source project with the standard files.
 
-To use it, follow these steps:
-
-1. __Login to NPM__: Make sure you are logged in to the _@tid-xcut_ NPM registry. Follow the [instructions in this link](https://confluence.tid.es/display/CTO/%5BCross%5D+NPM+Packages).
-2. __Run the CLI__: Run the following command
+To use it, run the following command:
 
 ```bash
-npx @tid-xcut/opensource-scaffold create
+npx @telefonica/opensource-scaffold create
 ```
 
 The CLI will prompt you for the required inputs to create the project, and also will ask you for confirmation before overwriting existing files.
 
 > [!TIP]
-> You can also use arguments to provide the required information without being prompted. Read the [inputs](#inputs) section for more information, or run `npx @tid-xcut/opensource-scaffold create --help`.
+> You can also use arguments to provide the required information without being prompted. Read the [inputs](#inputs) section for more information, or run `npx @telefonica/opensource-scaffold create --help`.
 
 Once the files are created, you are ready to commit and push the changes to your repository. Happy coding! 🚀
 
@@ -87,7 +80,7 @@ Once the files are created, you are ready to commit and push the changes to your
 
 ### Github Action for checking the open source resources
 
-This repository includes a Github Action that checks that the project contains the files that this scaffolding includes. It can be executed in PRs and pushes, ensuring that the project always remains compliant with the open source guidelines.
+This repository includes a Github Action that checks that the project contains the files that this scaffolding includes. It can be executed in PRs and pushes, ensuring that the project always remains compliant with the scaffolding.
 
 > [!TIP]
 > This action is automatically added when using the scaffolding tools. So, usually you won't need to add it manually. But in case you need to do so, here you have an example:
@@ -110,7 +103,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run check
-        uses: Telefonica/opensource-scaffold@v1
+        uses: Telefonica/opensource-scaffold@v2
 ```
 
 > [!TIP]
@@ -129,7 +122,7 @@ Example:
 
 ```yaml
 - name: Check Open Source scaffold
-  uses: Telefonica/opensource-scaffold@v1
+  uses: Telefonica/opensource-scaffold@v2
   with:
     log: debug
     ignore: "CHANGELOG.md;**/ISSUE_TEMPLATE/**"
@@ -210,13 +203,12 @@ This job uses the [Telefonica/check-spdx-headers action](https://github.com/Tele
 
 ## License Compliance check
 
-We want to ensure that the software we build is in compliance with our [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578).
-
-This means that we are not incorporating third party software in the project under a license that is not compatible with the license selected for the overall project, or that is not compatible with the company's open source licensing guidelines.
+You should ensure that you are not incorporating third party software in the project under a license that is not compatible with the license selected for the overall project, or that is not compatible with your company's open source licensing guidelines.
 
 For such purpose, this scaffold includes a job in the "Open Source Checks" workflow. This job uses the [Telefonica/check-license-compliance github action](https://github.com/Telefonica/check-license-compliance). The configuration of the action is defined in the `.github/check-license-compliance.config.yml` file. It is filled automatically based on the license provided when creating the scaffold, but it can be also customized manually to fit better your project's needs.
 
-Please review the [licensing guidance](https://telefonicacorp.sharepoint.com/:w:/s/PatentOffice.TMEHI/EV1Yvq2kUhhCgy5FG-lryaYBWLwIRewSMZXsbZJeQ5uhlg?e=Mdrdwh&wdLOR=cCBDCEA92-4CAC-CF4A-BF60-44FC3F909578) when configuring the license compliance check. In case of doubt, please contact the Intellectual Property team, to the email address indicated in such document.
+> [!WARNING]
+> The configuration of the allowed and forbidden licenses is created according to the Telefónica's open source guidelines, depending of the license you choose for your project. You should adapt it to your company's guidelines if they are different.
 
 ![Check License compliance bot](./docs/assets/check-license-compliance.png)
 
@@ -234,8 +226,8 @@ Once you have used the scaffolding tools to create the resources, you should fol
 5. __Finish the README file__: The scaffold creates for you a `README.md` file with some basic information about the project and license, but you should fill it with the information about the project, how to install it, how to use it, etc. But remember to __always keep the "Contributing" and "License" sections__.
 6. __Finish the CONTRIBUTING file__: You should do the same with the `CONTRIBUTING.md` file. You should __fill the "Getting Started" section__ with the steps that a contributor should follow to start contributing to the project, and __add as many sections as needed to explain the contribution process__. But you should __always keep the rest of sections__ about the licensing of new files, code of conduct and the CLA.
 
-> [!IMPORTANT]
-> Once the repository is ready, ask to your manager to contact with the legal department to review the project and approve the publication before making it public.
+> [!WARNING]
+> Before publishing the repository, you should ensure that your company's legal department has reviewed it.
 
 ## Configuring the repository
 
@@ -268,4 +260,4 @@ The main branch should be protected by requiring status checks to pass before me
 ### Final notes
 
 > [!TIP]
-> Remember also to provide a good description and topics for the repository in order to make it easier for others to find, use, and hopefully contribute to your project. 😉
+> Remember also to provide a good description and topics for the repository in order to make it easier for others to find, use, and, hopefully, contribute to your project. 😉
