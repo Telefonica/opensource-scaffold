@@ -103,7 +103,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run check
-        uses: Telefonica/opensource-scaffold@v1
+        uses: Telefonica/opensource-scaffold@v2
 ```
 
 > [!TIP]
@@ -122,7 +122,7 @@ Example:
 
 ```yaml
 - name: Check Open Source scaffold
-  uses: Telefonica/opensource-scaffold@v1
+  uses: Telefonica/opensource-scaffold@v2
   with:
     log: debug
     ignore: "CHANGELOG.md;**/ISSUE_TEMPLATE/**"
