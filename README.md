@@ -1,6 +1,6 @@
 [![Build status](https://github.com/Telefonica/opensource-scaffold/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Telefonica/opensource-scaffold/actions?query=workflow%3Abuild+branch%3Amain) [![Last commit](https://img.shields.io/github/last-commit/Telefonica/opensource-scaffold.svg)](https://github.com/Telefonica/opensource-scaffold/commits) [![Last release](https://img.shields.io/github/release-date/Telefonica/opensource-scaffold.svg)](https://github.com/Telefonica/opensource-scaffold/releases)
 
-[![NPM downloads](https://img.shields.io/npm/dm/@telefonica/opensource-scaffold.svg)](https://www.npmjs.com/package/@telefonica/opensource-scaffold) [![License](https://img.shields.io/npm/l/@telefonica/opensource-scaffold.svg)](https://github.com/Telefonica/opensource-scaffold/blob/main/components/opensource-scaffold/LICENSE)
+[![NPM downloads](https://img.shields.io/npm/dm/@telefonica/opensource-scaffold.svg)](https://www.npmjs.com/package/@telefonica/opensource-scaffold) [![License](https://img.shields.io/npm/l/@telefonica/opensource-scaffold.svg)](https://github.com/Telefonica/opensource-scaffold/blob/main/LICENSE)
 
 # Open Source Scaffold
 
