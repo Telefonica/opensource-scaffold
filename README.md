@@ -46,6 +46,8 @@ This scaffold is able to create projects with the following licenses:
 You can initialize a new open source project by creating a new repository from this template. Follow these steps:
 
 1. __Create a new repository__: Click on the "Use this template" button in Github when creating a new repository, and select this template.
+    * __Important__: Make sure to select the "Allow GitHub Actions to create and approve pull requests" option when creating the repository. This is required for the "Initialize repository" workflow to work properly. Go to "Settings" > "Actions" > "General" and select the option.
+    ![Allow GitHub Actions to create and approve pull requests](./docs/assets/allow-github-actions.png)
 2. __Run the "Initialize repository" workflow__: After creating the repository, go to the "Actions" tab and run the "Initialize repository" workflow. Enter the required [inputs](#inputs) and run the workflow. This will open a PR creating the initial files for your project, and removing the files from this template that are not needed in your project.
   ![Initialize repository workflow](./docs/assets/init-workflow.png)
 3. __Rename the `.github-draft` folder__: The PR creates a `.github-draft` branch that needs to be renamed to `.github` manually before merging it. Follow the instructions in the PR description to rename the folder and push the changes. _(This is because creating workflow files from an action requires special permissions, and the process of granting them would be more complex than simply renaming the folder)._
