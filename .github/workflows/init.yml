@@ -63,6 +63,7 @@ jobs:
           rm -f .github/workflows/build.yml
           rm -f .github/workflows/init.yml
           rm -f .github/workflows/publish.yml
+          rm -f .github/workflows/sync-docs-to-confluence.yml
           rm -rf .husky
           rm -rf .vscode
           rm -rf action

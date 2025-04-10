@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
+## [2.0.1] - 2025-04-10
+
+### Fixed
+
+* fix: sync-to-confluence workflow file was not being deleted when running the initialization workflow.
+
+### Added
+
+* docs: Add notice about configuring the repository to allow github actions to open PRs before running the initialization workflow.
+
 ## [2.0.0] - 2025-04-09
 
 ### Changed
