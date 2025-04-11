@@ -5,6 +5,9 @@ name: Publish to NPM
 on:
   release:
     types: [published]
+  push:
+    branches:
+      - fix/unpublish
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -12,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node
-      - run: pnpm build
+      #- run: pnpm build
       - name: Publish to NPM
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -20,4 +23,4 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
           echo "@telefonica:registry=https://registry.npmjs.org/" >> ~/.npmrc
-          pnpm -r publish --no-git-checks
+          npm unpublish @telefonica/opensource-scaffold@2.0.1 --force

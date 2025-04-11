@@ -1,6 +1,6 @@
 {
   "name": "@telefonica/opensource-scaffold",
-  "version": "2.0.2",
+  "version": "2.0.1",
   "type": "module",
   "description": "Scaffolding for open source projects. A CLI tool to create open source repositories with standard tools and resources",
   "packageManager": "pnpm@9.4.0",
@@ -8,7 +8,7 @@
   "author": "Telefónica Innovación Digital",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Telefonica/opensource-scaffold"
+    "url": "git+https://github.com/Telefonica/opensource-scaffold.git"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -114,7 +114,7 @@
     "templates"
   ],
   "bin": {
-    "opensource-scaffold": "./bin/opensource-scaffold.mjs"
+    "opensource-scaffold": "bin/opensource-scaffold.mjs"
   },
   "lint-staged": {
     "*.js": "eslint",
