@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Deprecated
 #### Removed
 
+## [2.0.2] - 2025-04-11
+
+### Fixed
+
+* fix: Add publishing fields to package.json
+
 ## [2.0.1] - 2025-04-10
 
 ### Fixed

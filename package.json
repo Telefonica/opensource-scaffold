@@ -1,9 +1,39 @@
 {
   "name": "@telefonica/opensource-scaffold",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "type": "module",
   "description": "Scaffolding for open source projects. A CLI tool to create open source repositories with standard tools and resources",
   "packageManager": "pnpm@9.4.0",
+  "license": "Apache-2.0",
+  "author": "Telefónica Innovación Digital",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Telefonica/opensource-scaffold"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "keywords": [
+    "opensource",
+    "open-source",
+    "scaffold",
+    "contributing-guidelines",
+    "license",
+    "issue-template",
+    "pull-request-template",
+    "generator",
+    "dependencies",
+    "dependency-analysis",
+    "spdx-license",
+    "spdx",
+    "copyright",
+    "contributors",
+    "contributing",
+    "license-check",
+    "community",
+    "standard"
+  ],
   "scripts": {
     "build": "pnpm build:library && pnpm build:action",
     "build:library": "tsc",
@@ -96,6 +126,5 @@
   },
   "engines": {
     "node": ">=18"
-  },
-  "license": "Apache-2.0"
+  }
 }
